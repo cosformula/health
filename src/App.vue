@@ -1,45 +1,19 @@
 <template>
   <div id="app">
+    <md-toolbar>
+  <md-button class="md-icon-button">
+    <md-icon>menu</md-icon>
+  </md-button>
+
+  <h2 class="md-title" style="flex: 1">健康管理</h2>
+
+  <md-button class="md-icon-button">
+    <md-icon>favorite</md-icon>
+  </md-button>
+</md-toolbar>
     <!--<img src="./assets/logo.png">-->
-    <md-button>Default</md-button>
-    <md-button class="md-primary">Primary</md-button>
-    <md-button class="md-accent">Accent</md-button>
-    <md-button class="md-warn">Warn</md-button>
-    <md-button class="md-primary" disabled>Disabled</md-button>
-    <md-button class="md-dense">Dense</md-button>
-<md-dialog md-open-from="#custom" md-close-to="#custom" ref="dialog1">
-  <md-dialog-title>Lorem ipsum dolor sit amet</md-dialog-title>
-
-  <md-dialog-content>Nemo, nobis necessitatibus ut illo, ducimus ex.</md-dialog-content>
-
-  <md-dialog-actions>
-    <md-button class="md-primary" @click.native="closeDialog('dialog1')">Cancel</md-button>
-    <md-button class="md-primary" @click.native="closeDialog('dialog1')">Ok</md-button>
-  </md-dialog-actions>
-</md-dialog>
-
-<md-dialog md-open-from="#fab" md-close-to="#fab" ref="dialog2">
-  <md-dialog-title>Create new note</md-dialog-title>
-
-  <md-dialog-content>
-    <form>
-      <md-input-container>
-        <label>Note</label>
-        <md-textarea></md-textarea>
-      </md-input-container>
-    </form>
-  </md-dialog-content>
-
-  <md-dialog-actions>
-    <md-button class="md-primary" @click.native="closeDialog('dialog2')">Cancel</md-button>
-    <md-button class="md-primary" @click.native="closeDialog('dialog2')">Create</md-button>
-  </md-dialog-actions>
-</md-dialog>
-
-<md-button class="md-primary md-raised" id="custom" @click.native="openDialog('dialog1')">Custom</md-button>
-<md-button class="md-fab md-fab-bottom-right" id="fab" @click.native="openDialog('dialog2')">
-  <md-icon>add</md-icon>
-</md-button>
+    <!--<md-button @click.native="send()">Send</md-button>-->
+  
     <router-view></router-view>
   </div>
 </template>
@@ -59,6 +33,16 @@ export default {
     },
     onClose (type) {
       console.log('Closed', type)
+    },
+    send () {
+      this.$http.get('/sdas')
+      .then((response) => {
+        console.log('asdas')
+        this.data = response.data
+      })
+      .catch(function () {
+        console.log('12312')
+      })
     }
   }
 }
@@ -71,6 +55,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
 }
 </style>
