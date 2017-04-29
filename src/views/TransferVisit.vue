@@ -1,10 +1,11 @@
 <template>
   <div class="hello">
-    <md-table>
+    <h3 style="text-align:center;">转诊记录</h3>
+    <md-layout md-align="center" md-gutter="0">
+      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80">
+        <md-table style="width:100%;">
       <md-table-header>
         <md-table-row >
-          <md-table-head class="table_header" style="text-align:center;">学号</md-table-head>
-          <md-table-head class="table_header" style="text-align:center;">姓名</md-table-head>
           <md-table-head md-numeric class="table_header" style="text-align:center;">转诊时间</md-table-head>
           <md-table-head md-numeric class="table_header" style="text-align:center;">转诊期限</md-table-head>
           <md-table-head md-numeric class="table_header" style="text-align:center;">病因</md-table-head>
@@ -20,6 +21,8 @@
         </md-table-row>
       </md-table-body>
     </md-table>
+    </md-layout>
+    </md-layout>
   </div>
 </template>
 
@@ -29,9 +32,7 @@ export default {
   data() {
     return {
       info: {
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
+        'date': '2014-04-12T09:59:40',
         'Transfer_timelimit': '7天',
         'disease': '龋齿',
         'Transfer_hospital': '同济口腔科医院',
@@ -39,9 +40,7 @@ export default {
         'doctor': 'xxx'
       },
       info_list: [{
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
+        'date': '2014-04-12T09:59:40',
         'Transfer_timelimit': '7天',
         'disease': '龋齿',
         'Transfer_hospital': '同济口腔科医院',
@@ -49,9 +48,7 @@ export default {
         'doctor': 'xxx'
       },
       {
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
+        'date': '2014-04-12T09:59:40',
         'Transfer_timelimit': '7天',
         'disease': '龋齿',
         'Transfer_hospital': '同济口腔科医院',
@@ -59,9 +56,7 @@ export default {
         'doctor': 'xxx'
       },
       {
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
+        'date': '2014-04-12T09:59:40',
         'Transfer_timelimit': '7天',
         'disease': '龋齿',
         'Transfer_hospital': '同济口腔科医院',

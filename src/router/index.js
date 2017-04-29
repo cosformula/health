@@ -10,6 +10,7 @@ import reimbursement from '@/views/reimbursement'
 import History from '@/views/History'
 import Blooddonation from '@/views/Blooddonation'
 import Doctorvisit from '@/views/Doctorvisit'
+import Login from '@/views/Login'
 Vue.use(Router)
 
 export default new Router({
@@ -54,6 +55,10 @@ export default new Router({
     {
       path: '/dcvisit',
       component: Doctorvisit
+    },
+    {
+      path: '/login',
+      component: Login
     }
   ]
 })

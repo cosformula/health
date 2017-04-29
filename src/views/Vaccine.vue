@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
-    <md-table>
+    <h3 style="text-align:center;">疫苗记录</h3>
+    <md-layout md-align="center" md-gutter="0">
+      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80">
+        <md-table style="width:100%;">
       <md-table-header>
         <md-table-row >
-          <md-table-head class="table_header" style="text-align:center;">学号</md-table-head>
-          <md-table-head class="table_header" style="text-align:center;">姓名</md-table-head>
-          <md-table-head md-numeric class="table_header" style="text-align:center;">性别</md-table-head>
           <md-table-head md-numeric class="table_header" style="text-align:center;">接种时间</md-table-head>
           <md-table-head md-numeric class="table_header" style="text-align:center;">接种类型</md-table-head>
           <md-table-head md-numeric class="table_header" style="text-align:center;">接种次数</md-table-head>
@@ -20,6 +20,8 @@
         </md-table-row>
       </md-table-body>
     </md-table>
+    </md-layout>
+    </md-layout>
   </div>
 </template>
 
@@ -29,9 +31,6 @@ export default {
   data() {
     return {
       info: {
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
         'RecordTime': 'xxxx/xx/xx',
         'VaccineName': '乙肝疫苗',
         'VaccineTime': '第一次接种',
@@ -39,9 +38,6 @@ export default {
         'campues': '宝山校区'
       },
       info_list: [{
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
         'RecordTime': 'xxxx/xx/xx',
         'VaccineName': '乙肝疫苗',
         'VaccineTime': '第一次接种',
@@ -49,9 +45,6 @@ export default {
         'campues': '宝山校区'
       },
       {
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
         'RecordTime': 'xxxx/xx/xx',
         'VaccineName': '乙肝疫苗',
         'VaccineTime': '第一次接种',
@@ -59,9 +52,6 @@ export default {
         'campues': '宝山校区'
       },
       {
-        'card_id': 'xxxxxxxx',
-        'name': 'xxx',
-        'sex': '男',
         'RecordTime': 'xxxx/xx/xx',
         'VaccineName': '乙肝疫苗',
         'VaccineTime': '第一次接种',
