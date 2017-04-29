@@ -12,8 +12,8 @@
   </md-button>
 </md-toolbar>
     <!--<img src="./assets/logo.png">-->
-    <!--<md-button @click.native="send()">Send</md-button>-->
-  
+    <router-link to="/my"><md-button>My</md-button></router-link>
+    <router-link to="/history"><md-button>history</md-button></router-link>
     <router-view></router-view>
   </div>
 </template>
