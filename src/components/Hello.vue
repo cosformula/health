@@ -1,52 +1,111 @@
 <template id="container">
-<div class="header">
-  <div class="hello">
-    <!--<h1>{{ msg }}</h1>-->
-    <!--<router-link to="/My">Myinfo</router-link>
-    <router-link to="/clinic">policlinic</router-link>   -->
-  </div>
-  <div class="field-group">
-  <md-input-container>
-    <label for="personal_info">个人信息</label>
-    <md-select name="personal_info" id="personal_info" v-model="personal_info">
-      <li class="list" id="basicinfo"><router-link to="/myinfo">基本信息</router-link></li>
-      <li class="list" id="sports_test"><router-link to="/My">体测记录</router-link></li>
-      <li class="list" id="physical_examination"><router-link to="/My">体检记录</router-link></li>
-    </md-select>
-  </md-input-container>
-
-  <md-input-container>
-    <label for="clinic">门诊</label>
-    <md-select name="clinic" id="clinic" v-model="country">
-      <li class="list" id="blood_donate"><router-link to="/blooddonation">献血记录</router-link></li>
-      <li class="list" id="doctor_visit"><router-link to="/dcvisit">就诊记录</router-link></li>
-      <li class="list" id="disease"><router-link to="/history">疾病记录</router-link></li>
-      <li class="list" id="reimbursement"><router-link to="/reimbursement">报销记录</router-link></li>
-      <li class="list" id="vaccine"><router-link to="/myvaccine">疫苗记录</router-link></li>
-      <li class="list" id="transfer_visit"><router-link to="/transfervisit">转诊记录</router-link></li>
-      <li class="list" id="sick_leave"><router-link to="/sickleave">病假记录</router-link></li>
-    </md-select>
-  </md-input-container>
-
-  <md-input-container >
-    <label for="health_education">健康教育</label>
-    <md-select name="health_education" id="health_education" v-model="health_education">
-      
-    </md-select>
-  </md-input-container>
-
+  <div class="header">
+    <div style-width="100%">
+      <md-tabs md-fixed>
+        <md-tab id="frequent_functions" md-label="常用">
+          <md-layout md-align="center" md-gutter="16">
+            <md-layout md-flex-large="70" md-flex-xlarge="70" md-flex-small="90" md-flex-xsmall="90" md-flex-medium="90">
+              <functions-card v-for="item in functions.fre" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
+             </md-layout>
+          </md-layout>
+        </md-tab>
+        <md-tab id="personal_info" md-label="个人信息">
+          <md-layout md-align="center" md-gutter="16">
+            <md-layout md-flex-large="70" md-flex-xlarge="70" md-flex-small="90" md-flex-xsmall="90" md-flex-medium="90">
+              <functions-card v-for="item in functions.personal_info" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
+            </md-layout>
+          </md-layout>
+        </md-tab>
   
-</div>
-</div>
-
+        <md-tab id="clinic" md-label="门诊">
+          <md-layout md-align="center" md-gutter="16">
+            <md-layout md-flex-large="70" md-flex-xlarge="70" md-flex-small="90" md-flex-xsmall="90" md-flex-medium="90">
+              <functions-card v-for="item in functions.clinic_records" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
+            </md-layout>
+          </md-layout>
+  
+        </md-tab>
+  
+        <md-tab id="health_education" md-label="健康教育">
+  
+        </md-tab>
+      </md-tabs>
+  
+    </div>
+  </div>
+  
+  </div>
 </template>
 
 <script>
+import FunctionsCard from '../components/FunctionsCard.vue'
 export default {
+  components: { FunctionsCard },
   data: () => ({
     movie: 'godfather',
     country: '',
-    font: ''
+    font: '',
+    functions: {
+      fre: [{
+        text: '基本信息',
+        icon: 'icon-gerenxinxi',
+        link: '/myinfo'
+      }, {
+        text: '体测记录',
+        icon: 'icon-tijian',
+        link: '/link'
+      }, {
+        text: '就诊记录',
+        icon: 'icon-weibiaoti2',
+        link: '/dcvisit'
+      }, {
+        text: '报销记录',
+        icon: 'icon-baoxiao',
+        link: '/reimbursement'
+      }],
+      personal_info: [{
+        text: '基本信息',
+        icon: 'icon-gerenxinxi',
+        link: '/myinfo'
+      }, {
+        text: '体检记录',
+        icon: 'icon-8311',
+        link: '/link'
+      }, {
+        text: '体测记录',
+        icon: 'icon-tijian',
+        link: '/link'
+      }],
+      clinic_records: [{
+        text: '献血记录',
+        icon: 'icon-fengxian',
+        link: '/blooddonation'
+      }, {
+        text: '就诊记录',
+        icon: 'icon-weibiaoti2',
+        link: '/dcvisit'
+      }, {
+        text: '疾病记录',
+        icon: 'icon-jibing_illness',
+        link: '/history'
+      }, {
+        text: '报销记录',
+        icon: 'icon-baoxiao',
+        link: '/reimbursement'
+      }, {
+        text: '疫苗记录',
+        icon: 'icon-zhenxian',
+        link: '/myvaccine'
+      }, {
+        text: '转诊记录',
+        icon: 'icon-zhuanzhenjilu',
+        link: '/transfervisit'
+      }, {
+        text: '病假记录',
+        icon: 'icon-qingjia',
+        link: '/sickleave'
+      }]
+    }
   }),
   methods: {
     setPulpFiction() {
@@ -56,17 +115,42 @@ export default {
 }
 
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .field-group {
-  display:flex;
+  display: flex;
 }
-.header{
-margin-left: 30px;
-margin-right: 30px;
+
+.list {
+  font-size: 17px;
+  color: gray;
 }
-.list{
-  font-size:17px;
-  color:gray;
+
+a {
+  display: block;
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.material-icons {
+  height: 20px;
+  width: 20px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.iconfont {
+  height: 20px;
+  width: 20px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.column {
+  text-align: center;
+  width: 80%;
 }
 </style>
