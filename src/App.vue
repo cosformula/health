@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" style="height:100%;">
     <md-toolbar>
-  <md-button class="md-icon-button">
+    <router-link to="/" class="back" v-if="$route.path!='/'" style="color: rgba(255, 255, 255, .87)">返回</router-link>
+  <md-button class="md-icon-button" v-if="$route.path=='/'">
     <md-icon>menu</md-icon>
   </md-button>
 
@@ -12,8 +13,8 @@
   </md-button>
 </md-toolbar>
     <!--<img src="./assets/logo.png">-->
-    <router-link to="/my"><md-button>My</md-button></router-link>
-    <router-link to="/history"><md-button>history</md-button></router-link>
+    <!--<md-button @click.native="send()">Send</md-button>-->
+  
     <router-view></router-view>
   </div>
 </template>
@@ -49,12 +50,12 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h2{
   text-align: center;
-  color: #2c3e50;
-  /*margin-top: 60px;*/
+}
+.back{
+  font-size: 20px;
+  font-weight: 400;
+  display: block;
 }
 </style>
