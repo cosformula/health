@@ -58,4 +58,9 @@ h2{
   font-weight: 400;
   display: block;
 }
+.ack{
+  font-size: 20px;
+  font-weight: 400;
+  display: block;
+}
 </style>
