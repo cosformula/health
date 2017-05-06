@@ -52,7 +52,7 @@ export default {
         link: '/myinfo'
       }, {
         text: '体测记录',
-        icon: 'icon-tijian',
+        icon: 'icon-8311',
         link: '/link'
       }, {
         text: '就诊记录',
@@ -69,11 +69,11 @@ export default {
         link: '/myinfo'
       }, {
         text: '体检记录',
-        icon: 'icon-8311',
+        icon: 'icon-tijian',
         link: '/link'
       }, {
         text: '体测记录',
-        icon: 'icon-tijian',
+        icon: 'icon-8311',
         link: '/link'
       }],
       clinic_records: [{
