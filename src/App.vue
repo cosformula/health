@@ -55,7 +55,9 @@
           </md-list>
         </div>
       </md-sidenav>
+      <keep-alive>
           <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
