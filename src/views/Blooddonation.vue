@@ -15,7 +15,10 @@
   
           <md-table-body>
             <md-table-row style="text-align:center;" v-for="(row, index) in blood_list" :key="index" md-numeric>
-              <md-table-cell style="text-align:center;" v-for="(col, index) in row" :key="index" md-numeric>{{col}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.BloodDonation}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.BloodType}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.DonateCount}}</md-table-cell>
             </md-table-row>
           </md-table-body>
         </md-table>
@@ -30,24 +33,34 @@ export default {
     return {
       blood_list: [
         {
-          'schoolcampus': '延长校区',
-          'blood donation': 200,
-          'type': '血浆',
-          'donatecount': 1
-        },
-        {
-          'schoolcampus': '嘉定校区',
-          'blood donation': 200,
-          'type': '血浆',
-          'donatecount': 2
-        },
-        {
-          'schoolcampus': '宝山校区',
-          'blood donation': 200,
-          'type': '血浆',
-          'donatecount': 3
+          '_id': {
+            '$oid': '54608e5ab218450fd84dc585'
+          },
+          'RecordTime': {
+            '$date': '2014-04-14T00:00:00.000Z'
+          },
+          'ID': 3121,
+          'Tag': '献血',
+          'UserName': '12124907',
+          'InputUser': null,
+          'RecordType': null,
+          'SchoolCampus': '嘉定校区',
+          'BloodDonation': 200,
+          'BloodType': '血浆',
+          'DonateCount': 1
         }
       ]
+    }
+  },
+  methods: {
+    getInfo() {
+      this.$http.get('/api/v1/blood-donation')
+        .then((response) => {
+          this.blood_list = response.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }
