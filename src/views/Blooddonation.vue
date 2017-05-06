@@ -31,32 +31,26 @@ export default {
   name: 'hello',
   data() {
     return {
-      blood_list: [
-        {
-          '_id': {
-            '$oid': '54608e5ab218450fd84dc585'
-          },
-          'RecordTime': {
-            '$date': '2014-04-14T00:00:00.000Z'
-          },
-          'ID': 3121,
-          'Tag': '献血',
-          'UserName': '12124907',
-          'InputUser': null,
-          'RecordType': null,
-          'SchoolCampus': '嘉定校区',
-          'BloodDonation': 200,
-          'BloodType': '血浆',
-          'DonateCount': 1
-        }
-      ]
+      blood_list: []
     }
+  },
+  created: function() {
+    this.getInfo()
+  },
+  activated: function() {
+    this.getInfo()
   },
   methods: {
     getInfo() {
-      this.$http.get('/api/v1/blood-donation')
+      this.$http.get('/api/v1/blood-donate.php')
         .then((response) => {
-          this.blood_list = response.data
+          console.log(response.data)
+          if (response.data !== 'not log in') {
+            this.blood_list = response.data
+            console.log('success get data')
+          } else {
+            console.log('not log in')
+          }
         })
         .catch((err) => {
           console.log(err)

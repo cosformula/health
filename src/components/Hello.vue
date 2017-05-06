@@ -5,14 +5,14 @@
         <md-tab id="frequent_functions" md-label="常用">
           <md-layout md-align="center" md-gutter="16">
             <md-layout md-flex-large="70" md-flex-xlarge="70" md-flex-small="90" md-flex-xsmall="90" md-flex-medium="90">
-              <functions-card v-for="item in functions.fre" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
+              <functions-card v-for="(item,index)  in functions.fre" :key="index" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
              </md-layout>
           </md-layout>
         </md-tab>
         <md-tab id="personal_info" md-label="个人信息">
           <md-layout md-align="center" md-gutter="16">
             <md-layout md-flex-large="70" md-flex-xlarge="70" md-flex-small="90" md-flex-xsmall="90" md-flex-medium="90">
-              <functions-card v-for="item in functions.personal_info" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
+              <functions-card v-for="(item,index)  in functions.personal_info" :key="index" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
             </md-layout>
           </md-layout>
         </md-tab>
@@ -20,7 +20,7 @@
         <md-tab id="clinic" md-label="门诊">
           <md-layout md-align="center" md-gutter="16">
             <md-layout md-flex-large="70" md-flex-xlarge="70" md-flex-small="90" md-flex-xsmall="90" md-flex-medium="90">
-              <functions-card v-for="item in functions.clinic_records" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
+              <functions-card v-for="(item,index) in functions.clinic_records" :key="index" :link="item.link" :text="item.text" :icon="item.icon"></functions-card>
             </md-layout>
           </md-layout>
   

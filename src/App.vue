@@ -7,58 +7,58 @@
         <md-icon>menu</md-icon>
       </md-button>
     </md-toolbar>
-      <md-sidenav class="md-right" ref="rightSidenav" @open="open('Right')" @close="close('Right')" :md-swipeable="false">
-        <md-toolbar>
-          <div class="md-toolbar-container">
-            <h3 class="md-title">学生信息</h3>
-          </div>
-        </md-toolbar>
-        <div class="phone-viewport">
-          <md-list>
-            <md-list-item>
-              <md-icon class="md-primary">account_circle</md-icon> <span>student.name</span>
-              <br />
-              <br />
-            </md-list-item>
-  
-            <md-list-item>
-              <md-icon style="color: deepskyblue">picture_in_picture_alt</md-icon> <span>student.xuehao</span>
-              <br />
-              <br />
-            </md-list-item>
-            <md-list-item>
-              <md-icon style="color: black">work</md-icon>
-              <span>student.major</span>
-              <br />
-              <br />
-            </md-list-item>
-  
-            <md-list-item>
-              <md-icon class="md-primary">error_outline</md-icon>
-              <span>关于</span>
-              <br />
-              <br />
-            </md-list-item>
-  
-            <md-list-item>
-              <md-icon>question_answer</md-icon>
-              <span>帮助</span>
-              <br />
-              <br />
-            </md-list-item>
-            <md-list-item>
-              <md-icon class="md-accent">subdirectory_arrow_right</md-icon>
-              <span>退出</span>
-              <br />
-              <br />
-            </md-list-item>
-          </md-list>
+    <md-sidenav class="md-right" ref="rightSidenav" @open="open('Right')" @close="close('Right')" :md-swipeable="false">
+      <md-toolbar>
+        <div class="md-toolbar-container">
+          <h3 class="md-title">学生信息</h3>
         </div>
-      </md-sidenav>
-      <keep-alive>
-          <router-view></router-view>
-      </keep-alive>
-    </div>
+      </md-toolbar>
+      <div class="phone-viewport">
+        <md-list>
+          <md-list-item>
+            <md-icon class="md-primary">account_circle</md-icon> <span>student.name</span>
+            <br />
+            <br />
+          </md-list-item>
+  
+          <md-list-item>
+            <md-icon style="color: deepskyblue">picture_in_picture_alt</md-icon> <span>student.xuehao</span>
+            <br />
+            <br />
+          </md-list-item>
+          <md-list-item>
+            <md-icon style="color: black">work</md-icon>
+            <span>student.major</span>
+            <br />
+            <br />
+          </md-list-item>
+  
+          <md-list-item>
+            <md-icon class="md-primary">error_outline</md-icon>
+            <span>关于</span>
+            <br />
+            <br />
+          </md-list-item>
+  
+          <md-list-item>
+            <md-icon>question_answer</md-icon>
+            <span>帮助</span>
+            <br />
+            <br />
+          </md-list-item>
+          <md-list-item>
+            <md-icon class="md-accent">subdirectory_arrow_right</md-icon>
+            <span>退出</span>
+            <br />
+            <br />
+          </md-list-item>
+        </md-list>
+      </div>
+    </md-sidenav>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+  </div>
   </div>
 </template>
 
@@ -127,9 +127,11 @@ export default {
 h2 {
   text-align: center;
 }
+
 body {
   overflow-x: hidden;
 }
+
 .back {
   font-size: 20px;
   font-weight: 400;

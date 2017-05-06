@@ -49,13 +49,14 @@ export default {
       console.log('Closed', type)
     },
     login() {
-      var a = 1
-      this.$http.post('/static/login', {
+      this.$http.post('/api/v1/login.php', {
         'card_id': this.card_id,
         'password': this.password
       })
         .then((response) => {
-          if (response.data.status === 'success') {
+          if (response.data.success === true) {
+            this.alert.content = '登陆成功'
+            this.openDialog('dialog')
           } else {
             this.openDialog('dialog')
           }
@@ -63,8 +64,6 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-      a = 3
-      console.log(a)
     }
   }
 }
