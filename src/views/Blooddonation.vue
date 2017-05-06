@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     getInfo() {
-      this.$http.get('/api/v1/blood-donation')
+      this.$http.get('/api/v1/blood-donation.php')
         .then((response) => {
           this.blood_list = response.data
         })
