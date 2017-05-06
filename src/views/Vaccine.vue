@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h3 style="text-align:center;">疫苗记录</h3>
+    <h3 style="text-align:center;">  </h3>
     <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">

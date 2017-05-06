@@ -70,7 +70,7 @@ export default {
       }, {
         text: '体检记录',
         icon: 'icon-tijian',
-        link: '/link'
+        link: '/phyexam'
       }, {
         text: '体测记录',
         icon: 'icon-8311',

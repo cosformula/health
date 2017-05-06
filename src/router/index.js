@@ -11,6 +11,7 @@ import History from '@/views/History'
 import Blooddonation from '@/views/Blooddonation'
 import Doctorvisit from '@/views/Doctorvisit'
 import Login from '@/views/Login'
+import PhyExam from '@/views/PhyExam'
 Vue.use(Router)
 
 export default new Router({
@@ -59,6 +60,10 @@ export default new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/phyexam',
+      component: PhyExam
     }
   ]
 })

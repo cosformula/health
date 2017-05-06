@@ -77,7 +77,8 @@ export default {
         '/reimbursement': '报销记录',
         '/history': '疾病记录',
         '/blooddonation': '献血记录',
-        '/dcvisit': '就诊记录'
+        '/dcvisit': '就诊记录',
+        '/phyexam': '体检记录'
       }
     }
   },
