@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
-    <h3 style="text-align:center;">慢性病</h3>
-    <md-layout md-align="center" md-gutter="0">
+    <md-tabs md-fixed>
+      <md-tab id="疾病1" md-label="慢性病">
+        <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">
           <md-table-header>
@@ -26,8 +27,8 @@
         </md-table>
       </md-layout>
     </md-layout>
-  
-    <h3 style="text-align:center;">传染病</h3>
+      </md-tab>
+      <md-tab id="疾病2" md-label="传染病">
     <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">
@@ -63,8 +64,8 @@
         </md-table>
       </md-layout>
     </md-layout>
-  
-    <h3 style="text-align:center;">重大疾病</h3>
+      </md-tab>
+      <md-tab id="疾病3" md-label="重大疾病">
     <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;margin-bottom:250px;">
@@ -94,6 +95,10 @@
         </md-table>
       </md-layout>
     </md-layout>
+      </md-tab>
+    </md-tabs>
+  
+  
   
   </div>
 </template>
