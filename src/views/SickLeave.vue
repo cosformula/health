@@ -2,7 +2,7 @@
   <div class="hello">
     <h3 style="text-align:center;">病假记录</h3>
     <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80">
+      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">
       <md-table-header>
         <md-table-row >

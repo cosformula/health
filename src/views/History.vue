@@ -2,7 +2,7 @@
     <div class="hello">
       <h3 style="text-align:center;">慢性病</h3>
       <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80">
+      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">
             <md-table-header>
                 <md-table-row>
@@ -25,7 +25,7 @@
 
         <h3 style="text-align:center;">传染病</h3>
         <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80">
+      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">
             <md-table-header>
                 <md-table-row>
@@ -56,7 +56,7 @@
 
         <h3 style="text-align:center;">重大疾病</h3>
         <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80">
+      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;margin-bottom:250px;">
             <md-table-header>
                 <md-table-row>

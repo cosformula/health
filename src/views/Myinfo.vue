@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    <md-table>
+    <h3 style="text-align:center;">个人信息</h3>
+    <md-layout md-align="center" md-gutter="0">
+      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
+        <md-table style="width:100%;">
       <md-table-header>
         <md-table-row>
           <md-table-head style="text-align:center;">学院</md-table-head>
@@ -28,6 +31,8 @@
         </md-table-row>
       </md-table-body>
     </md-table>
+    </md-layout>
+    </md-layout>
   </div>
 </template>
 <script>
