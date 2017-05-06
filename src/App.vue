@@ -126,7 +126,7 @@ h2 {
   text-align: center;
 }
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .back {
   font-size: 20px;
