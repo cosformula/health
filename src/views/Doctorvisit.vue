@@ -19,7 +19,7 @@
           <md-table-body>
             <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
               <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
               <md-table-cell style="text-align:center;" md-numeric>{{row.department}}</md-table-cell>
               <md-table-cell style="text-align:center;" md-numeric>{{row.doctor}}</md-table-cell>
               <md-table-cell style="text-align:center;" md-numeric>{{row.total_fees}}</md-table-cell>
@@ -35,28 +35,37 @@
       </md-layout>
     </md-layout>
     <md-dialog md-open-from="#custom" md-close-to="#custom" ref="dialog1">
-      <md-dialog-title>病状详情</md-dialog-title>
+      <md-dialog-title style="text-align:center;">病状详情</md-dialog-title>
   
       <md-dialog-content>
         <md-table style="width:100%;margin-top:20px;">
-          <md-table-header>
-            <md-table-row>
-              <md-table-head style="text-align:center;">病症陈述</md-table-head>
-              <md-table-head style="text-align:center;">询问症状</md-table-head>
-              <md-table-head style="text-align:center;">临床表现</md-table-head>
-              <md-table-head style="text-align:center;">体温</md-table-head>
-              <md-table-head style="text-align:center;">初步诊断</md-table-head>
-              <md-table-head style="text-align:center;">取药负责人</md-table-head>
-            </md-table-row>
-          </md-table-header>
-  
           <md-table-body>
-            <md-table-cell style="text-align:center;" md-numeric>{{current_item.chief_complaint}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{current_item.now_history}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{current_item.pysical_exam}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{current_item.body_temperature}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{current_item.initial_diagnosis}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{current_item.doctor}}</md-table-cell>
+            <md-table-row>
+            <md-table-cell style="text-align:center;">病症陈述</md-table-cell>
+            <md-table-head style="text-align:center;" md-numeric>{{current_item.chief_complaint}}</md-table-head>
+            </md-table-row>
+            <md-table-row>
+            <md-table-cell style="text-align:center;">询问症状</md-table-cell>
+            <md-table-head style="text-align:center;" md-numeric>{{current_item.now_history}}</md-table-head>
+            </md-table-row>
+            <md-table-row>
+            <md-table-cell style="text-align:center;">临床表现</md-table-cell>
+            <md-table-head style="text-align:center;" md-numeric>{{current_item.pysical_exam}}</md-table-head>
+            </md-table-row>
+            <md-table-row>
+            <md-table-cell style="text-align:center;">体温</md-table-cell>
+            <md-table-head style="text-align:center;" md-numeric>{{current_item.body_temperature}}</md-table-head>
+            </md-table-row>
+            <md-table-row>
+            <md-table-cell style="text-align:center;">初步诊断</md-table-cell>
+            <md-table-head style="text-align:center;" md-numeric>{{current_item.initial_diagnosis}}</md-table-head>
+            </md-table-row>
+            <md-table-row>
+            <md-table-cell style="text-align:center;">取药负责人</md-table-cell>
+            <md-table-head style="text-align:center;" md-numeric>{{current_item.doctor}}</md-table-head>
+            </md-table-row>
+            
+            
   
           </md-table-body>
         </md-table>
