@@ -49,7 +49,7 @@
           <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
             <md-table style="width:100%;">
               <md-table-header>
-                <md-table-row>>
+                <md-table-row>
                   <md-table-head style="text-align:center;">身高</md-table-head>
                   <md-table-head style="text-align:center;">体重</md-table-head>
                   <md-table-head style="text-align:center;">BMI</md-table-head>
