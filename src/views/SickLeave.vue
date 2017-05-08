@@ -20,7 +20,7 @@
               <md-table-cell style="text-align:center;" md-numeric>{{row.TSQK}}</md-table-cell>
               <md-table-cell style="text-align:center;" md-numeric>{{row.StartTime.$date}}</md-table-cell>
               <md-table-cell style="text-align:center;" md-numeric>{{row.EndTime.$date}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Days}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Days}}天</md-table-cell>
               <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
               <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
             </md-table-row>
