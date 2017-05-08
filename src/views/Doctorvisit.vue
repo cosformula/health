@@ -37,7 +37,7 @@
     <md-dialog md-open-from="#custom" md-close-to="#custom" ref="dialog1">
       <md-dialog-title style="text-align:center;">病状详情</md-dialog-title>
   
-      <md-dialog-content>
+      <md-dialog-content >
         <md-table style="width:100%;margin-top:20px;">
           <md-table-body>
             <md-table-row>
