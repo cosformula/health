@@ -4,24 +4,29 @@
     <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">
-      <md-table-header>
-        <md-table-row >
-          <md-table-head md-numeric class="table_header" style="text-align:center;">转诊时间</md-table-head>
-          <md-table-head md-numeric class="table_header" style="text-align:center;">转诊期限</md-table-head>
-          <md-table-head md-numeric class="table_header" style="text-align:center;">病因</md-table-head>
-          <md-table-head md-numeric class="table_header" style="text-align:center;">转至</md-table-head>
-          <md-table-head md-numeric class="table_header" style="text-align:center;">科室</md-table-head>
-          <md-table-head md-numeric class="table_header" style="text-align:center;">医生</md-table-head>
-        </md-table-row>
-      </md-table-header>
+          <md-table-header>
+            <md-table-row>
+              <md-table-head md-numeric class="table_header" style="text-align:center;">转诊时间</md-table-head>
+              <md-table-head md-numeric class="table_header" style="text-align:center;">转诊期限</md-table-head>
+              <md-table-head md-numeric class="table_header" style="text-align:center;">病因</md-table-head>
+              <md-table-head md-numeric class="table_header" style="text-align:center;">转至</md-table-head>
+              <md-table-head md-numeric class="table_header" style="text-align:center;">科室</md-table-head>
+              <md-table-head md-numeric class="table_header" style="text-align:center;">医生</md-table-head>
+            </md-table-row>
+          </md-table-header>
   
-      <md-table-body>
-        <md-table-row v-for="(row, index) in info_list" :key="index">
-          <md-table-cell style="text-align:center;" v-for="(col, index) in row" :key="index" md-numeric>{{col}}</md-table-cell>
-        </md-table-row>
-      </md-table-body>
-    </md-table>
-    </md-layout>
+          <md-table-body>
+            <md-table-row v-for="(row, index) in info_list" :key="index">
+              <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Transfer_timelimit}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Disease}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Transfer_hospital}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Transfer_medical_laboratory}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
+            </md-table-row>
+          </md-table-body>
+        </md-table>
+      </md-layout>
     </md-layout>
   </div>
 </template>
@@ -31,39 +36,44 @@ export default {
   name: 'hello',
   data() {
     return {
-      info: {
-        'date': '2014-04-12T09:59:40',
-        'Transfer_timelimit': '7天',
-        'disease': '龋齿',
-        'Transfer_hospital': '同济口腔科医院',
-        'Transfer_medical_laboratory': '口腔科',
-        'doctor': 'xxx'
-      },
-      info_list: [{
-        'date': '2014-04-12T09:59:40',
-        'Transfer_timelimit': '7天',
-        'disease': '龋齿',
-        'Transfer_hospital': '同济口腔科医院',
-        'Transfer_medical_laboratory': '口腔科',
-        'doctor': 'xxx'
-      },
-      {
-        'date': '2014-04-12T09:59:40',
-        'Transfer_timelimit': '7天',
-        'disease': '龋齿',
-        'Transfer_hospital': '同济口腔科医院',
-        'Transfer_medical_laboratory': '口腔科',
-        'doctor': 'xxx'
-      },
-      {
-        'date': '2014-04-12T09:59:40',
-        'Transfer_timelimit': '7天',
-        'disease': '龋齿',
-        'Transfer_hospital': '同济口腔科医院',
-        'Transfer_medical_laboratory': '口腔科',
-        'doctor': 'xxx'
-      }
-      ]
+      info_list: [
+        {
+          '_id': {
+            '$oid': '5347a85ab2184503c48e8458'
+          },
+          'RecordTime': {
+            '$date': '2014-04-11T16:33:00.000Z'
+          },
+          'ID': 1,
+          'Tag': '转诊',
+          'UserName': '13720945',
+          'InputUser': null,
+          'RecordType': null,
+          'SchoolCampus': '宝山校区',
+          'user': {
+            'BirthDate': null,
+            'Gender': '',
+            'College': '通信与信息工程学院',
+            'StudentType': '',
+            'SchoolData': null,
+            'FullName': '徐慧敏',
+            'IDNumber': null,
+            'ImgUrl': null,
+            'Race': '',
+            'Original': '',
+            'UserName': '13720945',
+            '_id': {
+              '$oid': '000000000000000000000000'
+            }
+          },
+          'Medical_laboratory': '',
+          'Doctor': '朱雯怡',
+          'Disease': '鸡眼',
+          'Transfer_hospital': '第十人民医院',
+          'Transfer_medical_laboratory': '皮肤科',
+          'Transfer_timelimit': '7天1次',
+          'Others': ''
+        }]
     }
   }
 }
