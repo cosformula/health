@@ -4,7 +4,7 @@
       <md-tab id="体检1" md-label="入学体检">
         <md-layout md-align="center" md-gutter="0">
           <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-            <md-table style="width:100%;">
+            <!--<md-table style="width:100%;">
               <md-table-header>
                 <md-table-row>
                   <md-table-head style="text-align:center;">身高</md-table-head>
@@ -40,8 +40,8 @@
                   <md-table-cell style="text-align:center;" md-numeric>{{row.liver_spleen}}</md-table-cell>
                 </md-table-row>
               </md-table-body>
-            </md-table>
-            <md-table v-once>
+            </md-table>-->
+<md-table style="text-align:center;" v-once>
   <md-table-header>
     <md-table-row>
       <md-table-head></md-table-head>
@@ -54,19 +54,41 @@
 
   <md-table-body>
      <md-table-row>
-      <md-table-cell>身高</md-table-cell>
-      <md-table-cell>体重</md-table-cell>
-      <md-table-cell>BMI</md-table-cell>
-      <md-table-cell>舒张压</md-table-cell>
-      <md-table-cell>收缩压</md-table-cell>
-      <md-table-cell>是否高血压</md-table-cell>
-      <md-table-cell>色盲</md-table-cell>
-      <md-table-cell>视力 左/右</md-table-cell>
-      <md-table-cell>心脏听诊</md-table-cell>
-      <md-table-cell>心率</md-table-cell>
-      <md-table-cell>肺部</md-table-cell>
-      <md-table-cell>肝脾</md-table-cell>
-      <md-table-cell v-for="(col, index) in 4" :key="index" md-numeric>10</md-table-cell>
+      <md-table-head>身高</md-table-head>
+      </md-table-row>
+       <md-table-row>
+      <md-table-head>体重</md-table-head>
+      </md-table-row>
+      <md-table-row>
+      <md-table-head>BMI</md-table-head>
+      </md-table-row>
+      <md-table-row>
+      <md-table-head>舒张压</md-table-head>
+      </md-table-row>
+      <md-table-row>
+      <md-table-head>收缩压</md-table-head>
+      </md-table-row>
+      <md-table-row>
+      <md-table-head>高血压</md-table-head>
+      </md-table-row>
+       <md-table-row>
+      <md-table-head>色盲</md-table-head>
+      </md-table-row>
+       <md-table-row>
+      <md-table-head>视力</md-table-head>
+      </md-table-row>
+      <md-table-row>
+      <md-table-head>心脏听诊</md-table-head>
+      </md-table-row>
+       <md-table-row>
+      <md-table-head>心率</md-table-head>
+      </md-table-row>
+      <md-table-row>
+      <md-table-head>肺部</md-table-head>
+      </md-table-row>
+       <md-table-row>
+      <md-table-head>肝脾</md-table-head>
+      </md-table-row>
     </md-table-row>
   </md-table-body>
 </md-table>
