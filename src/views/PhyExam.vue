@@ -54,17 +54,18 @@
   </md-table-header>
 
   <md-table-body>
-     <md-table-row>
+     <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
       <md-table-cell>身高</md-table-cell>
-      <!--<md-table-cell style="text-align:center;" md-numeric>{{row.height}}</md-table-cell>-->
+      <md-table-cell style="text-align:center;" md-numeric>{{row.height}}</md-table-cell>
       </md-table-row>
-       <md-table-row>
+       <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
       <md-table-cell>体重</md-table-cell>
+      <md-table-cell style="text-align:center;" md-numeric>{{row.weight}}</md-table-cell>
       </md-table-row>
-      <md-table-row>
+      <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
       <md-table-cell>BMI</md-table-cell>
       </md-table-row>
-      <md-table-row>
+      <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
       <md-table-cell>舒张压</md-table-cell>
       </md-table-row>
       <md-table-row>
