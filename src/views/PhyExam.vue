@@ -46,7 +46,7 @@
   <md-table-header>
     <md-table-row>
       <md-table-head></md-table-head>
-      <md-table-head md-numeric>我的</md-table-head>
+      <md-table-head md-numeric style="text-align:center;">我的</md-table-head>
       <md-table-head md-numeric>状态</md-table-head>
       <md-table-head md-numeric>正常参考值</md-table-head>
       <md-table-head md-numeric>百分比</md-table-head>
@@ -65,19 +65,36 @@
       <md-table-cell>BMI</md-table-cell>
       </md-table-row>
       <md-table-row>
-      <md-table-cell>舒张压</md-table-cell>
-      </md-table-row>
-      <md-table-row>
-      <md-table-cell>收缩压</md-table-cell>
-      </md-table-row>
-      <md-table-row>
-      <md-table-cell>高血压</md-table-cell>
+        <md-table-cell>血压</md-table-cell>
+        <md-table>
+        <md-table-header>
+            <md-table-row>
+                <md-table-head md-numeric>舒张压</md-table-head>
+                <md-table-head md-numeric>收缩压</md-table-head>
+                <md-table-head md-numeric>是否高血压</md-table-head>
+           </md-table-row>
+        </md-table-header>
+        <md-table-body>
+           <md-table-row><md-table-cell></md-table-cell></md-table-row>
+        </md-table-body>
+        </md-table>
       </md-table-row>
        <md-table-row>
       <md-table-cell>色盲</md-table-cell>
       </md-table-row>
-       <md-table-row>
-      <md-table-cell>视力</md-table-cell>
+      <md-table-row>
+        <md-table-cell>视力</md-table-cell>
+        <md-table>
+        <md-table-header>
+            <md-table-row>
+                <md-table-head md-numeric style="text-align:center;">左眼</md-table-head>
+                <md-table-head md-numeric style="text-align:center;">右眼</md-table-head>
+           </md-table-row>
+        </md-table-header>
+        <md-table-body>
+           <md-table-row><md-table-cell></md-table-cell></md-table-row>
+        </md-table-body>
+        </md-table>
       </md-table-row>
       <md-table-row>
       <md-table-cell>心脏听诊</md-table-cell>
