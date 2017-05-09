@@ -61,7 +61,7 @@
       <md-table-cell>收缩压</md-table-cell>
       <md-table-cell>是否高血压</md-table-cell>
       <md-table-cell>色盲</md-table-cell>
-      <md-table-cell>视力左/右</md-table-cell>
+      <md-table-cell>视力</md-table-cell>
       <md-table-cell>心脏听诊</md-table-cell>
       <md-table-cell>心率</md-table-cell>
       <md-table-cell>肺部</md-table-cell>
