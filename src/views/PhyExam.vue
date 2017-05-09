@@ -41,6 +41,35 @@
                 </md-table-row>
               </md-table-body>
             </md-table>
+            <md-table v-once>
+  <md-table-header>
+    <md-table-row>
+      <md-table-head></md-table-head>
+      <md-table-head md-numeric>我的</md-table-head>
+      <md-table-head md-numeric>状态</md-table-head>
+      <md-table-head md-numeric>正常参考值</md-table-head>
+      <md-table-head md-numeric>百分比</md-table-head>
+    </md-table-row>
+  </md-table-header>
+
+  <md-table-body>
+     <md-table-row>
+      <md-table-cell>身高</md-table-cell>
+      <md-table-cell>体重</md-table-cell>
+      <md-table-cell>BMI</md-table-cell>
+      <md-table-cell>舒张压</md-table-cell>
+      <md-table-cell>收缩压</md-table-cell>
+      <md-table-cell>是否高血压</md-table-cell>
+      <md-table-cell>色盲</md-table-cell>
+      <md-table-cell>视力</md-table-cell>
+      <md-table-cell>心脏听诊</md-table-cell>
+      <md-table-cell>心率</md-table-cell>
+      <md-table-cell>肺部</md-table-cell>
+      <md-table-cell>肝脾</md-table-cell>
+      <md-table-cell v-for="(col, index) in 4" :key="index" md-numeric>10</md-table-cell>
+    </md-table-row>
+  </md-table-body>
+</md-table>
           </md-layout>
         </md-layout>
       </md-tab>
