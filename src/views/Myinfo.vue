@@ -143,6 +143,7 @@ export default {
 .form1{
   margin-left:auto;
   margin-right:auto;
+  text-align:center;
 }
 .form2{
   margin-left:auto;
