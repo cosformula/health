@@ -99,18 +99,6 @@
                     </md-table-body>
                   </md-table>
                 </md-table-row>
-                <!--<md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
-                  <md-table-head style="text-align:center;">是否离校</md-table-head>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.is_absence}}</md-table-cell>
-                </md-table-row>
-                <md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
-                  <md-table-head style="text-align:center;">是否返校</md-table-head>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.is_back}}</md-table-cell>
-                </md-table-row>
-                <md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
-                  <md-table-head style="text-align:center;">返校时间</md-table-head>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.back_time}}</md-table-cell>
-                </md-table-row>-->
                 </md-table-row>
               </md-table-body>
             </md-table>
