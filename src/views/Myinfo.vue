@@ -21,7 +21,7 @@
         </md-table-row>
       </md-table-body>
     </md-table>-->
-    <div class="form1">
+    <div class="form1"  style="width=300px">
     <md-card md-with-hover style="width:100%;margin-top:35px;">
   <md-card-header v-for="(row, index) in info_list" :key="index" md-numeric>
     <div class="md-title" style="text-align:center;">上海大学</div>
@@ -29,7 +29,7 @@
   </md-card-header>
 
   <md-card-media>
-    <img src="http://pic01.taopic.com/161225/240391-16122509533420-lp.jpg" alt="health">
+    <img src="http://pic01.taopic.com/161225/240391-16122509533420-lp.jpg" alt="health" style="position:static;">
   </md-card-media>
 
   <md-card-content style="text-align:center;" v-for="(row, index) in info_list" :key="index" md-numeric>
