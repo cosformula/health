@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
     <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="85">
-        <md-table style="width:100%;">
+      <md-layout md-flex-large="90" md-flex-xlarge="90" md-flex-xsmall="85" md-flex-small="85" md-flex-medium="85">
+        <!--<md-table style="width:100%;">
       <md-table-header>
         <md-table-row>
           <md-table-head style="text-align:center;">学院</md-table-head>
@@ -20,7 +20,28 @@
           <md-table-cell style="text-align:center;" md-numeric>{{row.user.Gender}}</md-table-cell>
         </md-table-row>
       </md-table-body>
-    </md-table>
+    </md-table>-->
+    <div class="form1">
+    <md-card md-with-hover style="width:100%;margin-top:40px;">
+  <md-card-header>
+    <div class="md-title" style="text-align:center;">上海大学</div>
+    <div class="md-head" style="text-align:center;size:200px;"><h3>计算机学院</h3></div>
+  </md-card-header>
+
+  <md-card-media>
+    <img src="http://img.mukewang.com/52da54ed0001ecfa04120172.jpg" alt="health">
+  </md-card-media>
+
+  <md-card-content style="text-align:center;">
+    <h3>莱昂纳多·迪卡普里奥</h3>
+  </md-card-content>
+
+  <md-card-actions>
+    <md-button style="text-align:center;">18121812</md-button>
+    <md-button style="text-align:center;">男</md-button>
+  </md-card-actions>
+</md-card>
+</div>
     </md-layout>
     </md-layout>
   </div>
@@ -118,5 +139,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.form1{
+  margin-left:auto;
+  margin-right:auto;
+}
 </style>
