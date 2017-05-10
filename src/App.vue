@@ -68,7 +68,7 @@ export default {
   data: function () {
     return {
       title: {
-        '/': '健康教育',
+        '/': '健康档案',
         '/test': '测试',
         '/myinfo': '基本信息',
         '/myvaccine': '疫苗记录',

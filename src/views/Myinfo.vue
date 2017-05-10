@@ -22,24 +22,25 @@
       </md-table-body>
     </md-table>-->
     <div class="form1">
-    <md-card md-with-hover style="width:100%;margin-top:40px;">
-  <md-card-header>
+    <md-card md-with-hover style="width:100%;margin-top:35px;">
+  <md-card-header v-for="(row, index) in info_list" :key="index" md-numeric>
     <div class="md-title" style="text-align:center;">上海大学</div>
-    <div class="md-head" style="text-align:center;size:200px;"><h3>计算机学院</h3></div>
+    <div class="md-head" style="text-align:center;size:200px;"><h3 md-numeric>{{row.user.College}}</h3></div>
   </md-card-header>
 
   <md-card-media>
-    <img src="http://img.mukewang.com/52da54ed0001ecfa04120172.jpg" alt="health">
+    <img src="http://pic01.taopic.com/161225/240391-16122509533420-lp.jpg" alt="health">
   </md-card-media>
 
-  <md-card-content style="text-align:center;">
-    <h3>莱昂纳多·迪卡普里奥</h3>
+  <md-card-content style="text-align:center;" v-for="(row, index) in info_list" :key="index" md-numeric>
+    <h3 md-numeric>{{row.user.FullName}}</h3>
   </md-card-content>
-
-  <md-card-actions style="text-align:center;">
-    <md-button style="text-align:center;">18121812</md-button>
-    <md-button style="text-align:center;">男</md-button>
+<div class="form2" style="text-align:center;">
+  <md-card-actions style="text-align:center;" v-for="(row, index) in info_list" :key="index" md-numeric>
+    <md-button style="text-align:center;" md-numeric>{{row.user.UserName}}</md-button>
+    <md-button style="text-align:center;" md-numeric>{{row.user.Gender}}</md-button>
   </md-card-actions>
+  </div>
 </md-card>
 </div>
     </md-layout>
@@ -142,5 +143,10 @@ export default {
 .form1{
   margin-left:auto;
   margin-right:auto;
+}
+.form2{
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
 }
 </style>
