@@ -36,7 +36,7 @@
     <h3>莱昂纳多·迪卡普里奥</h3>
   </md-card-content>
 
-  <md-card-actions>
+  <md-card-actions style="text-align:center;">
     <md-button style="text-align:center;">18121812</md-button>
     <md-button style="text-align:center;">男</md-button>
   </md-card-actions>
