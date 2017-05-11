@@ -4,29 +4,29 @@
       <md-tab id="疾病1" md-label="慢性病">
         <md-layout md-align="center" md-gutter="0">
           <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-            <md-table style="width:50%;margin-left:auto;margin-right:auto;">
+            <md-table style="width:80%;margin-left:auto;margin-right:auto;">
               <md-table-header>
               </md-table-header>
   
               <md-table-body>
                 <md-table-row style="text-align:center;" v-for="(row, index) in chronic_list" :key="index" md-numeric>
-                  <md-table-cell style="text-align:center;">地点</md-table-cell>
+                  <md-table-head style="text-align:center;">地点</md-table-head>
                   <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
                 </md-table-row>
                 <md-table-row style="text-align:center;" v-for="(row, index) in chronic_list" :key="index" md-numeric>
-                  <md-table-cell style="text-align:center;">时间</md-table-cell>
+                  <md-table-head style="text-align:center;">时间</md-table-head>
                   <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime}}</md-table-cell>
                 </md-table-row>
                 <md-table-row style="text-align:center;" v-for="(row, index) in chronic_list" :key="index" md-numeric>
-                  <md-table-cell style="text-align:center;">医生</md-table-cell>
+                  <md-table-head style="text-align:center;">医生</md-table-head>
                   <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
                 </md-table-row>
                 <md-table-row style="text-align:center;" v-for="(row, index) in chronic_list" :key="index" md-numeric>
-                  <md-table-cell style="text-align:center;">疾病</md-table-cell>
+                  <md-table-head style="text-align:center;">疾病</md-table-head>
                   <md-table-cell style="text-align:center;" md-numeric>{{row.Disease}}</md-table-cell>
                 </md-table-row>
                 <md-table-row style="text-align:center;" v-for="(row, index) in chronic_list" :key="index" md-numeric>
-                  <md-table-cell style="text-align:center;">治疗医院</md-table-cell>
+                  <md-table-head style="text-align:center;">治疗医院</md-table-head>
                   <md-table-cell style="text-align:center;" md-numeric>{{row.Medical_laboratory}}</md-table-cell>
                 </md-table-row>
                 </md-table-row>
