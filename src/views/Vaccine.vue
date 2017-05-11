@@ -3,26 +3,34 @@
     <h3 style="text-align:center;">  </h3>
     <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-        <md-table style="width:100%;">
+        <md-table style="width:80%;margin-left:auto;margin-right:auto;">
           <md-table-header>
-            <md-table-row>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">接种时间</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">接种地点</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">接种类型</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">接种次数</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">医生</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">疫苗来源</md-table-head>
-            </md-table-row>
           </md-table-header>
   
-          <md-table-body>
-            <md-table-row v-for="(row, index) in info_list" :key="index">
-              <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Drugs.ViccineName}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Drugs.ViccineTime}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Medical_laboratory}}</md-table-cell>
+          <md-table-body v-for="(row, index) in info_list" :key="index" md-numeric>
+            <md-table-row style="text-align:center;">
+               <md-table-head md-numeric class="table_header" style="text-align:center;">接种时间</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">接种地点</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">接种类型</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.Drugs.ViccineName}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">接种次数</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.Drugs.ViccineTime}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">医生</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">疫苗来源</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.Medical_laboratory}}</md-table-cell>
             </md-table-row>
           </md-table-body>
         </md-table>
