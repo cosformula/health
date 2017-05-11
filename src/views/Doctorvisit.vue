@@ -3,27 +3,46 @@
         <h3 style="text-align:center;">  </h3>
     <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-        <md-table style="width:100%;">
+        <md-table style="width:80%;margin-left:auto;margin-right:auto;">
           <md-table-header>
-            <md-table-row>
-              <md-table-head style="text-align:center;">就诊地点</md-table-head>
-              <md-table-head style="text-align:center;">就诊时间</md-table-head>
-              <md-table-head style="text-align:center;">就诊科</md-table-head>
-              <md-table-head style="text-align:center;">就诊医生</md-table-head>
-              <md-table-head style="text-align:center;">总费用</md-table-head>
-              <md-table-head style="text-align:center;">实际费用</md-table-head>
-              <md-table-head style="text-align:center;">查看详情</md-table-head>
-            </md-table-row>
           </md-table-header>
   
           <md-table-body>
             <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
+               <md-table-head style="text-align:center;">就诊地点</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
+              <md-table-head style="text-align:center;">就诊时间</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
+              <md-table-head style="text-align:center;">就诊科</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.department}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
+              <md-table-head style="text-align:center;">就诊医生</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.doctor}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.total_fees}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.real_fees}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
+            <md-table-head style="text-align:center;">费用</md-table-head>
+                  <md-table>
+                    <md-table-header>
+                      <md-table-row>
+                        <md-table-head style="text-align:center;">总费用</md-table-head>
+                        <md-table-head style="text-align:center;">实际费用</md-table-head>
+                      </md-table-row>
+                    </md-table-header>
+                    <md-table-body>
+                      <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
+                        <md-table-cell style="text-align:center;" md-numeric>{{row.total_fees}}</md-table-cell>
+                        <md-table-cell style="text-align:center;" md-numeric>{{row.real_fees}}</md-table-cell>
+                      </md-table-row>
+                    </md-table-body>
+                  </md-table>
+            </md-table-row>
+            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
+              <md-table-head style="text-align:center;">查看详情</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>
                 <md-button class="md-raised" @click.native="openDialog('dialog1', index)" style="width:60%;">病状</md-button>
                 <md-button class="md-raised" @click.native="openDialog('dialog2', index)" style="width:60%;">处方</md-button>
