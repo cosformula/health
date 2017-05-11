@@ -4,7 +4,7 @@
       <md-tab id="疾病1" md-label="慢性病">
         <md-layout md-align="center" md-gutter="0">
           <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-            <md-table style="width:80%;margin-left:auto;margin-right:auto;">
+            <md-table style="width:50%;margin-left:auto;margin-right:auto;">
               <md-table-header>
               </md-table-header>
   
@@ -37,11 +37,10 @@
       </md-tab>
   
       <md-tab id="疾病2" md-label="传染病">
-        <md-layout md-align="center" md-gutter="0">
+         <md-layout md-align="center" md-gutter="0" >
           <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
             <md-table style="width:80%;margin-left:auto;margin-right:auto;">
-              <md-table-header>
-              </md-table-header>
+             
               <md-table-body>
                 <md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
                   <md-table-head style="text-align:center;">地点</md-table-head>
@@ -63,7 +62,7 @@
                   <md-table-head style="text-align:center;">治疗医院</md-table-head>
                   <md-table-cell style="text-align:center;" md-numeric>{{row.hospital}}</md-table-cell>
                 </md-table-row>
-                <md-table-row>
+                <md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
                   <md-table-head style="text-align:center;">隔离</md-table-head>
                   <md-table>
                     <md-table-header>
@@ -80,7 +79,7 @@
                     </md-table-body>
                   </md-table>
                 </md-table-row>
-                <md-table-row>
+                <md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
                   <md-table-head style="text-align:center;">离返校</md-table-head>
                   <md-table>
                     <md-table-header>
@@ -99,38 +98,41 @@
                     </md-table-body>
                   </md-table>
                 </md-table-row>
-                </md-table-row>
               </md-table-body>
             </md-table>
           </md-layout>
         </md-layout>
       </md-tab>
       <md-tab id="疾病3" md-label="重大疾病">
-        <md-layout md-align="center" md-gutter="0">
+         <md-layout md-align="center" md-gutter="0">
           <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-            <md-table style="width:100%;margin-bottom:250px;">
-              <md-table-header>
-                <md-table-row>
-                  <md-table-head style="text-align:center;">地点</md-table-head>
-                  <md-table-head style="text-align:center;">查出时间</md-table-head>
-                  <md-table-head style="text-align:center;">治疗结束时间</md-table-head>
-                  <md-table-head style="text-align:center;">医生</md-table-head>
-                  <md-table-head style="text-align:center;">疾病</md-table-head>
-                  <md-table-head style="text-align:center;">检查医院</md-table-head>
-                  <md-table-head style="text-align:center;">治疗措施</md-table-head>
-                </md-table-row>
-              </md-table-header>
-  
-              <md-table-body>
-                <md-table-row style="text-align:center;" v-for="(row, index) in serious_list" :key="index" md-numeric>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.CheckDate}}</md-table-cell>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.ToDate}}</md-table-cell>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.doctor}}</md-table-cell>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.SeriousDiseaseName}}</md-table-cell>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.CheckHospital}}</md-table-cell>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.HealMeasure}}</md-table-cell>
-                </md-table-row>
+            <md-table style="width:80%;margin-left:auto;margin-right:auto;">
+             
+              <md-table-body >
+                  <md-table-row style="text-align:center;" v-for="(row, index) in serious_list" :key="index" md-numeric>
+                      <md-table-head style="text-align:center;">地点</md-table-head>
+                      <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
+                  </md-table-row>
+                  <md-table-row style="text-align:center;" v-for="(row, index) in serious_list" :key="index" md-numeric>
+                      <md-table-head style="text-align:center;">查出时间</md-table-head>
+                      <md-table-cell style="text-align:center;" md-numeric>{{row.CheckDate}}</md-table-cell>
+                  </md-table-row>
+                  <md-table-row style="text-align:center;" v-for="(row, index) in serious_list" :key="index" md-numeric>
+                     <md-table-head style="text-align:center;">治疗结束时间</md-table-head>
+                     <md-table-cell style="text-align:center;" md-numeric>{{row.ToDate}}</md-table-cell>
+                  </md-table-row>
+                  <md-table-row style="text-align:center;" v-for="(row, index) in serious_list" :key="index" md-numeric>
+                     <md-table-head style="text-align:center;">疾病</md-table-head>
+                     <md-table-cell style="text-align:center;" md-numeric>{{row.SeriousDiseaseName}}</md-table-cell>
+                  </md-table-row>
+                  <md-table-row style="text-align:center;" v-for="(row, index) in serious_list" :key="index" md-numeric>
+                     <md-table-head style="text-align:center;">检查医院</md-table-head>
+                     <md-table-cell style="text-align:center;" md-numeric>{{row.CheckHospital}}</md-table-cell>
+                  </md-table-row>
+                  <md-table-row style="text-align:center;" v-for="(row, index) in serious_list" :key="index" md-numeric>
+                     <md-table-head style="text-align:center;">治疗措施</md-table-head>
+                     <md-table-cell style="text-align:center;" md-numeric>{{row.HealMeasure}}</md-table-cell>
+                  </md-table-row>
               </md-table-body>
             </md-table>
           </md-layout>
