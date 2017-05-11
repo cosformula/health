@@ -6,7 +6,6 @@
         <md-table style="width:80%;margin-left:auto;margin-right:auto;">
           <md-table-header>
           </md-table-header>
-  
           <md-table-body v-for="(row, index) in info_list" :key="index" md-numeric>
             <md-table-row style="text-align:center;">
                <md-table-head md-numeric class="table_header" style="text-align:center;">接种时间</md-table-head>
