@@ -47,6 +47,7 @@ export default {
     },
     onClose(type) {
       console.log('Closed', type)
+      this.$router.replace('/')
     },
     login() {
       this.$http.post('/api/v1/login.php', {
