@@ -1,13 +1,23 @@
 <template>
-  <div id="app" style="height:100%;">
+  <div id="app"
+       style="width:100%;overflow-x:hidden !important;">
     <md-toolbar>
-      <router-link to="/" class="back" v-if="$route.path!='/'" style="color: rgba(255, 255, 255, .87)">返回</router-link>
-      <h2 class="md-title" style="flex: 1">{{title[$route.path]}}</h2>
-      <md-button class="md-icon-button" @click.native="toggleRightSidenav">
+      <router-link to="/"
+                   class="back"
+                   v-if="$route.path!='/'"
+                   style="color: rgba(255, 255, 255, .87)">返回</router-link>
+      <h2 class="md-title"
+          style="flex: 1">{{title[$route.path]}}</h2>
+      <md-button class="md-icon-button"
+                 @click.native="toggleRightSidenav">
         <md-icon>menu</md-icon>
       </md-button>
     </md-toolbar>
-    <md-sidenav class="md-right" ref="rightSidenav" @open="open('Right')" @close="close('Right')" :md-swipeable="false">
+    <md-sidenav class="md-right"
+                ref="rightSidenav"
+                @open="open('Right')"
+                @close="close('Right')"
+                :md-swipeable="false">
       <md-toolbar>
         <div class="md-toolbar-container">
           <h3 class="md-title">学生信息</h3>
@@ -15,13 +25,15 @@
       </md-toolbar>
       <md-list>
         <md-list-item>
-          <md-icon class="md-primary">account_circle</md-icon> <span>student.name</span>
+          <md-icon class="md-primary">account_circle</md-icon>
+          <span>student.name</span>
           <br />
           <br />
         </md-list-item>
   
         <md-list-item>
-          <md-icon style="color: deepskyblue">picture_in_picture_alt</md-icon> <span>student.xuehao</span>
+          <md-icon style="color: deepskyblue">picture_in_picture_alt</md-icon>
+          <span>student.xuehao</span>
           <br />
           <br />
         </md-list-item>
@@ -81,19 +93,19 @@ export default {
     }
   },
   methods: {
-    openDialog(ref) {
+    openDialog (ref) {
       this.$refs[ref].open()
     },
-    closeDialog(ref) {
+    closeDialog (ref) {
       this.$refs[ref].close()
     },
-    onOpen() {
+    onOpen () {
       console.log('Opened')
     },
-    onClose(type) {
+    onClose (type) {
       console.log('Closed', type)
     },
-    send() {
+    send () {
       this.$http.get('/sdas')
         .then((response) => {
           console.log('asdas')
@@ -103,19 +115,19 @@ export default {
           console.log('12312')
         })
     },
-    toggleLeftSidenav() {
+    toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
     },
-    toggleRightSidenav() {
+    toggleRightSidenav () {
       this.$refs.rightSidenav.toggle()
     },
-    closeRightSidenav() {
+    closeRightSidenav () {
       this.$refs.rightSidenav.close()
     },
-    open(ref) {
+    open (ref) {
       console.log('Opened: ' + ref)
     },
-    close(ref) {
+    close (ref) {
       console.log('Closed: ' + ref)
     }
   }
