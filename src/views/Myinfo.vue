@@ -7,25 +7,6 @@
                  md-flex-xsmall="85"
                  md-flex-small="85"
                  md-flex-medium="85">
-        <!--<md-table style="width:100%;">
-        <md-table-header>
-          <md-table-row>
-            <md-table-head style="text-align:center;">学院</md-table-head>
-            <md-table-head style="text-align:center;">学号</md-table-head>
-            <md-table-head style="text-align:center;">姓名</md-table-head>
-            <md-table-head style="text-align:center;">性别</md-table-head>
-          </md-table-row>
-        </md-table-header>
-  
-        <md-table-body>
-          <md-table-row style="text-align:center;" v-for="(row, index) in info_list" :key="index" md-numeric>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.user.College}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.user.UserName}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.user.FullName}}</md-table-cell>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.user.Gender}}</md-table-cell>
-          </md-table-row>
-        </md-table-body>
-      </md-table>-->
         <div class="form1"
              style="width=300px">
           <md-card md-with-hover
