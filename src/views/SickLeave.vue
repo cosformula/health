@@ -2,27 +2,34 @@
   <div class="hello">
     <h3 style="text-align:center;">  </h3>
     <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-        <md-table style="width:100%;">
+      <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
+        <md-table style="width:100%;margin-left:auto;margin-right:auto;">
           <md-table-header>
-            <md-table-row>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">病因</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">病假起始日期</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">病假截止日期</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">病假时长</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">医生</md-table-head>
-              <md-table-head md-numeric class="table_header" style="text-align:center;">校区</md-table-head>
-            </md-table-row>
           </md-table-header>
-  
-          <md-table-body>
-            <md-table-row v-for="(row, index) in info_list" :key="index">
-              <md-table-cell style="text-align:center;" md-numeric>{{row.TSQK}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.StartTime.$date}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.EndTime.$date}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Days}}天</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
+          <md-table-body v-for="(row, index) in info_list" :key="index" md-numeric>
+            <md-table-row style="text-align:center;">
+               <md-table-head md-numeric class="table_header" style="text-align:center;">病因</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.TSQK}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">病假起始日期</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.StartTime.$date}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">病假截止日期</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.EndTime.$date}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">病假时长</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.Days}}天</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">医生</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">校区</md-table-head>
+               <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
             </md-table-row>
           </md-table-body>
         </md-table>
@@ -81,6 +88,17 @@ export default {
         'Doctor': '黄婷',
         'Days': 1
       }]
+    }
+  },
+  methods: {
+    getInfo () {
+      this.$http.get('/api/v1/sick-leave.php')
+        .then((response) => {
+          this.chronic_list = response.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }
