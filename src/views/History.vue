@@ -48,7 +48,7 @@
                 </md-table-row>
                 <md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
                   <md-table-head style="text-align:center;">时间</md-table-head>
-                  <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime}}</md-table-cell>
+                  <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
                 </md-table-row>
                 <md-table-row style="text-align:center;" v-for="(row, index) in contagion_list" :key="index" md-numeric>
                   <md-table-head style="text-align:center;">医生</md-table-head>
