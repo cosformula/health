@@ -22,7 +22,7 @@
             </md-table-row>
           </md-table-body>
         </md-table>
-        <md-table style="width:80%;margin-left:auto;margin-right:auto;">
+        <!--<md-table style="width:80%;margin-left:auto;margin-right:auto;">
           <md-table-header>
           </md-table-header>
           <md-table-body>
@@ -43,7 +43,7 @@
                
             </md-table-row>
           </md-table-body>
-        </md-table> 
+        </md-table> -->
       </md-layout>
     </md-layout>
   </div>
