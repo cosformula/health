@@ -22,6 +22,28 @@
             </md-table-row>
           </md-table-body>
         </md-table>
+        <md-table style="width:80%;margin-left:auto;margin-right:auto;">
+          <md-table-header>
+          </md-table-header>
+          <md-table-body>
+            <md-table-row style="text-align:center;">
+               <md-table-head md-numeric class="table_header" style="text-align:center;">献血地点</md-table-head>
+
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">献血量</md-table-head>
+               
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">类型</md-table-head>
+               
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+               <md-table-head style="text-align:center;">献血次数</md-table-head>
+               
+            </md-table-row>
+          </md-table-body>
+        </md-table> 
       </md-layout>
     </md-layout>
   </div>
