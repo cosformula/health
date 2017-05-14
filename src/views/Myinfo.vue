@@ -158,6 +158,17 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    getInfo () {
+      this.$http.get('/api/v1/phy-exam.php')
+        .then((response) => {
+          this.chronic_list = response.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }
 }
 </script>

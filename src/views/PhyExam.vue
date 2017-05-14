@@ -3,7 +3,7 @@
     <md-tabs md-fixed>
       <md-tab id="体检1" md-label="入学体检">
         <md-layout md-align="center" md-gutter="0">
-          <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
+          <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="85">
 <div class="form1" style="text-align:center;">
 <md-table  v-once>
   <md-table-header>
@@ -92,7 +92,7 @@
       </md-tab>
       <md-tab id="体检2" md-label="毕业体检">
         <md-layout md-align="center" md-gutter="0">
-          <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
+          <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="85">
             <md-table style="width:100%;">
               <md-table-header>
                 <md-table-row>
@@ -229,6 +229,17 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    getInfo () {
+      this.$http.get('/api/v1/phy-exam.php')
+        .then((response) => {
+          this.chronic_list = response.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }
 }
 </script>
@@ -238,6 +249,6 @@ export default {
 .form1{
   margin-left:auto;
   margin-right:auto;
-  width:70%;
+  width:100%;
 }
 </style>

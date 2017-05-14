@@ -2,7 +2,7 @@
   <div class="hello">
     <h3 style="text-align:center;">  </h3>
     <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
+      <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;">
       <md-table-header>
         <md-table-row >
@@ -239,6 +239,17 @@ export default {
         'Reimbursement_check_medical_laboratory': '校医院'
       }
       ]
+    }
+  },
+  methods: {
+    getInfo () {
+      this.$http.get('/api/v1/reimbursement.php')
+        .then((response) => {
+          this.chronic_list = response.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }

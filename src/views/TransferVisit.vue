@@ -2,8 +2,8 @@
   <div class="hello">
     <h3 style="text-align:center;">  </h3>
     <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="85" md-flex-xlarge="85" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-        <md-table style="width:80%;margin-left:auto;margin-right:auto;">
+      <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
+        <md-table style="width:100%;margin-left:auto;margin-right:auto;">
           <md-table-header>
           </md-table-header>
           <md-table-body v-for="(row, index) in info_list" :key="index" md-numeric>
@@ -81,6 +81,17 @@ export default {
           'Transfer_timelimit': '7天1次',
           'Others': ''
         }]
+    }
+  },
+  methods: {
+    getInfo () {
+      this.$http.get('/api/v1/transfer-visit.php')
+        .then((response) => {
+          this.chronic_list = response.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }
