@@ -291,7 +291,7 @@ a:hover {
 }
 
 #app .card-layout {
-  margin: 16px 15%;
+  margin: 16px 2%;
   display: flex;
 
   .column {
