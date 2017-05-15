@@ -30,7 +30,7 @@
           <br />
           <br />
         </md-list-item>
-  
+
         <md-list-item>
           <md-icon style="color: deepskyblue">picture_in_picture_alt</md-icon>
           <span>student.xuehao</span>
@@ -43,14 +43,14 @@
           <br />
           <br />
         </md-list-item>
-  
+
         <md-list-item>
           <md-icon class="md-primary">error_outline</md-icon>
           <span>关于</span>
           <br />
           <br />
         </md-list-item>
-  
+
         <md-list-item>
           <md-icon>question_answer</md-icon>
           <span>帮助</span>
@@ -78,7 +78,7 @@ export default {
   data: function () {
     return {
       title: {
-        '/': '健康档案',
+        '/': '学生健康档案平台',
         '/test': '测试',
         '/myinfo': '基本信息',
         '/myvaccine': '疫苗记录',
