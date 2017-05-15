@@ -12,12 +12,11 @@
           <md-table-header>
             <md-table-row>
               <md-table-head style="text-align:center;">献血地点</md-table-head>
-              <md-table-head style="text-align:center;">献血量</md-table-head>
-              <md-table-head style="text-align:center;">类型</md-table-head>
-              <md-table-head style="text-align:center;">献血次数</md-table-head>
+              <md-table-head style="text-align:center;">献血量/cc</md-table-head>
+              <md-table-head style="text-align:center;">全血/成分血</md-table-head>
             </md-table-row>
           </md-table-header>
-  
+
           <md-table-body>
             <md-table-row style="text-align:center;"
                           v-for="(row, index) in blood_list"
@@ -29,8 +28,6 @@
                              md-numeric>{{row.BloodDonation}}</md-table-cell>
               <md-table-cell style="text-align:center;"
                              md-numeric>{{row.BloodType}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.DonateCount}}</md-table-cell>
             </md-table-row>
           </md-table-body>
         </md-table>
@@ -40,19 +37,19 @@
             <md-table-body>
               <md-table-row style="text-align:center;">
                  <md-table-head md-numeric class="table_header" style="text-align:center;">献血地点</md-table-head>
-  
+
               </md-table-row>
               <md-table-row style="text-align:center;">
                  <md-table-head style="text-align:center;">献血量</md-table-head>
-  
+
               </md-table-row>
               <md-table-row style="text-align:center;">
                  <md-table-head style="text-align:center;">类型</md-table-head>
-  
+
               </md-table-row>
               <md-table-row style="text-align:center;">
                  <md-table-head style="text-align:center;">献血次数</md-table-head>
-  
+
               </md-table-row>
             </md-table-body>
           </md-table> -->
