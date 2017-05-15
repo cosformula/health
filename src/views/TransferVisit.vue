@@ -1,47 +1,62 @@
 <template>
-<div class="hello">
-  <h3 style="text-align:center;">  </h3>
-  <md-layout md-align="center" md-gutter="0">
-    <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-      <md-table style="width:100%;margin-left:auto;margin-right:auto;">
-        <md-table-header>
-        </md-table-header>
-        <md-table-body v-for="(row, index) in info_list" :key="index" md-numeric>
-          <md-table-row style="text-align:center;">
-            <md-table-head md-numeric class="table_header" style="text-align:center;">转诊时间</md-table-head>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
-          </md-table-row>
-          <md-table-row style="text-align:center;">
-            <md-table-head style="text-align:center;">转诊期限</md-table-head>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.Transfer_timelimit}}</md-table-cell>
-          </md-table-row>
-          <md-table-row style="text-align:center;">
-            <md-table-head style="text-align:center;">病因</md-table-head>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.Disease}}</md-table-cell>
-          </md-table-row>
-          <md-table-row style="text-align:center;">
-            <md-table-head style="text-align:center;">转至</md-table-head>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.Transfer_hospital}}</md-table-cell>
-          </md-table-row>
-          <md-table-row style="text-align:center;">
-            <md-table-head style="text-align:center;">科室</md-table-head>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.Transfer_medical_laboratory}}</md-table-cell>
-          </md-table-row>
-          <md-table-row style="text-align:center;">
-            <md-table-head style="text-align:center;">医生</md-table-head>
-            <md-table-cell style="text-align:center;" md-numeric>{{row.Doctor}}</md-table-cell>
-          </md-table-row>
-        </md-table-body>
-      </md-table>
+  <div class="hello">
+    <h3 style="text-align:center;"> </h3>
+    <md-layout md-align="center"
+               md-gutter="0">
+      <md-layout md-flex-large="75"
+                 md-flex-xlarge="75"
+                 md-flex-xsmall="100"
+                 md-flex-small="100"
+                 md-flex-medium="80">
+        <md-table style="width:100%;margin-left:auto;margin-right:auto;">
+          <md-table-header>
+          </md-table-header>
+          <md-table-body v-for="(row, index) in info_list"
+                         :key="index"
+                         md-numeric>
+            <md-table-row style="text-align:center;">
+              <md-table-head md-numeric
+                             class="table_header"
+                             style="text-align:center;">转诊时间</md-table-head>
+              <md-table-cell style="text-align:center;"
+                             md-numeric>{{row.RecordTime.$date}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+              <md-table-head style="text-align:center;">转诊期限</md-table-head>
+              <md-table-cell style="text-align:center;"
+                             md-numeric>{{row.Transfer_timelimit}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+              <md-table-head style="text-align:center;">病因</md-table-head>
+              <md-table-cell style="text-align:center;"
+                             md-numeric>{{row.Disease}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+              <md-table-head style="text-align:center;">转至</md-table-head>
+              <md-table-cell style="text-align:center;"
+                             md-numeric>{{row.Transfer_hospital}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+              <md-table-head style="text-align:center;">科室</md-table-head>
+              <md-table-cell style="text-align:center;"
+                             md-numeric>{{row.Transfer_medical_laboratory}}</md-table-cell>
+            </md-table-row>
+            <md-table-row style="text-align:center;">
+              <md-table-head style="text-align:center;">医生</md-table-head>
+              <md-table-cell style="text-align:center;"
+                             md-numeric>{{row.Doctor}}</md-table-cell>
+            </md-table-row>
+          </md-table-body>
+        </md-table>
+      </md-layout>
     </md-layout>
-  </md-layout>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'hello',
-  data() {
+  data () {
     return {
       info_list: [
         {

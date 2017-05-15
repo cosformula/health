@@ -1,9 +1,16 @@
 <template>
-  <md-card style="width:100%;" class="md-primary" md-theme="green" md-with-hover>
+  <md-card style="width:100%;"
+           class="md-primary"
+           md-theme="green"
+           md-with-hover>
     <md-card-header>
-      <div class="md-title" style-width="80%">
-        <router-link :to="link" class="links">
-          <div><i :class="'iconfont ' + icon"></i></div>{{ text }}</router-link>
+      <div class="md-title"
+           style-width="80%">
+        <router-link :to="link"
+                     class="links">
+          <div>
+            <i :class="'iconfont ' + icon"></i>
+          </div>{{ text }}</router-link>
       </div>
     </md-card-header>
     <md-ink-ripple></md-ink-ripple>
@@ -19,7 +26,7 @@ export default {
     font: ''
   }),
   methods: {
-    setPulpFiction() {
+    setPulpFiction () {
       this.movie = 'pulp_fiction'
     }
   }
@@ -34,6 +41,7 @@ export default {
   font-size: 17px;
   color: gray;
 }
+
 
 
 

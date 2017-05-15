@@ -1,25 +1,36 @@
 <template>
-<div class="hello">
-  <md-layout md-align="center" md-gutter="16">
-    <md-layout md-flex-large="50" md-flex-xlarge="50" md-flex-xsmall="70" md-flex-small="70" md-flex-medium="70">
-      <div class="loginPage">
-        <h3>登陆</h3>
-        <md-input-container>
-          <label>login</label>
-          <md-textarea v-model="card_id"></md-textarea>
-        </md-input-container>
-        <md-input-container md-has-password>
-          <label>Password</label>
-          <md-input type="password" v-model="password"></md-input>
-        </md-input-container>
-        <md-button class="md-raised" @click.native="login()">提交</md-button>
-        <md-button class="md-raised">重置</md-button>
-      </div>
+  <div class="hello">
+    <md-layout md-align="center"
+               md-gutter="16">
+      <md-layout md-flex-large="50"
+                 md-flex-xlarge="50"
+                 md-flex-xsmall="70"
+                 md-flex-small="70"
+                 md-flex-medium="70">
+        <div class="loginPage">
+          <h3>登陆</h3>
+          <md-input-container>
+            <label>login</label>
+            <md-textarea v-model="card_id"></md-textarea>
+          </md-input-container>
+          <md-input-container md-has-password>
+            <label>Password</label>
+            <md-input type="password"
+                      v-model="password"></md-input>
+          </md-input-container>
+          <md-button class="md-raised"
+                     @click.native="login()">提交</md-button>
+          <md-button class="md-raised">重置</md-button>
+        </div>
+      </md-layout>
     </md-layout>
-  </md-layout>
-  <md-dialog-alert :md-content="alert.content" :md-ok-text="alert.ok" @open="onOpen" @close="onClose" ref="dialog">
-  </md-dialog-alert>
-</div>
+    <md-dialog-alert :md-content="alert.content"
+                     :md-ok-text="alert.ok"
+                     @open="onOpen"
+                     @close="onClose"
+                     ref="dialog">
+    </md-dialog-alert>
+  </div>
 </template>
 <script>
 export default {
