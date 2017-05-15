@@ -4,7 +4,7 @@
            md-theme="green"
            md-with-hover>
     <md-card-header>
-      <div class="md-title"
+      <div :class="'md-title ' + titleid"
            style-width="80%">
         <router-link :to="link"
                      class="links">
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  props: ['icon', 'text', 'link'],
+  props: ['icon', 'text', 'link', 'titleid'],
   data: () => ({
     movie: 'godfather',
     country: '',

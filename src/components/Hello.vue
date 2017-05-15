@@ -4,7 +4,8 @@
       <md-tabs md-fixed>
         <md-tab id="frequent_functions"
                 md-label="常用">
-          <md-layout md-align="center"
+
+          <!-- <md-layout md-align="center"
                      md-gutter="16">
             <md-layout md-flex-large="70"
                        md-flex-xlarge="70"
@@ -17,11 +18,32 @@
                               :text="item.text"
                               :icon="item.icon"></functions-card>
             </md-layout>
-          </md-layout>
+          </md-layout> -->
+          <div class="card-layout">
+            <div class="column">
+              <functions-card v-for="(item, index) in functions.fre"
+                              v-if="index % 2 == 0"
+                              :key="index"
+                              :link="item.link"
+                              :text="item.text"
+                              :icon="item.icon"
+                              :titleid="'title' + index"></functions-card>
+            </div>
+
+            <div class="column">
+              <functions-card v-for="(item, index)  in functions.fre"
+                              v-if="index % 2 == 1"
+                              :key="index"
+                              :link="item.link"
+                              :text="item.text"
+                              :icon="item.icon"
+                              :titleid="'title' + index"></functions-card>
+            </div>
+          </div>
         </md-tab>
         <md-tab id="personal_info"
                 md-label="个人信息">
-          <md-layout md-align="center"
+          <!-- <md-layout md-align="center"
                      md-gutter="16">
             <md-layout md-flex-large="70"
                        md-flex-xlarge="70"
@@ -34,12 +56,34 @@
                               :text="item.text"
                               :icon="item.icon"></functions-card>
             </md-layout>
-          </md-layout>
+          </md-layout> -->
+
+          <div class="card-layout">
+            <div class="column">
+              <functions-card v-for="(item,index)  in functions.personal_info"
+                              v-if="index % 2 == 0"
+                              :key="index"
+                              :link="item.link"
+                              :text="item.text"
+                              :icon="item.icon"
+                              :titleid="'title' + index"></functions-card>
+            </div>
+
+            <div class="column">
+              <functions-card v-for="(item,index)  in functions.personal_info"
+                              v-if="index % 2 == 1"
+                              :key="index"
+                              :link="item.link"
+                              :text="item.text"
+                              :icon="item.icon"
+                              :titleid="'title' + index"></functions-card>
+            </div>
+          </div>
         </md-tab>
-  
+
         <md-tab id="clinic"
                 md-label="门诊">
-          <md-layout md-align="center"
+          <!-- <md-layout md-align="center"
                      md-gutter="16">
             <md-layout md-flex-large="70"
                        md-flex-xlarge="70"
@@ -52,19 +96,40 @@
                               :text="item.text"
                               :icon="item.icon"></functions-card>
             </md-layout>
-          </md-layout>
-  
+          </md-layout> -->
+          <div class="card-layout">
+            <div class="column">
+              <functions-card v-for="(item,index) in functions.clinic_records"
+                              v-if="index % 2 == 0"
+                              :key="index"
+                              :link="item.link"
+                              :text="item.text"
+                              :icon="item.icon"
+                              :titleid="'title' + index"></functions-card>
+            </div>
+
+            <div class="column">
+              <functions-card v-for="(item,index) in functions.clinic_records"
+                              v-if="index % 2 == 1"
+                              :key="index"
+                              :link="item.link"
+                              :text="item.text"
+                              :icon="item.icon"
+                              :titleid="'title' + index"></functions-card>
+            </div>
+          </div>
+
         </md-tab>
-  
+
         <md-tab id="health_education"
                 md-label="健康教育">
-  
+
         </md-tab>
       </md-tabs>
-  
+
     </div>
   </div>
-  
+
   </div>
 </template>
 
@@ -183,5 +248,62 @@ a:hover {
 .column {
   text-align: center;
   width: 80%;
+}
+
+
+
+</style>
+
+<style>
+#app .title0 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#app .title1 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+#app .title2 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+#app .title3 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#app .title4 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#app .title5 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+#app .title6 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+#app .card-layout {
+  margin: 16px 15%;
+  display: flex;
+
+  .column {
+    flex: 1;
+
+    + .column {
+      margin-left: 8px;
+    }
+  }
+
+  .md-card + .md-card {
+    margin-top: 8px;
+  }
 }
 </style>
