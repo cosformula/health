@@ -17,63 +17,37 @@
 
   <md-table-body>
      <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
-      <md-table-head>身高</md-table-head>
+      <md-table-head>身高/厘米</md-table-head>
       <md-table-cell style="text-align:center;" md-numeric>{{row.height}}</md-table-cell>
       </md-table-row>
        <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
-      <md-table-head>体重</md-table-head>
+      <md-table-head>体重/千克</md-table-head>
       <md-table-cell style="text-align:center;" md-numeric>{{row.weight}}</md-table-cell>
       </md-table-row>
       <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
-      <md-table-head>BMI</md-table-head>
+      <md-table-head>BMI(体质指数)</md-table-head>
       <md-table-cell style="text-align:center;" md-numeric>{{row.BMI}}</md-table-cell>
       </md-table-row>
-      <md-table-row>
-        <md-table-head>血压</md-table-head>
-        <md-table>
-        <md-table-header>
-            <md-table-row>
-                <md-table-head md-numeric>舒张压</md-table-head>
-                <md-table-head md-numeric>收缩压</md-table-head>
-                <md-table-head md-numeric>是否高血压</md-table-head>
-           </md-table-row>
-        </md-table-header>
-        <md-table-body>
-           <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
-             <md-table-cell style="text-align:center;" md-numeric>{{row.high_blood}}</md-table-cell>
-             <md-table-cell style="text-align:center;" md-numeric>{{row.low_blood}}</md-table-cell>
-             <md-table-cell style="text-align:center;" md-numeric>{{row.is_high_blood}}</md-table-cell>
-           </md-table-row>
-        </md-table-body>
-        </md-table>
+       <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
+         <md-table-head>血压(高/低)/帕</md-table-head>
+         <md-table-cell style="text-align:center;" md-numeric>{{row.high_blood}}{{'/'}}{{row.low_blood}}</md-table-cell>
+         <!-- <md-table-cell style="text-align:center;" md-numeric>{{row.low_blood}}</md-table-cell>
+         <md-table-cell style="text-align:center;" md-numeric>{{row.is_high_blood}}</md-table-cell> -->
       </md-table-row>
        <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
       <md-table-head>色盲</md-table-head>
       <md-table-cell style="text-align:center;" md-numeric>{{row.color_discrimination}}</md-table-cell>
       </md-table-row>
-      <md-table-row>
-        <md-table-head>视力</md-table-head>
-        <md-table>
-        <md-table-header>
-            <md-table-row>
-                <md-table-head md-numeric style="text-align:center;">左眼</md-table-head>
-                <md-table-head md-numeric style="text-align:center;">右眼</md-table-head>
-           </md-table-row>
-        </md-table-header>
-        <md-table-body>
-           <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
-             <md-table-cell style="text-align:center;" md-numeric>{{row.eyesight_left}}</md-table-cell>
-             <md-table-cell style="text-align:center;" md-numeric>{{row.eyesight_right}}</md-table-cell>
-           </md-table-row>
-        </md-table-body>
-        </md-table>
+        <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
+        <md-table-head>视力(左/右)</md-table-head>
+          <md-table-cell style="text-align:center;" md-numeric>{{row.eyesight_left}}{{'/'}}{{row.eyesight_right}}</md-table-cell>
       </md-table-row>
       <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
       <md-table-head>心脏听诊</md-table-head>
       <md-table-cell style="text-align:center;" md-numeric>{{row.cardiac_auscultation}}</md-table-cell>
       </md-table-row>
        <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
-      <md-table-head>心率</md-table-head>
+      <md-table-head>心率(次/秒)</md-table-head>
       <md-table-cell style="text-align:center;" md-numeric>{{row.heart_rate}}</md-table-cell>
       </md-table-row>
       <md-table-row style="text-align:center;" v-for="(row, index) in exam_list1" :key="index" md-numeric>
@@ -111,7 +85,7 @@
                   <md-table-head style="text-align:center;">肝脾</md-table-head>
                 </md-table-row>
               </md-table-header>
-  
+
               <md-table-body>
                 <md-table-row style="text-align:center;" v-for="(row, index) in exam_list2" :key="index" md-numeric>
                   <md-table-cell style="text-align:center;" v-for="(col, index) in row" :key="index" md-numeric>{{col}}</md-table-cell>
@@ -122,7 +96,7 @@
         </md-layout>
       </md-tab>
     </md-tabs>
-  
+
   </div>
 </template>
 <script>
