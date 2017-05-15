@@ -250,8 +250,25 @@ a:hover {
   width: 80%;
 }
 
+</style>
 
+<style lang="less">
+.card-layout {
+  margin: 8px 2%;
+  display: flex;
 
+  .column {
+    flex: 1;
+
+    + .column {
+      margin-left: 8px;
+    }
+  }
+
+  .md-card + .md-card {
+    margin-top: 8px;
+  }
+}
 </style>
 
 <style>
@@ -290,20 +307,4 @@ a:hover {
   margin-bottom: 60px;
 }
 
-#app .card-layout {
-  margin: 16px 2%;
-  display: flex;
-
-  .column {
-    flex: 1;
-
-    + .column {
-      margin-left: 8px;
-    }
-  }
-
-  .md-card + .md-card {
-    margin-top: 8px;
-  }
-}
 </style>
