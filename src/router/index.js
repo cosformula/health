@@ -14,6 +14,7 @@ import PhyExam from '@/views/PhyExam'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
