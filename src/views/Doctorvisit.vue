@@ -131,7 +131,71 @@ export default {
   data () {
     return {
       current_item: {},
-      doctor_list: []
+      doctor_list: [
+        {
+          '_id': {
+            '$oid': '5347b938b218450e74fbcbb7'
+          },
+          'RecordTime': {
+            '$date': '2014-04-11T17:48:37.000Z'
+          },
+          'ID': 14,
+          'Tag': '校内门急诊',
+          'UserName': 'zf641',
+          'InputUser': null,
+          'RecordType': null,
+          'SchoolCampus': '宝山校区',
+          'user': {
+            'BirthDate': null,
+            'Gender': '',
+            'College': null,
+            'StudentType': '',
+            'SchoolData': null,
+            'FullName': 'feidtest',
+            'IDNumber': null,
+            'ImgUrl': null,
+            'Race': null,
+            'Original': null,
+            'UserName': 'zf641',
+            '_id': {
+              '$oid': '000000000000000000000000'
+            }
+          },
+          'regid': 255253,
+          'registration': {
+            '_id': 50542,
+            'user_id': 'zf641',
+            'date': {
+              '$date': '2014-04-11T09:12:14.980Z'
+            },
+            'register_fees': 0,
+            'treatment_fees': 0,
+            'department': '内科',
+            'doctor': '寇丽茹'
+          },
+          'treatment_time': {
+            '$date': '2014-04-11T17:48:37.000Z'
+          },
+          'department': '内科',
+          'chief_complaint': '外阴瘙痒2天',
+          'now_history': '平时月经规律14  4-5/28-30 ,量中，痛经（+）,外阴瘙痒伴白带增多2天，。',
+          'heart_rate': null,
+          'blood_pressure_h': null,
+          'blood_pressure_l': null,
+          'breathing': null,
+          'body_temperature': null,
+          'pysical_exam': '外阴：(—) 阴道：畅，凝乳样白带增多 宫颈：轻度糜烂，宫口可见一赘生物，约绿豆大小 宫体：前位，质中，举痛（—） 双附件：（—）',
+          'treatments': [],
+          'drup_prescriptions': [],
+          'fees_details': [],
+          'initial_diagnosis': '霉菌性阴道炎',
+          'treatment_advise': '阴道分泌物检查霉菌（+） 米可定阴道栓1盒\r\n中医科\t111\t同济医院\t7天1次\t寇丽茹\t2014-04-11 17:17 \r\n \r\n \r\n \r\n \r\n \r\n',
+          'doctor': '寇丽茹',
+          'total_fees': 0,
+          'fees_percent': 0,
+          'real_fees': 0
+        }
+      ]
     }
   },
   created: function () {
