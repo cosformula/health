@@ -22,7 +22,7 @@
                     <md-table-head md-numeric>百分比</md-table-head>
                   </md-table-row>
                 </md-table-header>
-  
+
                 <md-table-body>
                   <md-table-row style="text-align:center;"
                                 v-for="(row, index) in exam_list1"
@@ -139,7 +139,7 @@
                   <md-table-head style="text-align:center;">肝脾</md-table-head>
                 </md-table-row>
               </md-table-header>
-  
+
               <md-table-body>
                 <md-table-row style="text-align:center;"
                               v-for="(row, index) in exam_list2"
@@ -156,7 +156,7 @@
         </md-layout>
       </md-tab>
     </md-tabs>
-  
+
   </div>
 </template>
 <script>

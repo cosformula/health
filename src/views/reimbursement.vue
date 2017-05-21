@@ -31,7 +31,7 @@
                              style="text-align:center;">校区</md-table-head>
             </md-table-row>
           </md-table-header>
-  
+
           <md-table-body>
             <md-table-row v-for="(row, index) in info_list"
                           :key="index">
@@ -42,7 +42,7 @@
             </md-table-row>
           </md-table-body>
         </md-table>
-  
+
         <md-table v-once
                   style="width:100%;margin-top:30px;">
           <md-table-header>
@@ -66,7 +66,7 @@
                              style="text-align:center;">审核单位</md-table-head>
             </md-table-row>
           </md-table-header>
-  
+
           <md-table-body>
             <md-table-row v-for="(row, index) in numbers_list"
                           :key="index">

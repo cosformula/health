@@ -13,7 +13,7 @@
             <md-table style="width:100%;margin-left:auto;margin-right:auto;">
               <md-table-header>
               </md-table-header>
-  
+
               <md-table-body>
                 <md-table-row style="text-align:center;"
                               v-for="(row, index) in chronic_list"
@@ -61,7 +61,7 @@
           </md-layout>
         </md-layout>
       </md-tab>
-  
+
       <md-tab id="疾病2"
               md-label="传染病">
         <md-layout md-align="center"
@@ -72,7 +72,7 @@
                      md-flex-small="100"
                      md-flex-medium="80">
             <md-table style="width:80%;margin-left:auto;margin-right:auto;">
-  
+
               <md-table-body>
                 <md-table-row style="text-align:center;"
                               v-for="(row, index) in contagion_list"
@@ -187,7 +187,7 @@
                      md-flex-small="100"
                      md-flex-medium="80">
             <md-table style="width:80%;margin-left:auto;margin-right:auto;">
-  
+
               <md-table-body>
                 <md-table-row style="text-align:center;"
                               v-for="(row, index) in serious_list"
@@ -243,7 +243,7 @@
         </md-layout>
       </md-tab>
     </md-tabs>
-  
+
   </div>
 </template>
 <script>
@@ -380,24 +380,33 @@ export default {
       ]
     }
   },
+  created: function () {
+    this.getInfo()
+  },
+  activated: function () {
+    this.getInfo()
+  },
   methods: {
     getInfo () {
-      this.$http.get('/api/v1/History_chronic.php')
+      this.$http.get('/api/v1/chronic.php')
         .then((response) => {
+          console.log(response.data)
           this.chronic_list = response.data
         })
         .catch((err) => {
           console.log(err)
         })
-      this.$http.get('/api/v1/History_contagion.php')
+      this.$http.get('/api/v1/contagion.php')
         .then((response) => {
+          console.log(response.data)
           this.contagion_list = response.data
         })
         .catch((err) => {
           console.log(err)
         })
-      this.$http.get('/api/v1/History_serious.php')
+      this.$http.get('/api/v1/serious-disease.php')
         .then((response) => {
+          console.log(response.data)
           this.serious_list = response.data
         })
         .catch((err) => {
