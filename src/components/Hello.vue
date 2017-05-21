@@ -165,8 +165,8 @@ a:hover {
 
 <style>
 #app .title0 {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 #app .title1 {
@@ -180,13 +180,13 @@ a:hover {
 }
 
 #app .title3 {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 #app .title4 {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 #app .title5 {
@@ -199,17 +199,17 @@ a:hover {
   margin-bottom: 60px;
 }
 #app .title7 {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 #app .title8 {
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 #app .title9 {
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 
