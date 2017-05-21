@@ -6,8 +6,9 @@
                    class="back"
                    v-if="$route.path!='/'"
                    style="color: rgba(255, 255, 255, .87)">返回</router-link>
-      <h2 class="md-title"
-          style="flex: 1">{{title[$route.path]}}</h2>
+      <md-icon class="md-size-5x" md-src="static/SHUlogo1.png"></md-icon>
+      <h1 class="md-title"
+          style="flex: 1">{{title[$route.path]}}</h1>
       <md-button class="md-icon-button"
                  @click.native="toggleRightSidenav">
         <md-icon>menu</md-icon>
@@ -135,7 +136,7 @@ export default {
 </script>
 
 <style>
-h2 {
+h1 {
   text-align: center;
 }
 
