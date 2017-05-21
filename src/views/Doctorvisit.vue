@@ -10,35 +10,27 @@
                  md-flex-medium="80">
         <md-table style="width:100%;margin-left:auto;margin-right:auto;">
           <md-table-header>
+              <md-table-head style="text-align:center;">就诊地点</md-table-head>
+              <md-table-head style="text-align:center;">就诊时间</md-table-head>
+              <md-table-head style="text-align:center;">就诊科</md-table-head>
+              <md-table-head style="text-align:center;">就诊医生</md-table-head>
+              <md-table-head style="text-align:center;">总费用/实际费用</md-table-head>
+              <md-table-head style="text-align:center;">病状</md-table-head>
+              <md-table-head style="text-align:center;">处方</md-table-head>
           </md-table-header>
 
           <md-table-body>
             <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
-              <md-table-head style="text-align:center;">就诊地点</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.SchoolCampus}}</md-table-cell>
-            </md-table-row>
-            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
-              <md-table-head style="text-align:center;">就诊时间</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.RecordTime.$date}}</md-table-cell>
-            </md-table-row>
-            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
-              <md-table-head style="text-align:center;">就诊科</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.department}}</md-table-cell>
-            </md-table-row>
-            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
-              <md-table-head style="text-align:center;">就诊医生</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.doctor}}</md-table-cell>
-            </md-table-row>
-            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
-              <md-table-head style="text-align:center;">总费用/实际费用</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>{{row.total_fees}}/{{row.real_fees}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric></md-table-cell>
-            </md-table-row>
-            <md-table-row style="text-align:center;" v-for="(row, index) in doctor_list" :key="index" md-numeric>
-              <md-table-head style="text-align:center;">查看详情</md-table-head>
               <md-table-cell style="text-align:center;" md-numeric>
-                <md-button class="md-raised" @click.native="openDialog('dialog1', index)" style="width:60%;">病状</md-button>
-                <md-button class="md-raised" @click.native="openDialog('dialog2', index)" style="width:60%;">处方</md-button>
+                <md-button class="md-raised" @click.native="openDialog('dialog1', index)"style="width:100%;">查看</md-button>
+              </md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>
+                <md-button class="md-raised" @click.native="openDialog('dialog2', index)" style="width:100%;">查看</md-button>
               </md-table-cell>
             </md-table-row>
           </md-table-body>
