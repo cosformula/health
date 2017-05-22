@@ -1,20 +1,22 @@
 <template>
   <div id="app"
+       class="container"
        style="width:100%;overflow-x:hidden !important;">
     <md-toolbar>
       <router-link to="/"
                    class="back"
                    v-if="$route.path!='/'"
                    style="color: rgba(255, 255, 255, .87)">返回</router-link>
-      <md-icon class="md-size-5x" md-src="static/SHUlogo1.png"></md-icon>
+      <md-button class="md-icon-button"
+                @click.native="toggleRightSidenav">
+                <md-icon>menu</md-icon>
+      </md-button>
       <h1 class="md-title"
           style="flex: 1">{{title[$route.path]}}</h1>
-      <md-button class="md-icon-button"
-                 @click.native="toggleRightSidenav">
-        <md-icon>menu</md-icon>
-      </md-button>
+      <md-icon class="md-size-5x" md-src="static/SHUlogo1.png"></md-icon>
+
     </md-toolbar>
-    <md-sidenav class="md-right"
+    <md-sidenav class="main-sidebar md-left md-fixed"
                 ref="rightSidenav"
                 @open="open('Right')"
                 @close="close('Right')"
@@ -135,7 +137,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 h1 {
   text-align: center;
 }
@@ -156,5 +158,23 @@ h1 {
 .cenb {
   position: absolute;
   left: 80px;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 304px;
+  }
+
+  #app .md-sidenav-content {
+    top: 0;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0); //This is the trick!
+    box-shadow: 0px;
+  }
+
+  .md-icon-button {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 </style>
