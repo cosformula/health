@@ -160,18 +160,31 @@ h1 {
   left: 80px;
 }
 
-@media (min-width: 1280px) {
-  .container {
-    padding-left: 304px;
-  }
+#app .md-sidenav-content {
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: fade(#000, 12%);
 
-  #app .md-sidenav-content {
+  @media (min-width: 1280px) {
     top: 0;
     pointer-events: auto;
     transform: translate3d(0, 0, 0); //This is the trick!
     box-shadow: 0px;
   }
+}
 
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+
+  @media (min-width: 1280px) {
+    padding-left: 304px;
+  }
+}
+
+@media (min-width: 1280px) {
   .md-icon-button {
     opacity: 0;
     pointer-events: none;
