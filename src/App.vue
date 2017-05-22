@@ -13,19 +13,15 @@
       </md-button>
       <h1 class="md-title"
           style="flex: 1">{{title[$route.path]}}</h1>
-      <md-icon class="md-size-5x" md-src="static/SHUlogo1.png"></md-icon>
-
     </md-toolbar>
     <md-sidenav class="main-sidebar md-left md-fixed"
                 ref="rightSidenav"
                 @open="open('Right')"
                 @close="close('Right')"
                 :md-swipeable="false">
-      <md-toolbar>
-        <div class="md-toolbar-container">
-          <h3 class="md-title">学生信息</h3>
-        </div>
-      </md-toolbar>
+      <div style="text-align: center">
+       <md-image style="width:168px;" md-src="static/SHUlogo1.png"></md-image>
+     </div>
       <md-list>
         <md-list-item>
           <md-icon class="md-primary">account_circle</md-icon>
@@ -169,7 +165,7 @@ h1 {
     top: 0;
     pointer-events: auto;
     transform: translate3d(0, 0, 0); //This is the trick!
-    box-shadow: 0px;
+    box-shadow: -2px;
   }
 }
 
