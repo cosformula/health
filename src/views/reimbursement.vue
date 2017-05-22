@@ -49,17 +49,17 @@
             <md-table-row>
               <md-table-head style="text-align:center;">项数</md-table-head>
               <md-table-head md-numeric
-                             style="text-align:center;">收据编号</md-table-head>
+                             style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收据编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</md-table-head>
               <md-table-head md-numeric
-                             style="text-align:center;">报销金额</md-table-head>
+                             style="text-align:center;">金额</md-table-head>
               <md-table-head md-numeric
                              style="text-align:center;">疾病</md-table-head>
               <md-table-head md-numeric
                              style="text-align:center;">类型</md-table-head>
               <md-table-head md-numeric
-                             style="text-align:center;">治疗医院</md-table-head>
+                             style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;治疗医院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</md-table-head>
               <md-table-head md-numeric
-                             style="text-align:center;">治疗时间</md-table-head>
+                             style="text-align:center;">&nbsp;&nbsp;&nbsp;治疗时间&nbsp;&nbsp;&nbsp;</md-table-head>
               <md-table-head md-numeric
                              style="text-align:center;">审核状态</md-table-head>
               <md-table-head md-numeric
