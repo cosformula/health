@@ -11,6 +11,7 @@ import Blooddonation from '@/views/Blooddonation'
 import Doctorvisit from '@/views/Doctorvisit'
 import Login from '@/views/Login'
 import PhyExam from '@/views/PhyExam'
+import Phytest from '@/views/Phytest'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +21,11 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/phytest',
+      name: 'Phytest',
+      component: Phytest
     },
     {
       path: '/myinfo',

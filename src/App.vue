@@ -1,38 +1,32 @@
 <template>
-  <div id="app"
-       class="container"
-       style="width:100%;overflow-x:hidden !important;">
+  <div id="app" class="container" style="width:100%;overflow-x:hidden !important;">
     <md-toolbar>
-      <router-link to="/"
-                   class="back"
-                   v-if="$route.path!='/'"
-                   style="color: rgba(255, 255, 255, .87)">返回</router-link>
-      <md-button class="md-icon-button"
-                @click.native="toggleRightSidenav">
-                <md-icon>menu</md-icon>
+      <router-link to="/" class="back" v-if="$route.path!='/'" style="color: rgba(255, 255, 255, .87)">
+        <md-icon>keyboard_arrow_left</md-icon>
+      </router-link>
+      <router-link to="/" class="back" v-else style="color: rgba(255, 255, 255, .87)">
+        <md-icon>keyboard_arrow_left</md-icon>
+      </router-link>
+      <h1 class="md-title" style="flex: 1">{{title[$route.path]}}</h1>
+      <md-button class="md-icon-button  md-right" @click.native="toggleRightSidenav">
+        <md-icon>menu</md-icon>
       </md-button>
-      <h1 class="md-title"
-          style="flex: 1">{{title[$route.path]}}</h1>
     </md-toolbar>
-    <md-sidenav class="main-sidebar md-left md-fixed"
-                ref="rightSidenav"
-                @open="open('Right')"
-                @close="close('Right')"
-                :md-swipeable="false">
+    <md-sidenav class="main-sidebar md-right md-fixed" ref="rightSidenav" @open="open('Right')" @close="close('Right')" :md-swipeable="false">
       <div style="text-align: center">
-       <md-image style="width:168px;" md-src="static/SHUlogo1.png"></md-image>
-     </div>
+        <md-image style="width:168px;" md-src="static/SHUlogo1.png"></md-image>
+      </div>
       <md-list>
         <md-list-item>
           <md-icon class="md-primary">account_circle</md-icon>
-          <span>姓名</span>
+          <span>姓名</span>{{$user.name}}
           <br />
           <br />
         </md-list-item>
 
         <md-list-item>
           <md-icon style="md-primary">picture_in_picture_alt</md-icon>
-          <span>学号</span>
+          <span>学号</span>{{$user.cardID}}
           <br />
           <br />
         </md-list-item>
@@ -50,9 +44,15 @@
           <br />
         </md-list-item>
 
-        <md-list-item>
+        <!-- <md-list-item>
+              <md-icon class="md-primary">question_answer</md-icon>
+              <span>帮助</span>
+              <br />
+              <br />
+            </md-list-item> -->
+        <md-list-item href="http://139.224.135.121/phytest/admin" target="_blank">
           <md-icon class="md-primary">question_answer</md-icon>
-          <span>帮助</span>
+          <span>管理员登录</span>
           <br />
           <br />
         </md-list-item>
@@ -64,10 +64,9 @@
         </md-list-item>
       </md-list>
     </md-sidenav>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-  </div>
+    <!-- <keep-alive> -->
+    <router-view></router-view>
+    <!-- </keep-alive> -->
   </div>
 </template>
 
@@ -88,8 +87,12 @@ export default {
         '/blooddonation': '献血记录',
         '/dcvisit': '就诊记录',
         '/phyexam': '体检记录'
-      }
+      },
+      login: false
     }
+  },
+  mounted () {
+    this.$router.push('/login')
   },
   methods: {
     openDialog (ref) {

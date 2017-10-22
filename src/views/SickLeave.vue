@@ -1,38 +1,23 @@
 <template>
   <div class="hello">
     <h3 style="text-align:center;"> </h3>
-    <md-layout md-align="center"
-               md-gutter="0">
-      <md-layout md-flex-large="75"
-                 md-flex-xlarge="75"
-                 md-flex-xsmall="100"
-                 md-flex-small="100"
-                 md-flex-medium="80">
+    <md-layout md-align="center" md-gutter="0">
+      <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
         <md-table style="width:100%;margin-left:auto;margin-right:auto;">
           <md-table-header>
-            <md-table-head md-numeric
-                           class="table_header"
-                           style="text-align:center;">病因</md-table-head>
+            <md-table-head md-numeric class="table_header" style="text-align:center;">部门</md-table-head>
             <md-table-head style="text-align:center;">起止日期</md-table-head>
-            <md-table-head style="text-align:center;">时长</md-table-head>
-            <md-table-head style="text-align:center;">医生</md-table-head>
-            <md-table-head style="text-align:center;">校区</md-table-head>
+            <md-table-head style="text-align:center;">理由</md-table-head>
+            <md-table-head style="text-align:center;"></md-table-head>
+            <md-table-head style="text-align:center;"></md-table-head>
           </md-table-header>
-          <md-table-body v-for="(row, index) in info_list"
-                         :key="index"
-                         md-numeric>
+          <md-table-body v-for="(row, index) in info_list" :key="index" md-numeric>
             <md-table-row style="text-align:center;">
-
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.TSQK}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.StartTime.$date}}/{{row.EndTime.$date}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Days}}天</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Doctor}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.SchoolCampus}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Departdent}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.StartTime.sec|date}}---{{row.EndTime.sec|date}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.Reason}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.JSSXW}}</md-table-cell>
+              <md-table-cell style="text-align:center;" md-numeric>{{row.KSSXW}}</md-table-cell>
             </md-table-row>
           </md-table-body>
         </md-table>
@@ -93,11 +78,20 @@ export default {
       }]
     }
   },
+  created () {
+    this.getInfo()
+  },
+  filters: {
+    date: function (val) {
+      var d = new Date(val * 1000)
+      return `${d.getFullYear()}/${d.getMonth()}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
+    }
+  },
   methods: {
     getInfo () {
       this.$http.get('/api/v1/sick-leave.php')
         .then((response) => {
-          this.chronic_list = response.data
+          this.info_list = response.data
         })
         .catch((err) => {
           console.log(err)

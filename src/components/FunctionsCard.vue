@@ -1,20 +1,18 @@
 <template>
-  <md-card style="width:100%;"
-           class="md-primary"
-           md-theme="green"
-           md-with-hover>
-    <md-card-header>
-      <div :class="'md-title ' + titleid"
-           style-width="80%">
-        <router-link :to="link"
-                     class="links">
+  <router-link :to="link" class="links">
+    <md-card style="width:100%;" class="md-primary" md-theme="green" md-with-hover>
+      <md-card-header>
+        <div :class="'md-title ' + titleid" style-width="80%">
+
           <div>
             <i :class="'iconfont ' + icon"></i>
-          </div>{{ text }}</router-link>
-      </div>
-    </md-card-header>
-    <md-ink-ripple></md-ink-ripple>
-  </md-card>
+          </div>{{ text }}
+
+        </div>
+      </md-card-header>
+      <md-ink-ripple></md-ink-ripple>
+    </md-card>
+  </router-link>
 </template>
 
 <script>
@@ -41,6 +39,7 @@ export default {
   font-size: 17px;
   color: gray;
 }
+
 
 
 

@@ -1,39 +1,12 @@
 <template id="container">
   <div class="header">
     <div style-width="100%">
-      <!-- <md-layout md-align="center"
-                 md-gutter="16">
-        <md-layout md-flex-large="70"
-                   md-flex-xlarge="70"
-                   md-flex-small="90"
-                   md-flex-xsmall="90"
-                   md-flex-medium="90">
-          <functions-card v-for="(item,index)  in functions.fre"
-                          :key="index"
-                          :link="item.link"
-                          :text="item.text"
-                          :icon="item.icon"></functions-card>
-        </md-layout>
-      </md-layout> -->
       <div class="card-layout">
         <div class="column">
-          <functions-card v-for="(item, index) in functions.fre"
-                          v-if="index % 2 == 0"
-                          :key="index"
-                          :link="item.link"
-                          :text="item.text"
-                          :icon="item.icon"
-                          :titleid="'title' + index"></functions-card>
+          <functions-card v-for="(item, index) in functions.fre"  v-if="index % 2 == 0" :key="index" :link="item.link" :text="item.text" :icon="item.icon" :titleid="'title' + index"></functions-card>
         </div>
-
         <div class="column">
-          <functions-card v-for="(item, index)  in functions.fre"
-                          v-if="index % 2 == 1"
-                          :key="index"
-                          :link="item.link"
-                          :text="item.text"
-                          :icon="item.icon"
-                          :titleid="'title' + index"></functions-card>
+          <functions-card v-for="(item, index)  in functions.fre"  v-if="index % 2 == 1" :key="index" :link="item.link" :text="item.text" :icon="item.icon" :titleid="'title' + index"></functions-card>
         </div>
       </div>
 
@@ -63,7 +36,7 @@ export default {
       }, {
         text: '体测记录',
         icon: 'icon-8311',
-        link: '/link'
+        link: '/phytest'
       }, {
         text: '献血记录',
         icon: 'icon-fengxian',
@@ -141,7 +114,6 @@ a:hover {
   text-align: center;
   width: 80%;
 }
-
 </style>
 
 <style lang="less">
@@ -152,12 +124,12 @@ a:hover {
   .column {
     flex: 1;
 
-    + .column {
+    +.column {
       margin-left: 8px;
     }
   }
 
-  .md-card + .md-card {
+  .md-card+.md-card {
     margin-top: 8px;
   }
 }
@@ -198,10 +170,12 @@ a:hover {
   margin-top: 60px;
   margin-bottom: 60px;
 }
+
 #app .title7 {
   margin-top: 80px;
   margin-bottom: 80px;
 }
+
 #app .title8 {
   margin-top: 80px;
   margin-bottom: 80px;
@@ -211,6 +185,4 @@ a:hover {
   margin-top: 80px;
   margin-bottom: 80px;
 }
-
-
 </style>

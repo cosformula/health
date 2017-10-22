@@ -68,6 +68,14 @@ export default {
         .then((response) => {
           if (response.data.success === true) {
             this.alert.content = '登陆成功'
+            this.$user.cardID = this.card_id
+            this.$http.get('/api/v1/phy-exam.php')
+              .then((response) => {
+                this.$user.name = response.data[0].user.FullName
+              })
+              .catch((err) => {
+                console.log(err)
+              })
             this.openDialog('dialog')
           } else {
             this.openDialog('dialog')
