@@ -111,14 +111,10 @@ export default {
       var params = new URLSearchParams()
       params.append('year', '2015')
       this.$http.post('/api/v1/getJsonphytest/', params, { maxRedirects: 0 })
-        .then((response) => {
-          this.option.series[0].data[1].value.push(parseInt(response.data.BMI))
-          this.option.series[0].data[1].value.push(parseInt(response.data.lung))
-          this.option.series[0].data[1].value.push(parseInt(response.data.fiftymeters))
-          this.option.series[0].data[1].value.push(parseInt(response.data.sitandreach))
-          this.option.series[0].data[1].value.push(parseInt(response.data.longjump))
-          this.option.series[0].data[1].value.push(parseInt(response.data.mix))
-          this.option.series[0].data[1].value.push(parseInt(response.data.longrun))
+        .then((res) => {
+          this.option.radar[0].indicator = res.data.indicator
+          this.option.series[0].data[0].value = res.data.passline
+          this.option.series[0].data[1].value = res.data.score
         })
       console.log(this.option.series)
     }
