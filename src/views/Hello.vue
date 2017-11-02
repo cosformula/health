@@ -1,25 +1,24 @@
-<template id="container">
-  <div class="header">
-    <div style-width="100%">
-      <div class="card-layout">
-        <div class="column">
-          <functions-card v-for="(item, index) in functions.fre"  v-if="index % 2 == 0" :key="index" :link="item.link" :text="item.text" :icon="item.icon" :titleid="'title' + index"></functions-card>
-        </div>
-        <div class="column">
-          <functions-card v-for="(item, index)  in functions.fre"  v-if="index % 2 == 1" :key="index" :link="item.link" :text="item.text" :icon="item.icon" :titleid="'title' + index"></functions-card>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  </div>
+<template>
+  <v-container>
+    <v-layout row wrap>
+      <v-flex xs12 md4 class="ma-4">
+        <phytest></phytest>
+      </v-flex>
+      <v-flex xs12 md7 class="ma-4">
+        <linechart></linechart>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import FunctionsCard from '../components/FunctionsCard.vue'
+import Phytest from './Phytest.vue'
+import LineChart from './LineChart.vue'
 export default {
-  components: { FunctionsCard },
+  components: {
+    'phytest': Phytest,
+    'linechart': LineChart
+  },
   data: () => ({
     movie: 'godfather',
     country: '',

@@ -1,7 +1,7 @@
 <template>
-  <figure>
+  <v-card>
     <chart :options="option" auto-resize></chart>
-  </figure>
+  </v-card>
 </template>
 
 <script>
@@ -122,17 +122,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-figure
-  display inline-block
-  margin 0
-  border 1px solid rgba(0, 0, 0, .1)
-  border-radius 8px
-  box-shadow 0 0 45px rgba(0, 0, 0, .2)
-  padding 0
+<style lang="stylus" scoped>
   .echarts
-    width 40vw
-    min-width 400px
-    height 300px
-
+    width 100%
 </style>

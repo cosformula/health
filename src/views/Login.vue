@@ -1,35 +1,31 @@
 <template>
-  <div class="hello">
-    <md-layout md-align="center"
-               md-gutter="16">
-      <md-layout md-flex-large="50"
-                 md-flex-xlarge="50"
-                 md-flex-xsmall="70"
-                 md-flex-small="70"
-                 md-flex-medium="70">
-        <div class="loginPage">
-          <h3>登陆</h3>
-          <md-input-container>
-            <label>login</label>
-            <md-textarea v-model="card_id"></md-textarea>
-          </md-input-container>
-          <md-input-container md-has-password>
-            <label>Password</label>
-            <md-input type="password"
-                      v-model="password"></md-input>
-          </md-input-container>
-          <md-button class="md-raised"
-                     @click.native="login()">提交</md-button>
-          <md-button class="md-raised">重置</md-button>
-        </div>
-      </md-layout>
-    </md-layout>
-    <md-dialog-alert :md-content="alert.content"
-                     :md-ok-text="alert.ok"
-                     @open="onOpen"
-                     @close="onClose"
-                     ref="dialog">
-    </md-dialog-alert>
+  <div align="center">
+    <div class="login">
+      <v-form>
+        <v-text-field 
+        label="用户名"
+        v-model="card_id"
+        ></v-text-field>
+        <v-text-field
+        label="密码"
+        v-model="password"
+        :append-icon="e1 ? 'visibility' : 'visibility_off'"
+        :append-icon-cb="() => (e1 = !e1)"
+        :type="e1 ? 'password' : 'text'"
+        ></v-text-field>
+        <v-btn color="primary" @click="login()" dark block>登录</v-btn>
+      </v-form>
+    </div>
+    <v-dialog v-model="dialog">
+    <v-card>
+      <v-card-text>{{alertmsg}}</v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn 
+        color="green darken-1" flat="flat" @click="close()">确认</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
   </div>
 </template>
 <script>
@@ -37,28 +33,22 @@ export default {
   name: 'hello',
   data () {
     return {
-      alert: {
-        content: '用户名或密码错误',
-        ok: '确认'
-      },
+      alertmsg: '',
+      e1: true,
       card_id: '',
       password: '',
-      initialValue: 'My initial value'
+      dialog: false
     }
   },
   methods: {
-    openDialog (ref) {
-      this.$refs[ref].open()
+    open () {
+      this.dialog = true
     },
-    closeDialog (ref) {
-      this.$refs[ref].close()
-    },
-    onOpen () {
-      console.log('Opened')
-    },
-    onClose (type) {
-      console.log('Closed', type)
-      this.$router.replace('/')
+    close (type) {
+      this.dialog = false
+      if (this.$user.cardID !== '') {
+        this.$router.replace('/')
+      }
     },
     login () {
       this.$http.post('/api/v1/login.php', {
@@ -67,7 +57,7 @@ export default {
       })
         .then((response) => {
           if (response.data.success === true) {
-            this.alert.content = '登陆成功'
+            this.alertmsg = '登陆成功'
             this.$user.cardID = this.card_id
             this.$http.get('/api/v1/phy-exam.php')
               .then((response) => {
@@ -76,9 +66,9 @@ export default {
               .catch((err) => {
                 console.log(err)
               })
-            this.openDialog('dialog')
+            this.open()
           } else {
-            this.openDialog('dialog')
+            this.open()
           }
         })
         .catch((err) => {
@@ -91,27 +81,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-html,
-body {
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.dialog {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, .8);
-}
-
-.loginPage {
-  margin-top: 50px;
-  width: 100%;
-  text-align: center;
-}
-
-.loginPage p {
-  color: red;
-  text-align: left;
+.login{
+  margin-top: 10%;
+  width:300px;
+  padding: 0 auto;
 }
 </style>

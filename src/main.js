@@ -4,10 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-var VueMaterial = require('vue-material')
-import '../node_modules/vue-material/dist/vue-material.css'
+import Vuetify from 'vuetify'
+import '../node_modules/vuetify/dist/vuetify.min.css'
 // import ECharts from 'vue-echarts/components/ECharts.vue'
-Vue.use(VueMaterial)
+Vue.use(Vuetify)
 // Vue.use(ECharts)
 Vue.config.productionTip = false
 
