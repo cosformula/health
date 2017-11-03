@@ -1,56 +1,42 @@
 <template>
-  <div class="hello">
-    <md-layout md-align="center"
-               md-gutter="0">
-      <md-layout md-flex-large="90"
-                 md-flex-xlarge="90"
-                 md-flex-xsmall="85"
-                 md-flex-small="85"
-                 md-flex-medium="85">
-        <div class="form1"
-             style="width=300px">
-          <md-card md-with-hover
-                   style="width:100%;margin-top:35px;">
-            <md-card-header v-for="(row, index) in info_list"
-                            :key="index"
-                            md-numeric>
-              <div class="md-title"
-                   style="text-align:center;">上海大学</div>
-              <div class="md-head"
-                   style="text-align:center;size:200px;">
-                <h3 md-numeric>{{row.user.College}}</h3>
-              </div>
-            </md-card-header>
-
-            <md-card-media>
-              <img src="http://pic01.taopic.com/161225/240391-16122509533420-lp.jpg"
-                   alt="health"
-                   style="position:static;">
-            </md-card-media>
-
-            <md-card-content style="text-align:center;"
-                             v-for="(row, index) in info_list"
-                             :key="index"
-                             md-numeric>
-              <h3 md-numeric>{{row.user.FullName}}</h3>
-            </md-card-content>
-            <div class="form2"
-                 style="text-align:center;">
-              <md-card-actions style="text-align:center;"
-                               v-for="(row, index) in info_list"
-                               :key="index"
-                               md-numeric>
-                <md-button style="text-align:center;"
-                           md-numeric>{{row.user.UserName}}</md-button>
-                <md-button style="text-align:center;"
-                           md-numeric>{{row.user.Gender}}</md-button>
-              </md-card-actions>
-            </div>
-          </md-card>
+    <v-card>
+      my info
+      <!-- <v-card-header v-for="(row, index) in info_list"
+                      :key="index"
+                      v-numeric>
+        <div class="v-title"
+              style="text-align:center;">上海大学</div>
+        <div class="v-head"
+              style="text-align:center;size:200px;">
+          <h3 v-numeric>{{row.user.College}}</h3>
         </div>
-      </md-layout>
-    </md-layout>
-  </div>
+      </v-card-header>
+
+      <v-card-media>
+        <img src="http://pic01.taopic.com/161225/240391-16122509533420-lp.jpg"
+              alt="health"
+              style="position:static;">
+      </v-card-media>
+
+      <v-card-content style="text-align:center;"
+                        v-for="(row, index) in info_list"
+                        :key="index"
+                        v-numeric>
+        <h3 v-numeric>{{row.user.FullName}}</h3>
+      </v-card-content>
+      <div class="form2"
+            style="text-align:center;">
+        <v-card-actions style="text-align:center;"
+                          v-for="(row, index) in info_list"
+                          :key="index"
+                          v-numeric>
+          <v-button style="text-align:center;"
+                      v-numeric>{{row.user.UserName}}</v-button>
+          <v-button style="text-align:center;"
+                      v-numeric>{{row.user.Gender}}</v-button>
+        </v-card-actions>
+      </div> -->
+    </v-card>
 </template>
 <script>
 export default {

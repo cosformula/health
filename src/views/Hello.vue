@@ -1,23 +1,39 @@
 <template>
   <v-container>
-    <v-layout row wrap>
-      <v-flex xs12 md4 class="ma-4">
-        <phytest></phytest>
-      </v-flex>
-      <v-flex xs12 md7 class="ma-4">
-        <linechart></linechart>
-      </v-flex>
-    </v-layout>
+    <v-card>
+      <v-layout row wrap>
+        <v-flex xs12 md4 class="ma-4">
+          <phytest></phytest>
+        </v-flex>
+        <v-flex xs12 md7 class="ma-4">
+          <linechart></linechart>
+        </v-flex>
+      </v-layout>
+      <v-container>
+      <v-layout row wrap class="topboder">
+        <v-flex xs12 md7 class="ma-4">
+          <report></report>
+        </v-flex>
+        <v-flex xs12 md4 class="ma-3">
+          <myinfo></myinfo>
+        </v-flex>
+      </v-layout>
+      </v-container>
+    </v-card>
   </v-container>
 </template>
 
 <script>
 import Phytest from './Phytest.vue'
 import LineChart from './LineChart.vue'
+import Report from './Report.vue'
+import Myinfo from './Myinfo.vue'
 export default {
   components: {
     'phytest': Phytest,
-    'linechart': LineChart
+    'linechart': LineChart,
+    'report': Report,
+    'myinfo': Myinfo
   },
   data: () => ({
     movie: 'godfather',
@@ -135,53 +151,8 @@ a:hover {
 </style>
 
 <style>
-#app .title0 {
-  margin-top: 80px;
-  margin-bottom: 80px;
+.topboder{
+  border-top:1px solid #ddd;
 }
 
-#app .title1 {
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
-
-#app .title2 {
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
-
-#app .title3 {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
-
-#app .title4 {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
-
-#app .title5 {
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
-
-#app .title6 {
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
-
-#app .title7 {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
-
-#app .title8 {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
-
-#app .title9 {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
 </style>

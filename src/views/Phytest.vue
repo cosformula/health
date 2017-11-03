@@ -6,6 +6,7 @@
 
 <script>
 import ECharts from 'vue-ECharts'
+import bus from '../assets/eventBus'
 export default {
   components: {
     chart: ECharts
@@ -115,8 +116,8 @@ export default {
           this.option.radar[0].indicator = res.data.indicator
           this.option.series[0].data[0].value = res.data.passline
           this.option.series[0].data[1].value = res.data.score
+          bus.$emit('reportmsg', res.data.msg)
         })
-      console.log(this.option.series)
     }
   }
 }
