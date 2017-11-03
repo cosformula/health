@@ -1,5 +1,8 @@
 <template>
   <div align="center">
+    <v-toolbar dark color="primary">
+      <v-toolbar-title class="white--text">学生健康档案平台</v-toolbar-title>
+    </v-toolbar>
     <div class="login">
       <v-form>
         <v-text-field 

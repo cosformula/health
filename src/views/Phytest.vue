@@ -1,7 +1,9 @@
 <template>
+<div>
   <v-card>
     <chart :options="option" auto-resize></chart>
   </v-card>
+</div>
 </template>
 
 <script>

@@ -1,162 +1,130 @@
 <template>
   <div class="hello">
-    <md-tabs md-fixed>
-      <md-tab id="体检1"
-              md-label="入学体检">
-        <md-layout md-align="center"
-                   md-gutter="0">
-          <md-layout md-flex-large="70"
-                     md-flex-xlarge="70"
-                     md-flex-xsmall="100"
-                     md-flex-small="100"
-                     md-flex-medium="85">
+    <v-tabs dark fixed centered>
+      <v-tabs-bar class="cyan">
+        <v-tabs-slider class="yellow"></v-tabs-slider>
+        <v-tabs-item href="'#tab-1">入学体检</v-tabs-item>
+        <v-tabs-item href="'#tab-2">毕业体检</v-tabs-item>
+      </v-tabs-bar>
+      <v-tabs-items>
+        <v-tabs-content id="'tab-1">
+          <v-card flat>
             <div class="form1"
-                 style="text-align:center;">
-              <md-table v-once>
-                <md-table-header>
-                  <md-table-row>
-                    <md-table-head></md-table-head>
-                    <md-table-head md-numeric
-                                   style="text-align:center;">我的</md-table-head>
-                    <md-table-head md-numeric>正常参考值</md-table-head>
-                    <md-table-head md-numeric>百分比</md-table-head>
-                  </md-table-row>
-                </md-table-header>
+            style="text-align:center;">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th style="text-align:center;font-size:20px">项目</th>
+                  <th style="text-align:center;font-size:20px">成绩</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>身高/厘米</td>
+                  <td>{{exam_list1[0].height}}</td>
+                </tr>
+                <tr>
+                  <td>体重/千克</td>
+                  <td>{{exam_list1[0].weight}}</td>
+                </tr>
+                <tr>
+                  <td>BMI(体质指数)</td>
+                  <td>{{exam_list1[0].BMI}}</td>
+                </tr>
+                <tr>
+                  <td>血压(高/低)/帕</td>
+                  <td>{{exam_list1[0].high_blood}}/{{exam_list1[0].low_blood}}</td>
+                </tr>
 
-                <md-table-body>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>身高/厘米</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.height}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>体重/千克</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.weight}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>BMI(体质指数)</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.BMI}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>血压(高/低)/帕</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.high_blood}}{{'/'}}{{row.low_blood}}</md-table-cell>
-                    <!-- <md-table-cell style="text-align:center;" md-numeric>{{row.low_blood}}</md-table-cell>
-           <md-table-cell style="text-align:center;" md-numeric>{{row.is_high_blood}}</md-table-cell> -->
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>色盲</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.color_discrimination}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>视力(左/右)</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.eyesight_left}}{{'/'}}{{row.eyesight_right}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>心脏听诊</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.cardiac_auscultation}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>心率(次/秒)</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.heart_rate}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>肺部</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.lung}}</md-table-cell>
-                  </md-table-row>
-                  <md-table-row style="text-align:center;"
-                                v-for="(row, index) in exam_list1"
-                                :key="index"
-                                md-numeric>
-                    <md-table-head>肝脾</md-table-head>
-                    <md-table-cell style="text-align:center;"
-                                   md-numeric>{{row.liver_spleen}}</md-table-cell>
-                  </md-table-row>
-                </md-table-body>
-              </md-table>
+                <tr>
+                  <td>色盲</td>
+                  <td>{{exam_list1[0].color_discrimination}}</td>
+                </tr>
+                <tr>
+                  <td>视力(左/右)</td>
+                  <td>{{exam_list1[0].eyesight_left}}/{{exam_list1[0].eyesight_right}}</td>
+                </tr>
+                <tr>
+                  <td>心脏听诊</td>
+                  <td>{{exam_list1[0].cardiac_auscultation}}</td>
+                </tr>
+                <tr>
+                  <td>心率(次/秒)</td>
+                  <td>{{exam_list1[0].heart_rate}}</td>
+                </tr>
+                <tr>
+                  <td>肺活量</td>
+                  <td>{{exam_list1[0].lung}}</td>
+                </tr>
+                <tr>
+                  <td>肝脾</td>
+                  <td>{{exam_list1[0].liver_spleen}}</td>
+                </tr>
+              </tbody>
+            </table>
             </div>
-          </md-layout>
-        </md-layout>
-      </md-tab>
-      <md-tab id="体检2"
-              md-label="毕业体检">
-        <md-layout md-align="center"
-                   md-gutter="0">
-          <md-layout md-flex-large="85"
-                     md-flex-xlarge="85"
-                     md-flex-xsmall="100"
-                     md-flex-small="100"
-                     md-flex-medium="85">
-            <md-table style="width:100%;">
-              <md-table-header>
-                <md-table-row>
-                  <md-table-head style="text-align:center;">身高</md-table-head>
-                  <md-table-head style="text-align:center;">体重</md-table-head>
-                  <md-table-head style="text-align:center;">BMI</md-table-head>
-                  <md-table-head style="text-align:center;">血压hign</md-table-head>
-                  <md-table-head style="text-align:center;">血压low</md-table-head>
-                  <md-table-head style="text-align:center;">高血压</md-table-head>
-                  <md-table-head style="text-align:center;">色盲</md-table-head>
-                  <md-table-head style="text-align:center;">视力left</md-table-head>
-                  <md-table-head style="text-align:center;">视力right</md-table-head>
-                  <md-table-head style="text-align:center;">心脏听诊</md-table-head>
-                  <md-table-head style="text-align:center;">心率</md-table-head>
-                  <md-table-head style="text-align:center;">肺部</md-table-head>
-                  <md-table-head style="text-align:center;">肝脾</md-table-head>
-                </md-table-row>
-              </md-table-header>
+          </v-card>
+        </v-tabs-content>
+        <v-tabs-content id="'tab-2">
+          <v-card flat>
+            <div class="form1"
+            style="text-align:center;">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th style="text-align:center;font-size:20px">项目</th>
+                  <th style="text-align:center;font-size:20px">成绩</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>身高/厘米</td>
+                  <td>{{exam_list2[0].height}}</td>
+                </tr>
+                <tr>
+                  <td>体重/千克</td>
+                  <td>{{exam_list2[0].weight}}</td>
+                </tr>
+                <tr>
+                  <td>BMI(体质指数)</td>
+                  <td>{{exam_list2[0].BMI}}</td>
+                </tr>
+                <tr>
+                  <td>血压(高/低)/帕</td>
+                  <td>{{exam_list2[0].high_blood}}/{{exam_list2[0].low_blood}}</td>
+                </tr>
 
-              <md-table-body>
-                <md-table-row style="text-align:center;"
-                              v-for="(row, index) in exam_list2"
-                              :key="index"
-                              md-numeric>
-                  <md-table-cell style="text-align:center;"
-                                 v-for="(col, index) in row"
-                                 :key="index"
-                                 md-numeric>{{col}}</md-table-cell>
-                </md-table-row>
-              </md-table-body>
-            </md-table>
-          </md-layout>
-        </md-layout>
-      </md-tab>
-    </md-tabs>
-
+                <tr>
+                  <td>色盲</td>
+                  <td>{{exam_list2[0].color_discrimination}}</td>
+                </tr>
+                <tr>
+                  <td>视力(左/右)</td>
+                  <td>{{exam_list2[0].eyesight_left}}/{{exam_list2[0].eyesight_right}}</td>
+                </tr>
+                <tr>
+                  <td>心脏听诊</td>
+                  <td>{{exam_list2[0].cardiac_auscultation}}</td>
+                </tr>
+                <tr>
+                  <td>心率(次/秒)</td>
+                  <td>{{exam_list2[0].heart_rate}}</td>
+                </tr>
+                <tr>
+                  <td>肺活量</td>
+                  <td>{{exam_list2[0].lung}}</td>
+                </tr>
+                <tr>
+                  <td>肝脾</td>
+                  <td>{{exam_list2[0].liver_spleen}}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </v-card>
+        </v-tabs-content>
+      </v-tabs-items>
+    </v-tabs>
   </div>
 </template>
 <script>

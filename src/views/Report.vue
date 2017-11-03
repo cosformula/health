@@ -2,7 +2,9 @@
   <div>
     <div style="font-size:26px">健康小贴士:</div>
     <div  v-for="item in msg">
-      <div v-html="item" class="pt-1"></div>
+      <div class="msg">
+        {{item}}
+      </div>
     </div>
   </div>
 </template>
@@ -23,4 +25,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.msg{
+  font-size: 16px
+}
+</style>
 

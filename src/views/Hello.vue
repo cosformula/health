@@ -1,26 +1,49 @@
 <template>
-  <v-container>
-    <v-card>
-      <v-layout row wrap>
-        <v-flex xs12 md4 class="ma-4">
-          <phytest></phytest>
-        </v-flex>
-        <v-flex xs12 md7 class="ma-4">
-          <linechart></linechart>
-        </v-flex>
-      </v-layout>
-      <v-container>
-      <v-layout row wrap class="topboder">
-        <v-flex xs12 md7 class="ma-4">
-          <report></report>
-        </v-flex>
-        <v-flex xs12 md4 class="ma-3">
-          <myinfo></myinfo>
-        </v-flex>
-      </v-layout>
-      </v-container>
-    </v-card>
-  </v-container>
+  <div>
+    <v-navigation-drawer
+    temporary
+    v-model="drawer"
+    enable-resize-watcher
+    right
+  >
+      <drawbar></drawbar>
+    </v-navigation-drawer>
+    <v-toolbar dark color="primary">
+      <v-toolbar-title class="white--text">学生健康档案平台</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+    </v-toolbar>
+    <v-container>
+      <div class="ml-4"><h4>体测记录</h4></div>
+        <v-layout row wrap class="topboder">
+          <v-flex xs12 md4 class="ma-4">
+            <phytest></phytest>
+          </v-flex>
+          <v-flex xs12 md7 class="ma-4">
+            <linechart></linechart>
+          </v-flex>
+        </v-layout>
+        <v-container>
+        <v-layout row wrap class="topboder">
+          <v-flex xs12 md12 class="ma-4">
+            <phyexam></phyexam>
+          </v-flex>
+        </v-layout>
+        <v-layout row wrap class="topboder">
+          <v-flex xs12 md12 class="ma-4">
+            <phyexam></phyexam>
+          </v-flex>
+        </v-layout>
+        <!-- <v-layout row wrap class="topboder">
+          <v-flex xs12 md7 class="ma-1">
+            <report></report>
+          </v-flex>
+          <v-flex xs12 md4 class="ma-3">
+          </v-flex>
+        </v-layout> -->
+        </v-container>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -28,14 +51,19 @@ import Phytest from './Phytest.vue'
 import LineChart from './LineChart.vue'
 import Report from './Report.vue'
 import Myinfo from './Myinfo.vue'
+import Drawbar from './Drawbar.vue'
+import Phyexam from './Phyexam.vue'
 export default {
   components: {
     'phytest': Phytest,
     'linechart': LineChart,
     'report': Report,
-    'myinfo': Myinfo
+    'myinfo': Myinfo,
+    'drawbar': Drawbar,
+    'phyexam': Phyexam
   },
   data: () => ({
+    drawer: true,
     movie: 'godfather',
     country: '',
     font: '',
@@ -147,10 +175,7 @@ a:hover {
   .md-card+.md-card {
     margin-top: 8px;
   }
-}
-</style>
-
-<style>
+};
 .topboder{
   border-top:1px solid #ddd;
 }
