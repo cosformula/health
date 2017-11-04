@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div >
     <v-tabs dark fixed centered>
       <v-tabs-bar class="cyan">
         <v-tabs-slider class="yellow"></v-tabs-slider>

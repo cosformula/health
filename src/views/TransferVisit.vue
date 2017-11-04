@@ -1,43 +1,27 @@
 <template>
-  <div class="hello">
-    <h3 style="text-align:center;"> </h3>
-    <md-layout md-align="center"
-               md-gutter="0">
-      <md-layout md-flex-large="75"
-                 md-flex-xlarge="75"
-                 md-flex-xsmall="100"
-                 md-flex-small="100"
-                 md-flex-medium="80">
-        <md-table style="width:100%;margin-left:auto;margin-right:auto;">
-          <md-table-header>
-            <md-table-head md-numeric
-                           class="table_header"
-                           style="text-align:center;">转诊时间</md-table-head>
-           <md-table-head style="text-align:center;">转诊期限</md-table-head>
-           <md-table-head style="text-align:center;">病因</md-table-head>
-           <md-table-head style="text-align:center;">转至</md-table-head>
-           <md-table-head style="text-align:center;">科室</md-table-head>
-           <md-table-head style="text-align:center;">医生</md-table-head>
-          </md-table-header>
-          <md-table-body v-for="(row, index) in info_list"
-                         :key="index"
-                         md-numeric>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.RecordTime.$date}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Transfer_timelimit}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Disease}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Transfer_hospital}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Transfer_medical_laboratory}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Doctor}}</md-table-cell>
-          </md-table-body>
-        </md-table>
-      </md-layout>
-    </md-layout>
+  <div >
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="text-align:center;font-size:20px">转诊时间</th>
+          <th style="text-align:center;font-size:20px">转诊期限</th>
+          <th style="text-align:center;font-size:20px">病因</th>
+          <th style="text-align:center;font-size:20px">转至</th>
+          <th style="text-align:center;font-size:20px">科室</th>
+          <th style="text-align:center;font-size:20px">医生</th>
+        </tr>
+      </thead>
+      <tbody style="text-align:center">
+        <tr>
+          <td>2015年06月05日</td>
+          <td>7天一次</td>
+          <td>口腔溃疡</td>
+          <td>上海市中山医院}</td>
+          <td>口腔科</td>
+          <td>卢本伟</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/views/Hello'
-import Myinfo from '@/views/Myinfo'
-import Vaccine from '@/views/Vaccine'
-import TransferVisit from '@/views/TransferVisit'
-import SickLeave from '@/views/SickLeave'
-import reimbursement from '@/views/reimbursement'
-import History from '@/views/History'
-import Blooddonation from '@/views/Blooddonation'
-import Doctorvisit from '@/views/Doctorvisit'
-import Login from '@/views/Login'
-import PhyExam from '@/views/PhyExam'
-import Phytest from '@/views/Phytest'
+const Hello = () => import('@/views/Hello')
+const Myinfo = () => import('@/views/Myinfo')
+const Vaccine = () => import('@/views/Vaccine')
+const TransferVisit = () => import('@/views/TransferVisit')
+const SickLeave = () => import('@/views/SickLeave')
+const reimbursement = () => import('@/views/reimbursement')
+const History = () => import('@/views/History')
+const Blooddonation = () => import('@/views/Blooddonation')
+const Doctorvisit = () => import('@/views/Doctorvisit')
+const Login = () => import('@/views/Login')
+const PhyExam = () => import('@/views/PhyExam')
+const Phytest = () => import('@/views/Phytest')
 Vue.use(Router)
 
 export default new Router({

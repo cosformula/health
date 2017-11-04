@@ -1,28 +1,23 @@
 <template>
-  <div class="hello">
-    <h3 style="text-align:center;"> </h3>
-    <md-layout md-align="center" md-gutter="0">
-      <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
-        <md-table style="width:100%;margin-left:auto;margin-right:auto;">
-          <md-table-header>
-            <md-table-head md-numeric class="table_header" style="text-align:center;">部门</md-table-head>
-            <md-table-head style="text-align:center;">起止日期</md-table-head>
-            <md-table-head style="text-align:center;">理由</md-table-head>
-            <md-table-head style="text-align:center;"></md-table-head>
-            <md-table-head style="text-align:center;"></md-table-head>
-          </md-table-header>
-          <md-table-body v-for="(row, index) in info_list" :key="index" md-numeric>
-            <md-table-row style="text-align:center;">
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Departdent}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.StartTime.sec|date}}---{{row.EndTime.sec|date}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.Reason}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.JSSXW}}</md-table-cell>
-              <md-table-cell style="text-align:center;" md-numeric>{{row.KSSXW}}</md-table-cell>
-            </md-table-row>
-          </md-table-body>
-        </md-table>
-      </md-layout>
-    </md-layout>
+  <div >
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>部门</th>
+          <th>开始时间</th>
+          <th>结束时间</th>
+          <th>理由</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  v-for="(row, index) in info_list" :key="index">
+          <td>{{row.Departdent}}</td>
+          <td>{{row.StartTime.$date}}</td>
+          <td>{{row.EndTime.$date}}</td>
+          <td>{{row.Reason}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

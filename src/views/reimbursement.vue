@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div >
     <h3 style="text-align:center;"> </h3>
     <md-layout md-align="center" md-gutter="0">
       <md-layout md-flex-large="75" md-flex-xlarge="75" md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80">
