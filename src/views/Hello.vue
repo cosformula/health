@@ -1,73 +1,85 @@
 <template>
-  <div>
-    <v-navigation-drawer
-    temporary
-    v-model="drawer"
-    enable-resize-watcher
-    right
-  >
+  <v-app>
+    <v-navigation-drawer temporary v-model="drawer" enable-resize-watcher right app>
       <v-list two-line>
-      <v-list-tile  style="border-bottom: 1px solid #ddd">
-        <v-list-tile-avatar>
-          <img src="http://139.224.135.121/Public/image/libiary.jpg">
-        </v-list-tile-avatar>
-        <v-list-tile-content>{{info_list.FullName}}</v-list-tile-content>
-        <v-list-tile-content>{{info_list.UserName}}</v-list-tile-content>
-      </v-list-tile>
-      <v-list-tile avatar v-for="item in history " v-bind:key="item.title" @click="goAnchor('#' + item.to)">
-        <v-list-tile-action>
-          <v-icon v-if="item.icon" color="pink">iconfont {{item.icon}}</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title v-text="item.text"></v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-list>
+        <v-list-tile style="border-bottom: 1px solid #ddd">
+          <v-list-tile-avatar>
+            <img src="http://139.224.135.121/Public/image/libiary.jpg">
+          </v-list-tile-avatar>
+          <v-list-tile-content>{{info_list.FullName}}</v-list-tile-content>
+          <v-list-tile-content>{{info_list.UserName}}</v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile avatar v-for="item in history " v-bind:key="item.title" @click="goAnchor('#' + item.to)">
+          <v-list-tile-action>
+            <v-icon v-if="item.icon" color="pink">iconfont {{item.icon}}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title v-text="item.text"></v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark color="primary">
+    <v-toolbar dark color="primary" fixed scroll-off-screen scroll-target="container" app>
       <v-toolbar-title class="white--text">学生健康档案平台</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     </v-toolbar>
-    <v-container>
-      <div class="ml-4"><h4 id="l1">体测记录</h4></div>
-        <v-layout row wrap class="topboder">
-          <v-flex xs12 md4 class="ma-4">
-            <phytest></phytest>
-          </v-flex>
-          <v-flex xs12 md7 class="ma-4">
-            <linechart></linechart>
-          </v-flex>
-        </v-layout>
-        <v-container>
-          <div class="ml-4" id="l2"><h4>体检记录</h4></div>
-        <v-layout row wrap class="topboder">
-          <v-flex xs12 md12 class="ma-4">
-            <phyexam></phyexam>
-          </v-flex>
-        </v-layout>
-        <div class="ml-4"><h4 id="l3">疾病记录</h4></div>
-        <v-layout row wrap class="topboder">
-          <v-flex xs12 md12 class="ma-4">
-            <history></history>
-          </v-flex>
-        </v-layout>
-        <div class="ml-4"><h4>其他记录</h4></div>
-        <v-layout row wrap class="topboder">
-          <v-flex xs12 md12 class="ma-4">
-            <elserecord></elserecord>
-          </v-flex>
-        </v-layout>
-        <!-- <v-layout row wrap class="topboder">
-          <v-flex xs12 md7 class="ma-1">
-            <report></report>
-          </v-flex>
-          <v-flex xs12 md4 class="ma-3">
-          </v-flex>
-        </v-layout> -->
+    <main>
+      <v-content>
+        <v-container fluid class="px-0">
+          <div class="ml-4">
+            <h4 id="l1">体测记录</h4>
+          </div>
+          <v-divider></v-divider>
+          <v-layout row wrap>
+            <v-flex xs12 md4 class="ma-4">
+              <phytest></phytest>
+            </v-flex>
+            <v-flex xs12 md7 class="ma-4">
+              <linechart></linechart>
+            </v-flex>
+          </v-layout>
         </v-container>
+        <v-container fluid class="px-0">
+          <div class="ml-4" id="l2">
+            <h4>体检记录</h4>
+          </div>
+          <v-divider></v-divider>
+          <v-layout row wrap>
+            <v-flex xs12 md12 class="ma-4">
+              <phyexam></phyexam>
+            </v-flex>
+          </v-layout>
+          <div class="ml-4">
+            <h4 id="l3">疾病记录</h4>
+          </div>
+          <v-divider></v-divider>
+          <v-layout row wrap>
+            <v-flex xs12 md12 class="ma-4">
+              <history></history>
+            </v-flex>
+          </v-layout>
+          <div class="ml-4">
+            <h4>其他记录</h4>
+          </div>
+          <v-divider></v-divider>
+          <v-layout row wrap>
+            <v-flex xs12 md12 class="pa-4">
+              <elserecord></elserecord>
+            </v-flex>
+          </v-layout>
+          <!-- <v-layout row wrap class="topboder">
+                  <v-flex xs12 md7 class="ma-1">
+                    <report></report>
+                  </v-flex>
+                  <v-flex xs12 md4 class="ma-3">
+                  </v-flex>
+                </v-layout> -->
+        </v-container>
+      </v-content>
+    </main>
     </v-container>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -81,21 +93,21 @@ import History from './History.vue'
 import Elserecord from './Elserecord.vue'
 export default {
   components: {
-    'phytest': Phytest,
-    'linechart': LineChart,
-    'report': Report,
-    'myinfo': Myinfo,
-    'phyexam': Phyexam,
-    'docvis': Doctorvisit,
-    'history': History,
-    'elserecord': Elserecord
+    phytest: Phytest,
+    linechart: LineChart,
+    report: Report,
+    myinfo: Myinfo,
+    phyexam: Phyexam,
+    docvis: Doctorvisit,
+    history: History,
+    elserecord: Elserecord
   },
   data: () => ({
     info_list: {
-      'Gender': '男',
-      'College': '外国语学院',
-      'FullName': '丁红彬',
-      'UserName': '09124406'
+      Gender: '男',
+      College: '外国语学院',
+      FullName: '丁红彬',
+      UserName: '09124406'
     },
     history: [
       {
@@ -159,7 +171,7 @@ export default {
     font: ''
   }),
   methods: {
-    setPulpFiction () {
+    setPulpFiction() {
       this.movie = 'pulp_fiction'
     },
     goAnchor(selector) {
@@ -169,12 +181,10 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
-.topboder{
-  border-top:1px solid #ddd;
+.topboder {
+  border-top: 1px solid #ddd;
 }
-
 </style>
