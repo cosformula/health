@@ -3,22 +3,26 @@
     <v-toolbar dark color="primary">
       <v-toolbar-title class="white--text">学生健康档案平台</v-toolbar-title>
     </v-toolbar>
-    <div class="login">
-      <v-form>
-        <v-text-field label="用户名" id="username" v-model="card_id"></v-text-field>
-        <v-text-field label="密码" id="password" v-model="password" :append-icon="e1 ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (e1 = !e1)" :type="e1 ? 'password' : 'text'"></v-text-field>
-        <v-btn color="primary" @click="login()" dark block>登录</v-btn>
-      </v-form>
-    </div>
-    <v-dialog v-model="dialog">
-      <v-card>
-        <v-card-text>{{alertmsg}}</v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" flat="flat" @click="close()">确认</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <v-container grid-list-md text-xs-center style="padding-top:20vh;">
+      <v-layout row justify-center>
+        <v-flex xs12 md8>
+          <v-form>
+            <v-text-field label="用户名" id="username" v-model="card_id"></v-text-field>
+            <v-text-field label="密码" id="password" v-model="password" :append-icon="e1 ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (e1 = !e1)" :type="e1 ? 'password' : 'text'"></v-text-field>
+            <v-btn color="primary" @click="login()" dark block>登录</v-btn>
+          </v-form>
+        </v-flex>
+      </v-layout>
+    </v-container>
+      <v-dialog v-model="dialog">
+        <v-card>
+          <v-card-text>{{alertmsg}}</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="green darken-1" flat="flat" @click="close()">确认</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
   </div>
 </template>
 <script>
@@ -77,8 +81,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .login {
-  margin-top: 10%;
-  width: 300px;
-  padding: 0 auto;
+  /* margin-top: 10%; */
+  /* width: 300px; */
+  /* padding: 0 auto; */
 }
 </style>
