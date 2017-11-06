@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ECharts from 'vue-ECharts'
+import ECharts from 'vue-echarts'
 export default {
   components: {
     chart: ECharts

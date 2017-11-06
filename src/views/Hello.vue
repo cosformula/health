@@ -4,7 +4,7 @@
       <v-list two-line>
         <v-list-tile style="border-bottom: 1px solid #ddd">
           <v-list-tile-avatar>
-            <img src="http://139.224.135.121/Public/image/libiary.jpg">
+            <img src="http://139.224.135.121/Public/image/mikasa.jpg">
           </v-list-tile-avatar>
           <v-list-tile-content>{{info_list.FullName}}</v-list-tile-content>
           <v-list-tile-content>{{info_list.UserName}}</v-list-tile-content>

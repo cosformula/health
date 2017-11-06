@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ECharts from 'vue-ECharts'
+import ECharts from 'vue-echarts'
 import bus from '../assets/eventBus'
 export default {
   components: {
