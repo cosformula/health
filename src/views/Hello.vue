@@ -19,7 +19,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark color="primary" fixed scroll-off-screen scroll-target="container" app>
+    <v-toolbar dark color="primary" fixed  app>
       <v-toolbar-title class="white--text">学生健康档案平台</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
