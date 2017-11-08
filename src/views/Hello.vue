@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app  >
     <v-navigation-drawer temporary v-model="drawer" enable-resize-watcher right app>
       <v-list two-line>
         <v-list-tile style="border-bottom: 1px solid #ddd">
@@ -19,13 +19,13 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark color="primary" fixed  app>
-      <v-toolbar-title class="white--text">学生健康档案平台</v-toolbar-title>
+    <v-toolbar dark fixed color="blue" app>
+      <v-toolbar-title>我的健康档案</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     </v-toolbar>
-    <main>
-      <v-content>
+    <main style="height:100%;overflow-y:scroll;">
+      <v-content >
         <v-container fluid class="px-0">
           <div class="ml-4">
             <h4 id="l1">体测记录</h4>
@@ -40,9 +40,18 @@
             </v-flex>
           </v-layout>
         </v-container>
-        <v-container fluid class="px-0">
-          <div class="ml-4" id="l2">
-            <h4>体检记录</h4>
+        <v-container fluid class="px-0 mx-0">
+          <!-- <div class="ml-4" id="l2">
+            <h4 id="l2">体检记录</h4>
+          </div> -->
+          <v-divider></v-divider>
+          <v-layout row wrap>
+            <v-flex xs12 md12>
+              <phyexam></phyexam>
+            </v-flex>
+          </v-layout>
+           <div class="ml-4" id="l2">
+            <h4 id="l2">献血记录</h4>
           </div>
           <v-divider></v-divider>
           <v-layout row wrap>
@@ -60,7 +69,7 @@
             </v-flex>
           </v-layout>
           <div class="ml-4">
-            <h4>其他记录</h4>
+            <h4 id="l4">其他记录</h4>
           </div>
           <v-divider></v-divider>
           <v-layout row wrap>
