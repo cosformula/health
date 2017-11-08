@@ -239,7 +239,7 @@ export default {
       ]
     }
   },
-  created: function () {
+  mounted: function () {
     this.getInfo()
   },
   activated: function () {

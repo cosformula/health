@@ -97,6 +97,15 @@
       </v-content>
     </main>
     </v-container>
+    <v-dialog v-model="dialog10">
+      <v-card>
+        <v-card-text>{{dialogtext10}}</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" flat="flat" @click.native="dialog10 = false">确认</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -106,7 +115,6 @@ import LineChart from './LineChart.vue'
 import Report from './Report.vue'
 import Myinfo from './Myinfo.vue'
 import Phyexam from './PhyExam.vue'
-import Doctorvisit from './Doctorvisit.vue'
 import History from './History.vue'
 import Elserecord from './Elserecord.vue'
 export default {
@@ -116,12 +124,13 @@ export default {
     report: Report,
     myinfo: Myinfo,
     phyexam: Phyexam,
-    docvis: Doctorvisit,
     history: History,
     elserecord: Elserecord
   },
   data: () => ({
     dialog9: false,
+    dialog10: false,
+    dialogtext10: '',
     info_list: {
       Gender: '男',
       College: '外国语学院',
@@ -150,7 +159,7 @@ export default {
       {
         icon: 'icon-fengxian',
         text: '献血记录',
-        num: '2',
+        num: '0',
         to: 'l6'
       },
       {
@@ -189,14 +198,38 @@ export default {
     country: '',
     font: ''
   }),
+  mounted () {
+    this.getHistory()
+  },
   methods: {
     setPulpFiction() {
       this.movie = 'pulp_fiction'
     },
-    goAnchor(selector) {
-      var anchor = this.$el.querySelector(selector)
-      document.body.scrollTop = anchor.offsetTop
-      this.drawer = false
+    goAnchor(i) {
+      let tvm = this
+      if (this.history[i].num === '0') {
+        tvm.dialogtext10 = '您尚未有过' + tvm.history[i].text + '的记录哦!'
+        tvm.dialog10 = true
+      } else {
+        document.getElementById(tvm.history[i].to).scrollIntoView()
+        this.drawer = false
+      }
+    },
+    getHistory () {
+      let tvm = this
+      this.$http.get('/api/v1/getHistory.php')
+        .then((response) => {
+          tvm.history[2].num = response.data.Chronic + response.data.Contagion + response.data.Serious
+          tvm.history[3].num = response.data.BloodDonate
+          tvm.history[4].num = response.data.Doctor_visit
+          tvm.history[5].num = response.data.Reimbursement
+          tvm.history[6].num = response.data.Vaccine
+          tvm.history[7].num = response.data.TransferVisit
+          tvm.history[8].num = response.data.SickLeave
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }
