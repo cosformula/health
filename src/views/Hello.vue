@@ -35,7 +35,7 @@
     </v-toolbar>
     <main style="height:100%;overflow-y:scroll;">
       <v-content >
-        <v-container fluid class="px-0">
+        <v-container fluid class="px-0" >
           <div class="ml-4">
             <h4 id="l1">体测记录</h4>
           </div>
@@ -55,7 +55,7 @@
           </div> -->
           <v-divider></v-divider>
           <v-layout row wrap>
-            <v-flex xs12 md12>
+            <v-flex xs12 md12 class="light-blue lighten-3 py-4">
               <phyexam></phyexam>
             </v-flex>
           </v-layout>

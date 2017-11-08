@@ -1,76 +1,82 @@
 <template>
-  <v-container grid-list-xs text-xs-center class="px-4" style="padding:0;" fluid >
-    <v-btn>入学体检</v-btn>
-    <v-btn>毕业体检</v-btn>
+  <v-container grid-list-xs text-xs-center class="px-4" style="padding:0;" fluid>
     <v-layout row wrap>
-      <v-flex xs6 md4 lg3  style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+      <v-flex xs6>
+        <v-btn flat dark large block>入学体检</v-btn>
+      </v-flex>
+      <v-flex xs6>
+        <v-btn flat dark large block>毕业体检</v-btn>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap>
+      <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-shengao</v-icon>身高</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].height}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].height}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-tizhong</v-icon>体重</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].weight}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].weight}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-bmi</v-icon>BMI</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].BMI}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].BMI}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-xieya</v-icon>血压 高/低</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].high_blood}}/{{exam_list1[0].low_blood}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].high_blood}}/{{exam_list1[0].low_blood}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-semang</v-icon>色盲</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].color_discrimination}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].color_discrimination}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-shili</v-icon>视力 左/右</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].eyesight_left}}/{{exam_list1[0].eyesight_right}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].eyesight_left}}/{{exam_list1[0].eyesight_right}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-tijian</v-icon>心脏听诊</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].cardiac_auscultation}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].cardiac_auscultation}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-xinshuai</v-icon>心率</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].heart_rate}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].heart_rate}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-iconfhl</v-icon>肺活量</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].lung}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].lung}}</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
-        <v-card flat>
-          <v-card-title>
+        <v-card flat hover ripple>
+          <v-card-title class="card_title">
             <v-icon>iconfont-gandanpiyishen</v-icon>肝脾</v-card-title>
-          <v-card-text class="px-0">{{exam_list1[0].liver_spleen}}</v-card-text>
+          <v-card-text class="px-0 value">{{exam_list1[0].liver_spleen}}</v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
@@ -217,5 +223,13 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+.value {
+  font-size: 2rem;
+  color: gray;
+}
+.card_title {
+  font-size: 1.2rem;
+  /* color:gray; */
 }
 </style>
