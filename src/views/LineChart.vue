@@ -15,9 +15,6 @@ export default {
   data () {
     return {
       option: {
-        title: {
-          text: '历年体质趋势图'
-        },
         tooltip: {
           trigger: 'axis'
         },

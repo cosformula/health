@@ -2,7 +2,7 @@
   <v-app>
     <v-dialog v-model="dialog9">
       <v-card>
-        <myinfo></myinfo>      
+        <myinfo></myinfo>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="green darken-1" flat="flat" @click.native="dialog9 = false">确认</v-btn>
@@ -28,50 +28,44 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark fixed color="blue" app>
+    <v-toolbar dark fixed style="background-color:rgba(50, 100, 100, 0.5);" app>
       <v-toolbar-title>我的健康档案</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     </v-toolbar>
     <main style="height:100%;overflow-y:scroll;">
-      <v-content >
-        <v-container fluid class="px-0" >
-          <div class="ml-4">
-            <h4 id="l1">体测记录</h4>
-          </div>
-          <v-divider></v-divider>
-          <v-layout row wrap>
-            <v-flex xs12 md4 class="ma-4">
-              <phytest></phytest>
-            </v-flex>
-            <v-flex xs12 md7 class="ma-4">
-              <linechart></linechart>
-            </v-flex>
-          </v-layout>
-        </v-container>
-        <v-container fluid class="px-0 mx-0">
-          <!-- <div class="ml-4" id="l2">
-            <h4 id="l2">体检记录</h4>
-          </div> -->
-          <v-divider></v-divider>
-          <v-layout row wrap>
-            <v-flex xs12 md12 class="light-blue lighten-3 py-4">
-              <phyexam></phyexam>
-            </v-flex>
-          </v-layout>
-           <div class="ml-4" id="l2">
-            <h4 id="l2">献血记录</h4>
-          </div>
-          <v-divider></v-divider>
-          <v-layout row wrap>
-            <v-flex xs12 md12 class="ma-4">
-              <phyexam></phyexam>
-            </v-flex>
-          </v-layout>
-          <div class="ml-4">
-            <h4 id="l3">疾病记录</h4>
-          </div>
-          <v-divider></v-divider>
+      <v-content>
+        <v-container fluid class="pa-0 ma-0 ">
+          <v-card flat hover>
+            <v-card-title>
+              <div class="headline">体测记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <v-layout row wrap>
+              <v-flex xs12 md12 lg4 class="ma-4">
+                <phytest></phytest>
+              </v-flex>
+              <v-flex xs12 md12 lg7 class="ma-4">
+                <linechart></linechart>
+              </v-flex>
+            </v-layout>
+          </v-card>
+          <v-card flat class="my-2 py-3" style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline">体检记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <phyexam></phyexam>
+          </v-card>
+          <v-card>
+            <v-card-title>
+              <div class="headline">献血记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <v-card-text>
+              <blooddonation></blooddonation>
+            </v-card-text>
+          </v-card>
           <v-layout row wrap>
             <v-flex xs12 md12 class="ma-4">
               <history></history>
@@ -86,13 +80,6 @@
               <elserecord></elserecord>
             </v-flex>
           </v-layout>
-          <!-- <v-layout row wrap class="topboder">
-                  <v-flex xs12 md7 class="ma-1">
-                    <report></report>
-                  </v-flex>
-                  <v-flex xs12 md4 class="ma-3">
-                  </v-flex>
-                </v-layout> -->
         </v-container>
       </v-content>
     </main>
@@ -101,6 +88,7 @@
 </template>
 
 <script>
+import Blooddonation from './Blooddonation.vue'
 import Phytest from './Phytest.vue'
 import LineChart from './LineChart.vue'
 import Report from './Report.vue'
@@ -118,7 +106,8 @@ export default {
     phyexam: Phyexam,
     docvis: Doctorvisit,
     history: History,
-    elserecord: Elserecord
+    elserecord: Elserecord,
+    Blooddonation
   },
   data: () => ({
     dialog9: false,
