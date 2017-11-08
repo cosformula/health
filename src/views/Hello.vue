@@ -1,15 +1,24 @@
 <template>
-  <v-app  >
+  <v-app>
+    <v-dialog v-model="dialog9">
+      <v-card>
+        <myinfo></myinfo>      
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" flat="flat" @click.native="dialog9 = false">确认</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-navigation-drawer temporary v-model="drawer" enable-resize-watcher right app>
       <v-list two-line>
-        <v-list-tile style="border-bottom: 1px solid #ddd">
+        <v-list-tile style="border-bottom: 1px solid #ddd" @click="dialog9 = true">
           <v-list-tile-avatar>
             <img src="http://139.224.135.121/Public/image/mikasa.jpg">
           </v-list-tile-avatar>
           <v-list-tile-content>{{info_list.FullName}}</v-list-tile-content>
           <v-list-tile-content>{{info_list.UserName}}</v-list-tile-content>
         </v-list-tile>
-        <v-list-tile avatar v-for="item in history " v-bind:key="item.title" @click="goAnchor('#' + item.to)">
+        <v-list-tile avatar v-for="(item,i) in history " :key="i" @click="goAnchor(i)">
           <v-list-tile-action>
             <v-icon v-if="item.icon" color="pink">iconfont {{item.icon}}</v-icon>
           </v-list-tile-action>
@@ -112,6 +121,7 @@ export default {
     elserecord: Elserecord
   },
   data: () => ({
+    dialog9: false,
     info_list: {
       Gender: '男',
       College: '外国语学院',
@@ -141,13 +151,13 @@ export default {
         icon: 'icon-fengxian',
         text: '献血记录',
         num: '2',
-        to: 'l4'
+        to: 'l6'
       },
       {
         icon: 'icon-weibiaoti2',
         text: '就诊记录',
         num: '4',
-        to: 'l5'
+        to: 'l4'
       },
       {
         icon: 'icon-baoxiao',
@@ -165,13 +175,13 @@ export default {
         icon: 'icon-zhuanzhenjilu',
         text: '转诊记录',
         num: '0',
-        to: 'l8'
+        to: 'l4'
       },
       {
         icon: 'icon-qingjia',
         text: '病假记录',
         num: '2',
-        to: 'l9'
+        to: 'l4'
       }
     ],
     drawer: false,
