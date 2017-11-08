@@ -18,7 +18,7 @@
           <v-list-tile-content>{{info_list.FullName}}</v-list-tile-content>
           <v-list-tile-content>{{info_list.UserName}}</v-list-tile-content>
         </v-list-tile>
-        <v-list-tile avatar v-for="item in history " v-bind:key="item.title" @click="goAnchor('#' + item.to)">
+        <v-list-tile avatar v-for="(item,i) in history " :key="i" @click="goAnchor(i)">
           <v-list-tile-action>
             <v-icon v-if="item.icon" color="pink">iconfont {{item.icon}}</v-icon>
           </v-list-tile-action>

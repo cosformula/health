@@ -5,7 +5,9 @@
         <v-card-title class="headline">个人信息</v-card-title>
         <v-list two-line>
           <v-list-tile>
-            <v-list-tile-action></v-list-tile-action>
+            <v-list-tile-action>
+              <v-icon color="indigo">face</v-icon>
+            </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{info_list.user.FullName}}</v-list-tile-title>
               <v-list-tile-sub-title>姓名</v-list-tile-sub-title>
@@ -14,7 +16,7 @@
           <v-divider inset></v-divider>
           <v-list-tile>
             <v-list-tile-action>
-              <v-icon color="indigo">mail</v-icon>
+              <v-icon color="indigo">account_box</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{info_list.user.UserName}}</v-list-tile-title>
@@ -24,7 +26,7 @@
           <v-divider inset></v-divider>
           <v-list-tile>
             <v-list-tile-action>
-              <v-icon color="indigo">mail</v-icon>
+              <v-icon color="indigo">people</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{info_list.user.Gender}}</v-list-tile-title>
@@ -34,7 +36,7 @@
           <v-divider inset></v-divider>
           <v-list-tile>
             <v-list-tile-action>
-              <v-icon color="indigo">mail</v-icon>
+              <v-icon color="indigo">school</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{info_list.user.College}}</v-list-tile-title>
@@ -44,7 +46,7 @@
           <v-divider inset></v-divider>
           <v-list-tile>
             <v-list-tile-action>
-              <v-icon color="indigo">mail</v-icon>
+              <v-icon color="indigo">location_on</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{info_list.SchoolCampus}}</v-list-tile-title>
