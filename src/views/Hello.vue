@@ -1,8 +1,17 @@
 <template>
   <v-app>
+    <v-dialog v-model="dialog9">
+      <v-card>
+        <myinfo></myinfo>      
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" flat="flat" @click.native="dialog9 = false">确认</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-navigation-drawer temporary v-model="drawer" enable-resize-watcher right app>
       <v-list two-line>
-        <v-list-tile style="border-bottom: 1px solid #ddd">
+        <v-list-tile style="border-bottom: 1px solid #ddd" @click="dialog9 = true">
           <v-list-tile-avatar>
             <img src="http://139.224.135.121/Public/image/mikasa.jpg">
           </v-list-tile-avatar>
@@ -60,7 +69,7 @@
             </v-flex>
           </v-layout>
           <div class="ml-4">
-            <h4>其他记录</h4>
+            <h4 id="l4">其他记录</h4>
           </div>
           <v-divider></v-divider>
           <v-layout row wrap>
@@ -103,6 +112,7 @@ export default {
     elserecord: Elserecord
   },
   data: () => ({
+    dialog9: false,
     info_list: {
       Gender: '男',
       College: '外国语学院',
@@ -132,13 +142,13 @@ export default {
         icon: 'icon-fengxian',
         text: '献血记录',
         num: '2',
-        to: 'l4'
+        to: 'l6'
       },
       {
         icon: 'icon-weibiaoti2',
         text: '就诊记录',
         num: '4',
-        to: 'l5'
+        to: 'l4'
       },
       {
         icon: 'icon-baoxiao',
@@ -156,13 +166,13 @@ export default {
         icon: 'icon-zhuanzhenjilu',
         text: '转诊记录',
         num: '0',
-        to: 'l8'
+        to: 'l4'
       },
       {
         icon: 'icon-qingjia',
         text: '病假记录',
         num: '2',
-        to: 'l9'
+        to: 'l4'
       }
     ],
     drawer: false,

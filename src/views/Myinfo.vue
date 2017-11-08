@@ -1,36 +1,65 @@
 <template>
 
 <div style="background-color:#fff">
-  <div>
-    <v-layout row wrap>
-      <v-flex md3 xs3 class=" text-md-right text-xs-right">
-        <img src="http://139.224.135.121/Public/image/libiary.jpg" style="border-radius:50%;width:60px;height:60px;display:inline-block"/>
-      </v-flex>
-      <v-flex class="text-md-left text-xs-left ml-5 mt-2">
-        {{info_list.user.FullName}}<br>
-        <i flat>{{info_list.user.UserName}}</i>              
-        <i flat>{{info_list.user.Gender}}</i>              
-      </v-flex>
-    </v-layout>
-    <v-list>
-      <v-list-tile avatar v-for="item in history " v-bind:key="item.title" @click="">
-        <v-list-tile-action>
-          <v-icon v-if="item.icon" color="pink">iconfont {{item.icon}}</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title v-text="item.title"></v-list-tile-title>
-        </v-list-tile-content>
-        <v-list-tile-avatar>
-          <img v-bind:src="item.avatar"/>
-        </v-list-tile-avatar>
-      </v-list-tile>
-    </v-list>
+   <div>
+        <v-card-title class="headline">个人信息</v-card-title>
+        <v-list two-line>
+          <v-list-tile>
+            <v-list-tile-action></v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{info_list.user.FullName}}</v-list-tile-title>
+              <v-list-tile-sub-title>姓名</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider inset></v-divider>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-icon color="indigo">mail</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{info_list.user.UserName}}</v-list-tile-title>
+              <v-list-tile-sub-title>学号</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider inset></v-divider>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-icon color="indigo">mail</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{info_list.user.Gender}}</v-list-tile-title>
+              <v-list-tile-sub-title>性别</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider inset></v-divider>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-icon color="indigo">mail</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{info_list.user.College}}</v-list-tile-title>
+              <v-list-tile-sub-title>学院</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider inset></v-divider>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-icon color="indigo">mail</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{info_list.SchoolCampus}}</v-list-tile-title>
+              <v-list-tile-sub-title>校区</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+   </div>
   </div>
 </div>
 </template>
 <script>
 export default {
   name: 'hello',
+  props: ['dialog9'],
   data () {
     return {
       info_list: {
