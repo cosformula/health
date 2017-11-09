@@ -14,7 +14,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-      <v-dialog v-model="dialog">
+      <!-- <v-dialog v-model="dialog">
         <v-card>
           <v-card-text>{{alertmsg}}</v-card-text>
           <v-card-actions>
@@ -22,7 +22,7 @@
             <v-btn color="green darken-1" flat="flat" @click="close()">确认</v-btn>
           </v-card-actions>
         </v-card>
-      </v-dialog>
+      </v-dialog> -->
   </div>
 </template>
 <script>
@@ -60,14 +60,14 @@ export default {
             this.$http
               .get('/api/v1/phy-exam.php')
               .then(response => {
-                this.$user.name = response.data[0].user.FullName
+                // this.$user.name = response.data[0].user.FullName
               })
               .catch(err => {
                 console.log(err)
               })
-            this.open()
+            this.close()
           } else {
-            this.open()
+            // this.open()
           }
         })
         .catch(err => {
