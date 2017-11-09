@@ -26,6 +26,14 @@
             <v-list-tile-title v-text="item.text"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile avatar @click="dialog11 = true">
+          <v-list-tile-action>
+            <v-icon color="pink"></v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>糖尿病风险预测</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar dark fixed style="background-color:rgba(50, 100, 100, 0.5);" app>
@@ -93,6 +101,15 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="dialog11" max-width="600px">
+      <v-card>
+        <risk></risk>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" flat="flat" @click.native="dialog11 = false">确认</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -105,6 +122,7 @@ import Myinfo from './Myinfo.vue'
 import Phyexam from './PhyExam.vue'
 import History from './History.vue'
 import Elserecord from './Elserecord.vue'
+import Risk from './Risk.vue'
 export default {
   components: {
     phytest: Phytest,
@@ -114,11 +132,13 @@ export default {
     phyexam: Phyexam,
     history: History,
     elserecord: Elserecord,
+    risk: Risk,
     Blooddonation
   },
   data: () => ({
     dialog9: false,
     dialog10: false,
+    dialog11: false,
     dialogtext10: '',
     info_list: {
       Gender: '男',
