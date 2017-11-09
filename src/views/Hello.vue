@@ -36,17 +36,17 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark fixed style="background-color:rgba(50, 100, 100, 0.5);" app>
+    <v-toolbar dark fixed color="light-blue" app>
       <v-toolbar-title>我的健康档案</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     </v-toolbar>
-    <main style="height:100%;overflow-y:scroll;">
+    <main style="height:100%;overflow-y:scroll;" class="light-blue lighten-5">
       <v-content>
         <v-container fluid class="pa-0 ma-0 ">
-          <v-card flat hover>
+          <v-card flat hover style="background-color:rgba(0,0,0,0)">
             <v-card-title>
-              <div class="headline">体测记录</div>
+              <div class="headline light-blue--text text--darken-4">体测记录</div>
             </v-card-title>
             <v-divider></v-divider>
             <v-layout row wrap>
@@ -58,36 +58,38 @@
               </v-flex>
             </v-layout>
           </v-card>
-          <v-card flat class="my-2 py-3" style="background-color:rgba(0,0,0,0)" hover>
+          <v-card flat class="my-2 py-3 " style="background-color:rgba(0,0,0,0)" hover>
             <v-card-title>
-              <div class="headline">体检记录</div>
+              <div class="headline light-blue--text text--darken-4">体检记录</div>
             </v-card-title>
             <v-divider></v-divider>
             <phyexam></phyexam>
           </v-card>
-          <v-card>
-            <v-card-title>
-              <div class="headline">献血记录</div>
-            </v-card-title>
+          <others/>
+
+          <!-- <v-card>
+              <v-card-title>
+                <div class="headline">献血记录</div>
+              </v-card-title>
+              <v-divider></v-divider>
+              <v-card-text>
+                <blooddonation></blooddonation>
+              </v-card-text>
+            </v-card>
+            <v-layout row wrap>
+              <v-flex xs12 md12 class="ma-4">
+                <history></history>
+              </v-flex>
+            </v-layout>
+            <div class="ml-4">
+              <h4 id="l4">其他记录</h4>
+            </div>
             <v-divider></v-divider>
-            <v-card-text>
-              <blooddonation></blooddonation>
-            </v-card-text>
-          </v-card>
-          <v-layout row wrap>
-            <v-flex xs12 md12 class="ma-4">
-              <history></history>
-            </v-flex>
-          </v-layout>
-          <div class="ml-4">
-            <h4 id="l4">其他记录</h4>
-          </div>
-          <v-divider></v-divider>
-          <v-layout row wrap>
-            <v-flex xs12 md12 class="pa-4">
-              <elserecord></elserecord>
-            </v-flex>
-          </v-layout>
+            <v-layout row wrap>
+              <v-flex xs12 md12 class="pa-4">
+                <elserecord></elserecord>
+              </v-flex>
+            </v-layout> -->
         </v-container>
       </v-content>
     </main>
@@ -123,6 +125,7 @@ import Phyexam from './PhyExam.vue'
 import History from './History.vue'
 import Elserecord from './Elserecord.vue'
 import Risk from './Risk.vue'
+import Others from './Others.vue'
 export default {
   components: {
     phytest: Phytest,
@@ -133,7 +136,8 @@ export default {
     history: History,
     elserecord: Elserecord,
     risk: Risk,
-    Blooddonation
+    Blooddonation,
+    Others
   },
   data: () => ({
     dialog9: false,
@@ -207,7 +211,7 @@ export default {
     country: '',
     font: ''
   }),
-  mounted () {
+  mounted() {
     this.getHistory()
     this.getUserInfo()
   },
@@ -225,11 +229,15 @@ export default {
         this.drawer = false
       }
     },
-    getHistory () {
+    getHistory() {
       let tvm = this
-      this.$http.get('/api/v1/getHistory.php')
-        .then((response) => {
-          tvm.history[2].num = response.data.Chronic + response.data.Contagion + response.data.Serious
+      this.$http
+        .get('/api/v1/getHistory.php')
+        .then(response => {
+          tvm.history[2].num =
+            response.data.Chronic +
+            response.data.Contagion +
+            response.data.Serious
           tvm.history[3].num = response.data.BloodDonate
           tvm.history[4].num = response.data.Doctor_visit
           tvm.history[5].num = response.data.Reimbursement
@@ -237,11 +245,11 @@ export default {
           tvm.history[7].num = response.data.TransferVisit
           tvm.history[8].num = response.data.SickLeave
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err)
         })
     },
-    getUserInfo () {
+    getUserInfo() {
       this.info_list.UserName = this.$user.cardID
     }
   }

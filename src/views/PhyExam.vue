@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-xs text-xs-center class="px-4" style="padding:0;" fluid>
+  <v-container grid-list-xs text-xs-center class="px-0" style="padding:0;margin:0;" fluid>
     <v-tabs light v-model="active" centered fixed grow>
       <v-tabs-bar class="white">
         <v-tabs-item v-for="tab in tabs" :key="tab" :href="'#' + tab" ripple>
