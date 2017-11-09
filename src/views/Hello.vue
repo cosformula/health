@@ -1,39 +1,17 @@
 <template>
   <v-app>
-    <v-dialog v-model="dialog9">
-      <v-card>
-        <myinfo></myinfo>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" flat="flat" @click.native="dialog9 = false">确认</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
     <v-navigation-drawer temporary v-model="drawer" enable-resize-watcher right app>
       <v-list two-line>
-        <v-list-tile style="border-bottom: 1px solid #ddd" @click="dialog9 = true">
+        <v-list-tile style="border-bottom: 1px solid #ddd" @click="">
           <v-list-tile-avatar>
             <img src="http://139.224.135.121/Public/image/mikasa.jpg">
           </v-list-tile-avatar>
-          <v-list-tile-content>{{info_list.FullName}}</v-list-tile-content>
-          <v-list-tile-content>{{info_list.UserName}}</v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile avatar v-for="(item,i) in history " :key="i" @click="goAnchor(i)">
-          <v-list-tile-action>
-            <v-icon v-if="item.icon" color="pink">iconfont {{item.icon}}</v-icon>
-          </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.text"></v-list-tile-title>
+            <v-list-tile-title>卢本伟</v-list-tile-title>
+            <v-list-tile-sub-title>{{$user.cardID}}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile avatar @click="dialog11 = true">
-          <v-list-tile-action>
-            <v-icon color="pink"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>糖尿病风险预测</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <sidebar></sidebar>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar dark fixed color="light-blue" app>
@@ -99,16 +77,7 @@
         <v-card-text>{{dialogtext10}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" flat="flat" @click.native="dialog10 = false">确认</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-    <v-dialog v-model="dialog11" max-width="600px">
-      <v-card>
-        <risk></risk>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" flat="flat" @click.native="dialog11 = false">确认</v-btn>
+          <v-btn color="green darken-1"  @click.native="dialog10 = false">确认</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -120,29 +89,27 @@ import Blooddonation from './Blooddonation.vue'
 import Phytest from './Phytest.vue'
 import LineChart from './LineChart.vue'
 import Report from './Report.vue'
-import Myinfo from './Myinfo.vue'
 import Phyexam from './PhyExam.vue'
 import History from './History.vue'
 import Elserecord from './Elserecord.vue'
 import Risk from './Risk.vue'
 import Others from './Others.vue'
+import Sidebar from './Sidebar.vue'
 export default {
   components: {
     phytest: Phytest,
     linechart: LineChart,
     report: Report,
-    myinfo: Myinfo,
     phyexam: Phyexam,
     history: History,
     elserecord: Elserecord,
     risk: Risk,
+    Others,
     Blooddonation,
-    Others
+    sidebar: Sidebar
   },
   data: () => ({
-    dialog9: false,
     dialog10: false,
-    dialog11: false,
     dialogtext10: '',
     info_list: {
       Gender: '男',
