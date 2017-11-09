@@ -196,7 +196,7 @@ export default {
     },
     goAnchor(i) {
       let tvm = this
-      if (this.history[i].num === '0') {
+      if (this.history[i].num === 0) {
         tvm.dialogtext10 = '您尚未有过' + tvm.history[i].text + '的记录哦!'
         tvm.dialog10 = true
       } else {
