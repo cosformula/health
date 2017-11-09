@@ -25,7 +25,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile avatar @click="">
+    <v-list-tile avatar @click="jmpto('http://139.224.135.121/phytest/admin')">
       <v-list-tile-action>
         <v-icon color="indigo">exit_to_app</v-icon>
       </v-list-tile-action>
@@ -153,6 +153,11 @@ export default {
         'chest_radiography_doctor': null,
         'ReCheck': 1
       }
+    }
+  },
+  methods: {
+    jmpto (addr) {
+      top.location = addr
     }
   }
 }
