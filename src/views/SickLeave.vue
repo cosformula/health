@@ -3,10 +3,10 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>部门</th>
-          <th>开始时间</th>
-          <th>结束时间</th>
-          <th>理由</th>
+          <th style="text-align:center;font-size:20px">部门</th>
+          <th style="text-align:center;font-size:20px">开始时间</th>
+          <th style="text-align:center;font-size:20px">结束时间</th>
+          <th style="text-align:center;font-size:20px">理由</th>
         </tr>
       </thead>
       <tbody>

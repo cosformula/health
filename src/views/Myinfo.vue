@@ -142,52 +142,10 @@ export default {
         'ALT_doctor': '王妤',
         'chest_radiography_doctor': null,
         'ReCheck': 1
-      },
-      history: [
-        {
-          icon: 'icon-tijian',
-          text: '体检记录',
-          num: '1'
-        },
-        {
-          icon: 'icon-fengxian',
-          text: '献血记录',
-          num: '2'
-        },
-        {
-          icon: 'icon-weibiaoti2',
-          text: '就诊记录',
-          num: '4'
-        },
-        {
-          icon: 'icon-jibing_illness',
-          text: '疾病记录',
-          num: '3'
-        },
-        {
-          icon: 'icon-baoxiao',
-          text: '报销记录',
-          num: '4'
-        },
-        {
-          icon: 'icon-zhenxian',
-          text: '疫苗记录',
-          num: '2'
-        },
-        {
-          icon: 'icon-zhuanzhenjilu',
-          text: '转诊记录',
-          num: '0'
-        },
-        {
-          icon: 'icon-qingjia',
-          text: '病假记录',
-          num: '2'
-        }
-      ]
+      }
     }
   },
-  created: function () {
+  mounted: function () {
     this.getInfo()
   },
   activated: function () {
@@ -195,10 +153,12 @@ export default {
   },
   methods: {
     getInfo () {
+      let tvm = this
       this.$http.get('/api/v1/phy-exam.php')
         .then((response) => {
           console.log(response.data)
           // this.info_list = response.data
+          tvm.info_list.user.UserName = this.$user.cardID
         })
         .catch((err) => {
           console.log(err)

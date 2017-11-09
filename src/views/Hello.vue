@@ -209,6 +209,7 @@ export default {
   }),
   mounted () {
     this.getHistory()
+    this.getUserInfo()
   },
   methods: {
     setPulpFiction() {
@@ -239,6 +240,9 @@ export default {
         .catch((err) => {
           console.log(err)
         })
+    },
+    getUserInfo () {
+      this.info_list.UserName = this.$user.cardID
     }
   }
 }
