@@ -9,7 +9,7 @@
           <v-form>
             <v-text-field label="用户名" id="username" v-model="card_id"></v-text-field>
             <v-text-field label="密码" id="password" v-model="password" :append-icon="e1 ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (e1 = !e1)" :type="e1 ? 'password' : 'text'"></v-text-field>
-            <v-btn color="primary" @click="login()" dark block>登录</v-btn>
+            <v-btn :loading="loading"	 color="primary" @click="login()" dark block>登录</v-btn>
           </v-form>
         </v-flex>
       </v-layout>
@@ -34,7 +34,8 @@ export default {
       e1: true,
       card_id: '',
       password: '',
-      dialog: false
+      dialog: false,
+      loading: false
     }
   },
   methods: {
@@ -48,6 +49,7 @@ export default {
       }
     },
     login() {
+      this.loading = true
       this.$http
         .post('/api/v1/login.php', {
           card_id: this.card_id,
@@ -60,9 +62,11 @@ export default {
             this.$http
               .get('/api/v1/phy-exam.php')
               .then(response => {
+                this.loading = false
                 // this.$user.name = response.data[0].user.FullName
               })
               .catch(err => {
+                this.loading = false
                 console.log(err)
               })
             this.close()
