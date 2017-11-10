@@ -1,6 +1,10 @@
 <template>
 <div>
   <v-card>
+    <v-card-title>
+        <div class="headline light-blue--text text--darken-4">历年体测趋势</div>
+        <v-btn flat slot="activator"></v-btn>
+      </v-card-title>
     <chart :options="option" auto-resize></chart>
   </v-card>
 </div>
@@ -22,10 +26,12 @@ export default {
           trigger: 'axis'
         },
         legend: {
-          data: ['BMI', '50米跑', '跳远', '肺活量', '', '坐位体前屈', (this.$user.gender === 1) ? '引体向上' : '仰卧起坐', (this.$user.gender === 1) ? '1000米跑' : '800米跑']
+          data: ['BMI', '50米跑', '跳远', '肺活量', '坐位体前屈', '引体向上/仰卧起坐', '长跑']
         },
         toolbox: {
           show: true,
+          x: 'right',
+          y: 'bottom',
           feature: {
             dataZoom: {
               yAxisIndex: 'none'
@@ -74,12 +80,12 @@ export default {
             data: []
           },
           {
-            name: (this.$user.gender === 1) ? '引体向上' : '仰卧起坐',
+            name: '引体向上/仰卧起坐',
             type: 'line',
             data: []
           },
           {
-            name: (this.$user.gender === 1) ? '1000米跑' : '800米跑',
+            name: '长跑',
             type: 'line',
             data: []
           }

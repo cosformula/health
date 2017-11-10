@@ -1,5 +1,17 @@
 <template>
   <v-card>
+      <v-card-title>
+        <div class="headline light-blue--text text--darken-4">历年体测记录</div>
+        <v-spacer></v-spacer>
+        <v-menu offset-y>
+          <v-btn color="primary" dark outline slot="activator">{{year}}年</v-btn>
+          <v-list>
+            <v-list-tile v-for="item in yearlist" @click="getPhytest(item)">
+              <v-list-tile-title>{{item}}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-card-title>
     <chart :options="option" auto-resize></chart>
   </v-card>
 </template>
@@ -13,6 +25,8 @@ export default {
   },
   data () {
     return {
+      year: '',
+      yearlist: ['2013', '2014', '2015', '2016'],
       option: {
         title: {
           // text: '雷达图'
@@ -26,6 +40,8 @@ export default {
         },
         toolbox: {
           show: true,
+          x: 'right',
+          y: 'bottom',
           feature: {
             dataView: { readOnly: false },
             saveAsImage: {}
@@ -93,10 +109,10 @@ export default {
     }
   },
   created () {
-    this.getPhytest()
+    this.getPhytest('2015')
   },
   methods: {
-    getPhytest () {
+    getPhytest (aYear) {
       // var f = new FormData()
       // f.append('id', this.$user.cardID)
       // f.append('year', 2015)
@@ -109,9 +125,8 @@ export default {
       //   longrun: '长跑',
       //   mix: '1分钟仰卧起坐'
       // }
-      var params = new URLSearchParams()
-      params.append('year', '2015')
-      this.$http.post('/api/v1/getJsonphytest/', params, { maxRedirects: 0 })
+      this.year = aYear
+      this.$http.post('/api/v1/getJsonphytest/', {year: this.year}, { maxRedirects: 0 })
         .then((res) => {
           this.option.radar[0].indicator = res.data.indicator
           this.option.series[0].data[0].value = res.data.passline
