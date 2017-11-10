@@ -15,7 +15,7 @@
     <v-divider></v-divider>
     <v-data-table v-bind:headers="currentQuery.headers" :items="currentQuery.items" hide-actions class="elevation-1">
       <template slot="items" scope="props">
-        <td v-for="value in props.item" :key="value">{{ value }}</td>
+        <td v-for="value in props.items" :key="value">{{ value }}</td>
       </template>
     </v-data-table>
   </v-card>
@@ -159,6 +159,11 @@ export default {
       result.name = query.name
       result.headers = query.headers
       result.items = query.getItems()
+      result.items = {
+        SchoolCampus: '宝山校区',
+        BloodDonation: 200,
+        BloodType: 'O型'
+      }
       console.log(this.items)
       return result
     }

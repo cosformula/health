@@ -6,15 +6,15 @@ import router from './router'
 import axios from 'axios'
 import Vuetify from 'vuetify'
 import '../node_modules/vuetify/dist/vuetify.min.css'
-// import ECharts from 'vue-echarts/components/ECharts.vue'
+
 Vue.use(Vuetify)
-// Vue.use(ECharts)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 Vue.prototype.$user = {
   cardID: '',
-  name: ''
+  name: '',
+  gender: 2 // 1为男，2为女
 }
 Vue.prototype.$http = axios
 new Vue({

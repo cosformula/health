@@ -15,59 +15,71 @@ export default {
   data () {
     return {
       option: {
+        title: {
+          text: ''
+        },
         tooltip: {
           trigger: 'axis'
         },
         legend: {
-          data: ['2013', '2014', '2015', '2016']
+          data: ['BMI', '50米跑', '跳远', '肺活量', '', '坐位体前屈', (this.$user.gender === 1) ? '引体向上' : '仰卧起坐', (this.$user.gender === 1) ? '1000米跑' : '800米跑']
         },
         toolbox: {
           show: true,
           feature: {
-            feature: {
-              dataZoom: {
-                yAxisIndex: 'none'
-              },
-              dataView: {readOnly: false},
-              magicType: {type: ['line', 'bar']},
-              restore: {},
-              saveAsImage: {}
-            }
+            dataZoom: {
+              yAxisIndex: 'none'
+            },
+            dataView: { readOnly: false },
+            magicType: { type: ['line', 'bar'] },
+            restore: {},
+            saveAsImage: {}
           }
-        },
-        grid: {
-          left: '1%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
         },
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: ['BMI', '50米', '肺活量', '坐位体前屈', '跳远', '引体向上/仰卧起坐', '长跑']
+          data: ['2013', '2014', '2015', '2016']
         },
         yAxis: {
-          type: 'value'
-          // name:'分数',
+          type: 'value',
+          axisLabel: {
+            formatter: '{value}'
+          }
         },
         series: [
           {
-            name: '2013',
+            name: 'BMI',
             type: 'line',
             data: []
           },
           {
-            name: '2014',
+            name: '50米跑',
             type: 'line',
             data: []
           },
           {
-            name: '2015',
+            name: '跳远',
             type: 'line',
             data: []
           },
           {
-            name: '2016',
+            name: '肺活量',
+            type: 'line',
+            data: []
+          },
+          {
+            name: '坐位体前屈',
+            type: 'line',
+            data: []
+          },
+          {
+            name: (this.$user.gender === 1) ? '引体向上' : '仰卧起坐',
+            type: 'line',
+            data: []
+          },
+          {
+            name: (this.$user.gender === 1) ? '1000米跑' : '800米跑',
             type: 'line',
             data: []
           }
@@ -95,17 +107,22 @@ export default {
       this.$http.post('/api/v1/getJsonphytestbyid/', { maxRedirects: 0 })
         .then((response) => {
           for (var i = 0; i < response.data.length; i++) {
-            for (var tmpyear = 2013; tmpyear < 2017; tmpyear++) {
-              if (parseInt(response.data[i].year) === tmpyear) {
-                this.option.series[tmpyear - 2013].data.push(parseInt(response.data[i].BMI))
-                this.option.series[tmpyear - 2013].data.push(parseInt(response.data[i].fiftymeters))
-                this.option.series[tmpyear - 2013].data.push(parseInt(response.data[i].lung))
-                this.option.series[tmpyear - 2013].data.push(parseInt(response.data[i].sitandreach))
-                this.option.series[tmpyear - 2013].data.push(parseInt(response.data[i].longjump))
-                this.option.series[tmpyear - 2013].data.push(parseInt(response.data[i].mix))
-                this.option.series[tmpyear - 2013].data.push(parseInt(response.data[i].longrun))
+            for (var j = i + 1; j < response.data.length; j++) {
+              if (response.data[i].year > response.data[j].year) {
+                var tmp = response.data[i]
+                response.data[i] = response.data[j]
+                response.data[j] = tmp
               }
             }
+          }
+          for (var k = 0; k < response.data.length; k++) {
+            this.option.series[0].data.push(parseInt(response.data[k].BMI))
+            this.option.series[1].data.push(parseInt(response.data[k].fiftymeters))
+            this.option.series[4].data.push(parseInt(response.data[k].longjump))
+            this.option.series[2].data.push(parseInt(response.data[k].lung))
+            this.option.series[3].data.push(parseInt(response.data[k].sitandreach))
+            this.option.series[5].data.push(parseInt(response.data[k].mix))
+            this.option.series[6].data.push(parseInt(response.data[k].longrun))
           }
         })
       console.log(this.option.series)
