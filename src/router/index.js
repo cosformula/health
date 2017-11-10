@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const Hello = () => import('@/views/Hello')
+const Index = () => import('@/views/Index')
 const Myinfo = () => import('@/views/Myinfo')
 const Vaccine = () => import('@/views/Vaccine')
 const TransferVisit = () => import('@/views/TransferVisit')
@@ -19,8 +19,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'Index',
+      component: Index
     },
     {
       path: '/phytest',

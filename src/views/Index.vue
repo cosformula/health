@@ -46,28 +46,28 @@
           <others/>
 
           <!-- <v-card>
-              <v-card-title>
-                <div class="headline">献血记录</div>
-              </v-card-title>
+                <v-card-title>
+                  <div class="headline">献血记录</div>
+                </v-card-title>
+                <v-divider></v-divider>
+                <v-card-text>
+                  <blooddonation></blooddonation>
+                </v-card-text>
+              </v-card>
+              <v-layout row wrap>
+                <v-flex xs12 md12 class="ma-4">
+                  <history></history>
+                </v-flex>
+              </v-layout>
+              <div class="ml-4">
+                <h4 id="l4">其他记录</h4>
+              </div>
               <v-divider></v-divider>
-              <v-card-text>
-                <blooddonation></blooddonation>
-              </v-card-text>
-            </v-card>
-            <v-layout row wrap>
-              <v-flex xs12 md12 class="ma-4">
-                <history></history>
-              </v-flex>
-            </v-layout>
-            <div class="ml-4">
-              <h4 id="l4">其他记录</h4>
-            </div>
-            <v-divider></v-divider>
-            <v-layout row wrap>
-              <v-flex xs12 md12 class="pa-4">
-                <elserecord></elserecord>
-              </v-flex>
-            </v-layout> -->
+              <v-layout row wrap>
+                <v-flex xs12 md12 class="pa-4">
+                  <elserecord></elserecord>
+                </v-flex>
+              </v-layout> -->
         </v-container>
       </v-content>
     </main>
@@ -77,7 +77,7 @@
         <v-card-text>{{dialogtext10}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1"  @click.native="dialog10 = false">确认</v-btn>
+          <v-btn color="green darken-1" @click.native="dialog10 = false">确认</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -117,6 +117,7 @@ export default {
       FullName: '丁红彬',
       UserName: '09124406'
     },
+    record: {},
     history: [
       {
         icon: 'icon-8311',
@@ -181,8 +182,14 @@ export default {
   mounted() {
     this.getHistory()
     this.getUserInfo()
+    this.getRecord()
   },
   methods: {
+    getRecord() {
+      this.$http.get('/api/v1/allrecord.php').then(response => {
+        this.record = response.data
+      })
+    },
     setPulpFiction() {
       this.movie = 'pulp_fiction'
     },
