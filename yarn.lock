@@ -1902,11 +1902,11 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-echarts@^3.6.0:
-  version "3.7.2"
-  resolved "http://registry.npm.taobao.org/echarts/download/echarts-3.7.2.tgz#3b37764d8bc0c8ab49cbea16bc0b55726451caaa"
+echarts@^3.7.2:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-3.8.0.tgz#7e3ec5bb81f5afe3b59710d3ce121935d9a6ec52"
   dependencies:
-    zrender "^3.6.2"
+    zrender "^3.7.0"
 
 editorconfig@^0.13.2:
   version "0.13.2"
@@ -5893,11 +5893,11 @@ void-elements@^2.0.0:
   version "2.0.1"
   resolved "http://r.cnpmjs.org/void-elements/download/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
-vue-echarts@^2.4.0:
-  version "2.4.1"
-  resolved "http://registry.npm.taobao.org/vue-echarts/download/vue-echarts-2.4.1.tgz#138ec92a03fd08e87e9cf9d2a5e71f6a907f971a"
+vue-echarts@^2.4.1:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-2.5.0.tgz#6eaa9d3ec576e85cd39b1738e053ee21a7fa0d32"
   dependencies:
-    echarts "^3.6.0"
+    echarts "^3.7.2"
     lodash.debounce "^4.0.8"
 
 vue-hot-reload-api@^2.0.11:
@@ -6188,6 +6188,6 @@ yeast@0.1.2:
   version "0.1.2"
   resolved "http://r.cnpmjs.org/yeast/download/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
-zrender@^3.6.2:
-  version "3.6.3"
-  resolved "http://registry.npm.taobao.org/zrender/download/zrender-3.6.3.tgz#e3a06ba105cc45eb36492a818e7b7ae879a7b15b"
+zrender@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-3.7.0.tgz#490e773b4765f076eb5a6247f19e9659da233d0f"
