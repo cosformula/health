@@ -67,7 +67,39 @@
                 <v-icon>iconfont-jibing_illness</v-icon>疾病记录</div>
             </v-card-title>
             <v-divider></v-divider>
-            <disease :data="[]" :length="1"></disease>
+            <disease :data="record.Disease" :length="1"></disease>
+          </v-card>
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-weibiaoti2</v-icon>就诊记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <docvis :data="record.DoctorVisit"></docvis>
+          </v-card>
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-zhuanzhenjilu</v-icon>转诊记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <transvis :data="record.TransferVisit"></transvis>
+          </v-card>
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-qingjia</v-icon>病假记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <sickleave :data="record.SickLeave"></sickleave>
+          </v-card>
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-baoxiao</v-icon>报销记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <reimbursement :data="record.Reimbursement"></reimbursement>
           </v-card>
           <!-- <others/> -->
         </v-container>
@@ -93,12 +125,15 @@ import LineChart from './LineChart.vue'
 import Report from './Report.vue'
 import Phyexam from './PhyExam.vue'
 import History from './History.vue'
-import Elserecord from './Elserecord.vue'
 import Risk from './Risk.vue'
 import Others from './Others.vue'
 import Sidebar from './Sidebar.vue'
 import Disease from './Disease.vue'
 import Vaccine from './Vaccine.vue'
+import Docvis from './Doctorvisit.vue'
+import Transvis from './Transfervisit.vue'
+import SickLeave from './SickLeave.vue'
+import Reimbursement from './Reimbursement.vue'
 export default {
   components: {
     phytest: Phytest,
@@ -106,13 +141,16 @@ export default {
     report: Report,
     phyexam: Phyexam,
     history: History,
-    elserecord: Elserecord,
     risk: Risk,
     Others,
     Blooddonation,
     sidebar: Sidebar,
+    sickleave: SickLeave,
     Disease,
-    Vaccine
+    Vaccine,
+    Docvis,
+    Transvis,
+    Reimbursement
   },
   data: () => ({
     dialog10: false,

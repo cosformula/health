@@ -1,96 +1,61 @@
 <template>
-  <div >
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th style="text-align:center;font-size:20px">部门</th>
-          <th style="text-align:center;font-size:20px">开始时间</th>
-          <th style="text-align:center;font-size:20px">结束时间</th>
-          <th style="text-align:center;font-size:20px">理由</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr  v-for="(row, index) in info_list" :key="index">
-          <td>{{row.Departdent}}</td>
-          <td>{{row.StartTime.$date}}</td>
-          <td>{{row.EndTime.$date}}</td>
-          <td>{{row.Reason}}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div>
+    <v-alert v-if="data.length===0" icon="info" style="background-color:rgba(63, 69, 235, 0.3) !important;" value="true">
+      您目前没有就诊记录
+    </v-alert>
+    <div v-else id="timeline" class="timeline-outer">
+      <ul class="timeline">
+        <li class="event" v-for="(item,index) in data.slice((page-1)*5,page*5)" :key="index">
+          <h3>{{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD")}}</h3>
+          <table>
+            <tr>
+              <th class="light-blue--text text--darken-4">开始时间
+              </th>
+              <td> {{new Date(item.StartTime.sec*1000) | moment("YYYY-MM-DD HH:MM:SS")}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">结束时间
+              </th>
+              <td> {{new Date(item.EndTime.sec*1000) | moment("YYYY-MM-DD HH:MM:SS")}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">病因
+              </th>
+              <td>{{item.TSQK}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">就诊医院
+              </th>
+              <td>
+                {{item.Departdent}}
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <div class="text-xs-center pt-2" v-if="length!==1">
+        <v-pagination :length="length" v-model="page"></v-pagination>
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'hello',
-  data () {
-    return {
-      info_list: [{
-        '_id': {
-          '$oid': '53481d4db218451134c250cc'
-        },
-        'RecordTime': {
-          '$date': '2014-04-10T00:00:00.000Z'
-        },
-        'ID': 5,
-        'Tag': '病假',
-        'UserName': '12120715',
-        'InputUser': null,
-        'RecordType': null,
-        'SchoolCampus': '宝山校区',
-        'user': {
-          'BirthDate': null,
-          'Gender': '男',
-          'College': '材料科学与工程学院',
-          'StudentType': '',
-          'SchoolData': null,
-          'FullName': '徐小波',
-          'IDNumber': null,
-          'ImgUrl': null,
-          'Race': '',
-          'Original': '',
-          'UserName': '12120715',
-          '_id': {
-            '$oid': '000000000000000000000000'
-          }
-        },
-        'Reason': '',
-        'StartTime': {
-          '$date': '2014-04-09T16:00:00.000Z'
-        },
-        'EndTime': {
-          '$date': '2014-04-11T15:59:59.000Z'
-        },
-        'Others': '',
-        'KSSXW': null,
-        'JSSXW': null,
-        'TSQK': '化脓性扁桃体炎\r\n高热',
-        'Departdent': '上海大学校医院',
-        'FullName': '徐小波',
-        'Doctor': '黄婷',
-        'Days': 1
-      }]
+  props: {
+    data: {
+      type: Array,
+      default: () => []
     }
   },
-  created () {
-    this.getInfo()
+  data() {
+    return { page: 1 }
   },
-  filters: {
-    date: function (val) {
-      var d = new Date(val * 1000)
-      return `${d.getFullYear()}/${d.getMonth()}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
-    }
-  },
-  methods: {
-    getInfo () {
-      this.$http.get('/api/v1/sick-leave.php')
-        .then((response) => {
-          this.info_list = response.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+  computed: {
+    length: function() {
+      return parseInt(this.data.length / 5) + 1
     }
   }
 }
@@ -98,5 +63,144 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#content {
+  /* margin-top: 50px; */
+  text-align: center;
+}
 
+div.timeline-outer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0.8rem;
+  padding-right: 0.5rem;
+}
+
+/* h1.header {
+  font-size: 50px;
+  line-height: 70px;
+} */
+/* Timeline */
+table {
+  width: 100%;
+  color: grey;
+  font-size: 1.1rem;
+}
+/* th {
+  color:#e3f2fd;
+} */
+.timeline {
+  border-left: 8px solid #42a5f5;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: #333;
+  margin: 0;
+  letter-spacing: 0.5px;
+  position: relative;
+  line-height: 1.4em;
+  padding: 20px;
+  list-style: none;
+  text-align: left;
+  background-color: #fff;
+}
+
+.timeline h1,
+.timeline h2,
+.timeline h3 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+}
+
+.timeline .event {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline .event:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+.timeline .event:before,
+.timeline .event:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+/* 
+.timeline .event:before {
+  left: -177.5px;
+  color: #212121;
+  content: attr(data-date);
+  text-align: right;
+  font-weight: 100;
+  font-size: 16px;
+  min-width: 120px;
+} */
+
+.timeline .event:after {
+  box-shadow: 0 0 0 8px #42a5f5;
+  left: -30px;
+  background: #212121;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: '';
+  top: 15px;
+}
+/**/
+/*——————————————
+Responsive Stuff
+———————————————*/
+
+@media (max-width: 945px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+  section.lab h3.card-title {
+    padding: 5px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline .event:nth-child(1)::before,
+  .timeline .event:nth-child(3)::before,
+  .timeline .event:nth-child(5)::before {
+    top: 38px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+}
+/*——————————————
+others
+———————————————*/
+
+a.portfolio-link {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
 </style>

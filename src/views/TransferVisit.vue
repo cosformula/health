@@ -1,91 +1,75 @@
 <template>
-  <div >
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th style="text-align:center;font-size:20px">转诊时间</th>
-          <th style="text-align:center;font-size:20px">转诊期限</th>
-          <th style="text-align:center;font-size:20px">病因</th>
-          <th style="text-align:center;font-size:20px">转至</th>
-          <th style="text-align:center;font-size:20px">科室</th>
-          <th style="text-align:center;font-size:20px">医生</th>
-        </tr>
-      </thead>
-      <tbody style="text-align:center">
-        <tr>
-          <td>2015年06月05日</td>
-          <td>7天一次</td>
-          <td>口腔溃疡</td>
-          <td>上海市中山医院}</td>
-          <td>口腔科</td>
-          <td>卢本伟</td>
-        </tr>
-      </tbody>
-    </table>
+  <div>
+    <v-alert v-if="data.length===0" icon="info" style="background-color:rgba(63, 69, 235, 0.3) !important;" value="true">
+      您目前没有就诊记录
+    </v-alert>
+    <div v-else id="timeline" class="timeline-outer">
+      <ul class="timeline">
+        <li class="event" v-for="(item,index) in data.slice((page-1)*5,page*5)" :key="index">
+          <h3>{{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD")}}</h3>
+          <table>
+            <tr>
+              <th class="light-blue--text text--darken-4">转诊时间
+              </th>
+              <td> {{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD HH:MM:SS")}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">转诊期限
+              </th>
+              <td>{{item.Transfer_timelimit}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">病因
+              </th>
+              <td>{{item.Disease}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">转至
+              </th>
+              <td>
+                {{item.Transfer_hospital}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">科室
+              </th>
+              <td>
+                {{item.Transfer_medical_laboratory}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">医生
+              </th>
+              <td>
+                {{item.Doctor}}
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <div class="text-xs-center pt-2" v-if="length!==1">
+        <v-pagination :length="length" v-model="page"></v-pagination>
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'hello',
-  data () {
-    return {
-      info_list: [
-        {
-          '_id': {
-            '$oid': '5347a85ab2184503c48e8458'
-          },
-          'RecordTime': {
-            '$date': '2014-04-11T16:33:00.000Z'
-          },
-          'ID': 1,
-          'Tag': '转诊',
-          'UserName': '13720945',
-          'InputUser': null,
-          'RecordType': null,
-          'SchoolCampus': '宝山校区',
-          'user': {
-            'BirthDate': null,
-            'Gender': '',
-            'College': '通信与信息工程学院',
-            'StudentType': '',
-            'SchoolData': null,
-            'FullName': '徐慧敏',
-            'IDNumber': null,
-            'ImgUrl': null,
-            'Race': '',
-            'Original': '',
-            'UserName': '13720945',
-            '_id': {
-              '$oid': '000000000000000000000000'
-            }
-          },
-          'Medical_laboratory': '',
-          'Doctor': '朱雯怡',
-          'Disease': '鸡眼',
-          'Transfer_hospital': '第十人民医院',
-          'Transfer_medical_laboratory': '皮肤科',
-          'Transfer_timelimit': '7天1次',
-          'Others': ''
-        }]
+  props: {
+    data: {
+      type: Array,
+      default: () => []
     }
   },
-  created: function () {
-    this.getInfo()
+  data() {
+    return { page: 1 }
   },
-  activated: function () {
-    this.getInfo()
-  },
-  methods: {
-    getInfo () {
-      this.$http.get('/api/v1/transfer-visit.php')
-        .then((response) => {
-          console.log(response.data)
-          this.info_list = response.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+  computed: {
+    length: function() {
+      return parseInt(this.data.length / 5) + 1
     }
   }
 }
@@ -93,5 +77,144 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#content {
+  /* margin-top: 50px; */
+  text-align: center;
+}
 
+div.timeline-outer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0.8rem;
+  padding-right: 0.5rem;
+}
+
+/* h1.header {
+  font-size: 50px;
+  line-height: 70px;
+} */
+/* Timeline */
+table {
+  width: 100%;
+  color: grey;
+  font-size: 1.1rem;
+}
+/* th {
+  color:#e3f2fd;
+} */
+.timeline {
+  border-left: 8px solid #42a5f5;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: #333;
+  margin: 0;
+  letter-spacing: 0.5px;
+  position: relative;
+  line-height: 1.4em;
+  padding: 20px;
+  list-style: none;
+  text-align: left;
+  background-color: #fff;
+}
+
+.timeline h1,
+.timeline h2,
+.timeline h3 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+}
+
+.timeline .event {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline .event:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+.timeline .event:before,
+.timeline .event:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+/* 
+.timeline .event:before {
+  left: -177.5px;
+  color: #212121;
+  content: attr(data-date);
+  text-align: right;
+  font-weight: 100;
+  font-size: 16px;
+  min-width: 120px;
+} */
+
+.timeline .event:after {
+  box-shadow: 0 0 0 8px #42a5f5;
+  left: -30px;
+  background: #212121;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: '';
+  top: 15px;
+}
+/**/
+/*——————————————
+Responsive Stuff
+———————————————*/
+
+@media (max-width: 945px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+  section.lab h3.card-title {
+    padding: 5px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline .event:nth-child(1)::before,
+  .timeline .event:nth-child(3)::before,
+  .timeline .event:nth-child(5)::before {
+    top: 38px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+}
+/*——————————————
+others
+———————————————*/
+
+a.portfolio-link {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
 </style>

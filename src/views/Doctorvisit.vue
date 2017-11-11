@@ -1,223 +1,221 @@
+
 <template>
   <div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th style="text-align:center;font-size:20px">就诊地点</th>
-          <th style="text-align:center;font-size:20px">就诊科</th>
-          <th style="text-align:center;font-size:20px">就诊时间</th>
-          <th style="text-align:center;font-size:20px">就诊医生</th>
-          <th style="text-align:center;font-size:20px">总费用/实际费用</th>
-          <th style="text-align:center;font-size:20px">病状</th>
-          <th style="text-align:center;font-size:20px">处方</th>
-        </tr>
-      </thead>
-      <tbody style="text-align:center">
-        <tr v-for="(row, index) in doctor_list" :key="index">
-          <td>{{row.SchoolCampus}}</td>
-          <td>{{row.department}}</td>
-          <td>{{row.RecordTime.$date}}</td>
-          <td>{{row.doctor}}</td>
-          <td>{{row.total_fees}}/{{row.real_fees}}</td>
-          <td>
-            <v-btn @click="openDialog('dialog3', index)" style="width:100%;">查看</v-btn>
-          </td>
-          <td>
-            <v-btn @click="openDialog('dialog4', index)" style="width:100%;">查看</v-btn>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <v-dialog v-model="dialog3">
-      <v-card>
-        <v-card-title>病状详情</v-card-title>
-
-        <v-card-title>
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <td>病症陈述</td>
-                <td>{{current_item.chief_complaint}}</td>
-              </tr>
-              <tr>
-                <td>询问症状</td>
-                <td>{{current_item.now_history}}</td>
-              </tr>
-              <tr>
-                <td>临床表现</td>
-                <td>{{current_item.pysical_exam}}</td>
-              </tr>
-              <tr>
-                <td>体温</td>
-                <td>{{current_item.body_temperature}}</td>
-              </tr>
-              <tr>
-                <td>初步诊断</td>
-                <td>{{current_item.initial_diagnosis}}</td>
-              </tr>
-              <tr>
-                <td>取药负责人</td>
-                <td>{{current_item.doctor}}</td>
-              </tr>
-
-            </tbody>
+    <v-alert v-if="data.length===0" icon="info" style="background-color:rgba(63, 69, 235, 0.3) !important;" value="true">
+      您目前没有就诊记录
+    </v-alert>
+    <div v-else id="timeline" class="timeline-outer">
+      <ul class="timeline">
+        <li class="event" v-for="(item,index) in data.slice((page-1)*5,page*5)" :key="index">
+          <h3>{{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD")}}</h3>
+          <table>
+            <tr>
+              <th class="light-blue--text text--darken-4">就诊时间
+              </th>
+              <td> {{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD HH:MM:SS")}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">就诊地点
+              </th>
+              <td>{{item.SchoolCampus}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">就诊科
+              </th>
+              <td>{{item.department}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">接诊医生
+              </th>
+              <td>
+                {{item.doctor}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">病症
+              </th>
+              <td>
+                {{item.chief_complaint}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">总费用/实际费用
+              </th>
+              <td>
+                {{item.total_fees}}/{{item.real_fees}}元
+              </td>
+            </tr>
           </table>
-        </v-card-title>
-
-        <v-card-actions>
-          <v-btn color="green darken-1" flat="flat" @click="dialog3 = false">确认</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-    <v-dialog v-model="dialog4">
-      <v-card>
-        <v-card-title>药物处方详情</v-card-title>
-        <v-container fill-height fluid>
-          <v-layout fill-height>
-            <v-flex xs12 align-end flexbox>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th style="text-align:center;">药物处方</th>
-                    <th style="text-align:center;">服用方法</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>{{current_item.medical_name}}</td>
-                    <td>{{current_item.method}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </v-flex>
-          </v-layout>
-        </v-container>
-
-        <v-card-actions>
-          <v-btn color="green darken-1" flat="flat" @click="dialog4 = false">确认</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+        </li>
+      </ul>
+      <div class="text-xs-center pt-2" v-if="length!==1">
+        <v-pagination :length="length" v-model="page"></v-pagination>
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'hello',
-  data() {
-    return {
-      dialog3: false,
-      dialog4: false,
-      current_item: {},
-      doctor_list: [
-        {
-          _id: {
-            $oid: '5347b938b218450e74fbcbb7'
-          },
-          RecordTime: {
-            $date: '2014-04-11T17:48:37.000Z'
-          },
-          ID: 14,
-          Tag: '校内门急诊',
-          UserName: 'zf641',
-          InputUser: null,
-          RecordType: null,
-          SchoolCampus: '宝山校区',
-          user: {
-            BirthDate: null,
-            Gender: '',
-            College: null,
-            StudentType: '',
-            SchoolData: null,
-            FullName: 'feidtest',
-            IDNumber: null,
-            ImgUrl: null,
-            Race: null,
-            Original: null,
-            UserName: 'zf641',
-            _id: {
-              $oid: '000000000000000000000000'
-            }
-          },
-          regid: 255253,
-          registration: {
-            _id: 50542,
-            user_id: 'zf641',
-            date: {
-              $date: '2014-04-11T09:12:14.980Z'
-            },
-            register_fees: 0,
-            treatment_fees: 0,
-            department: '内科',
-            doctor: '寇丽茹'
-          },
-          treatment_time: {
-            $date: '2014-04-11T17:48:37.000Z'
-          },
-          department: '内科',
-          chief_complaint: '外阴瘙痒2天',
-          now_history: '平时月经规律14  4-5/28-30 ,量中，痛经（+）,外阴瘙痒伴白带增多2天，。',
-          heart_rate: null,
-          blood_pressure_h: null,
-          blood_pressure_l: null,
-          breathing: null,
-          body_temperature: null,
-          pysical_exam:
-            '外阴：(—) 阴道：畅，凝乳样白带增多 宫颈：轻度糜烂，宫口可见一赘生物，约绿豆大小 宫体：前位，质中，举痛（—） 双附件：（—）',
-          treatments: [],
-          drup_prescriptions: [],
-          fees_details: [],
-          initial_diagnosis: '霉菌性阴道炎',
-          treatment_advise:
-            '阴道分泌物检查霉菌（+） 米可定阴道栓1盒\r\n中医科\t111\t同济医院\t7天1次\t寇丽茹\t2014-04-11 17:17 \r\n \r\n \r\n \r\n \r\n \r\n',
-          doctor: '寇丽茹',
-          total_fees: 0,
-          fees_percent: 0,
-          real_fees: 0
-        }
-      ]
+  props: {
+    data: {
+      type: Array,
+      default: () => []
     }
   },
-  created: function() {
-    this.getInfo()
+  data() {
+    return { page: 1 }
   },
-  activated: function() {
-    this.getInfo()
-  },
-  methods: {
-    getInfo() {
-      this.$http
-        .get('/api/v1/doctor-visit.php')
-        .then(response => {
-          console.log(response.data)
-          this.doctor_list = response.data
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
-    openDialog(ref, index) {
-      let tvm = this
-      if (ref === 'dialog3') {
-        tvm.dialog3 = true
-      } else {
-        tvm.dialog4 = true
-      }
-      this.current_item = this.doctor_list[index]
-    },
-    closeDialog(ref) {
-      this.$refs[ref].close()
-    },
-    onOpen() {
-      console.log('Opened')
-    },
-    onClose(type) {
-      console.log('Closed', type)
+  computed: {
+    length: function() {
+      return parseInt(this.data.length / 5) + 1
     }
   }
 }
 </script>
-<style scoped>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+#content {
+  /* margin-top: 50px; */
+  text-align: center;
+}
+
+div.timeline-outer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0.8rem;
+  padding-right: 0.5rem;
+}
+
+/* h1.header {
+  font-size: 50px;
+  line-height: 70px;
+} */
+/* Timeline */
+table {
+  width: 100%;
+  color: grey;
+  font-size: 1.1rem;
+}
+/* th {
+  color:#e3f2fd;
+} */
+.timeline {
+  border-left: 8px solid #42a5f5;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: #333;
+  margin: 0;
+  letter-spacing: 0.5px;
+  position: relative;
+  line-height: 1.4em;
+  padding: 20px;
+  list-style: none;
+  text-align: left;
+  background-color: #fff;
+}
+
+.timeline h1,
+.timeline h2,
+.timeline h3 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+}
+
+.timeline .event {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline .event:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+.timeline .event:before,
+.timeline .event:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+/* 
+.timeline .event:before {
+  left: -177.5px;
+  color: #212121;
+  content: attr(data-date);
+  text-align: right;
+  font-weight: 100;
+  font-size: 16px;
+  min-width: 120px;
+} */
+
+.timeline .event:after {
+  box-shadow: 0 0 0 8px #42a5f5;
+  left: -30px;
+  background: #212121;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: '';
+  top: 15px;
+}
+/**/
+/*——————————————
+Responsive Stuff
+———————————————*/
+
+@media (max-width: 945px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+  section.lab h3.card-title {
+    padding: 5px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline .event:nth-child(1)::before,
+  .timeline .event:nth-child(3)::before,
+  .timeline .event:nth-child(5)::before {
+    top: 38px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+}
+/*——————————————
+others
+———————————————*/
+
+a.portfolio-link {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
 </style>

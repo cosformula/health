@@ -1,42 +1,50 @@
 <template>
   <div>
     <v-alert v-if="data.length===0" icon="info" style="background-color:rgba(63, 69, 235, 0.3) !important;" value="true">
-      您目前没有献血记录
+      您目前没有疾病记录
     </v-alert>
     <div v-else id="timeline" class="timeline-outer">
       <ul class="timeline">
         <li class="event" v-for="(item,index) in data.slice((page-1)*5,page*5)" :key="index">
-          <h3>2015-09-23</h3>
+          <h3>{{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD")}}</h3>
           <table>
             <tr>
-              <th class="light-blue--text text--darken-4">献血量
+              <th class="light-blue--text text--darken-4">记录时间
               </th>
-              <td>100cc
+              <td> {{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD HH:MM:SS")}}
               </td>
             </tr>
             <tr>
-              <th class="light-blue--text text--darken-4">献血类型
+              <th class="light-blue--text text--darken-4">病情分类
               </th>
-              <td>100cc
+              <td> {{item.Tag}}
               </td>
             </tr>
             <tr>
-              <th class="light-blue--text text--darken-4">献血时间
+              <th class="light-blue--text text--darken-4">病状
+              </th>
+              <td>{{item.Disease}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">治疗机构
               </th>
               <td>
+                {{item.Medical_laboratory}}
               </td>
             </tr>
             <tr>
-              <th class="light-blue--text text--darken-4">献血地点
+              <th class="light-blue--text text--darken-4">接诊医生
               </th>
               <td>
+                {{item.Doctor}}
               </td>
             </tr>
           </table>
         </li>
       </ul>
-      <div class="text-xs-center pt-2">
-        <v-pagination :length="6" v-model="page"></v-pagination>
+      <div class="text-xs-center pt-2" v-if="length!==1">
+        <v-pagination :length="length" v-model="page"></v-pagination>
       </div>
     </div>
   </div>
@@ -44,11 +52,18 @@
 <script>
 export default {
   props: {
-    data: Array,
-    length: Number
+    data: {
+      type: Array,
+      default: () => []
+    }
   },
   data() {
     return { page: 1 }
+  },
+  computed: {
+    length: function() {
+      return parseInt(this.data.length / 5) + 1
+    }
   }
 }
 </script>
