@@ -6,38 +6,37 @@
     <div v-else id="timeline" class="timeline-outer">
       <ul class="timeline">
         <li class="event" v-for="(item,index) in data.slice((page-1)*5,page*5)" :key="index">
-          <h3>{{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD")}}</h3>
+          <h3>2015-09-23</h3>
           <table>
             <tr>
               <th class="light-blue--text text--darken-4">献血量
               </th>
-              <td>{{item.BloodDonation}}cc
+              <td>100cc
               </td>
             </tr>
             <tr>
               <th class="light-blue--text text--darken-4">献血类型
               </th>
-              <td>{{item.BloodType}}
+              <td>100cc
               </td>
             </tr>
             <tr>
               <th class="light-blue--text text--darken-4">献血时间
               </th>
-              <td>{{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD HH:MM:SS")}}
+              <td>
               </td>
             </tr>
             <tr>
               <th class="light-blue--text text--darken-4">献血地点
               </th>
               <td>
-                {{item.SchoolCampus}}
               </td>
             </tr>
           </table>
         </li>
       </ul>
-      <div class="text-xs-center pt-2" v-if="length!==1">
-        <v-pagination :length="length" v-model="page"></v-pagination>
+      <div class="text-xs-center pt-2">
+        <v-pagination :length="6" v-model="page"></v-pagination>
       </div>
     </div>
   </div>
@@ -45,19 +44,11 @@
 <script>
 export default {
   props: {
-    data: {
-      type: Array,
-      default: () => []
-    }
+    data: Array,
+    length: Number
   },
   data() {
     return { page: 1 }
-  },
-  computed: {
-    length: function() {
-      // console.log('l;ength', this.data, this.data.length / 5)
-      return parseInt(this.data.length / 5) + 1
-    }
   }
 }
 </script>

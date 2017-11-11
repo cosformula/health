@@ -24,7 +24,8 @@
         <v-container fluid class="pa-0 ma-0 ">
           <v-card flat hover style="background-color:rgba(0,0,0,0)">
             <v-card-title>
-              <div class="headline light-blue--text text--darken-4">体测记录</div>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-gerenxinxi</v-icon>体测记录</div>
             </v-card-title>
             <v-divider></v-divider>
             <v-layout row wrap>
@@ -36,37 +37,39 @@
               </v-flex>
             </v-layout>
           </v-card>
-
-          <v-card flat class="my-2 py-3 " style="background-color:rgba(0,0,0,0)" hover>
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
             <v-card-title>
-              <div class="headline light-blue--text text--darken-4">体检记录</div>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-tijian</v-icon>体检记录</div>
             </v-card-title>
             <v-divider></v-divider>
             <phyexam></phyexam>
           </v-card>
-                    <v-card flat class="my-2 py-3 " style="background-color:rgba(0,0,0,0)" hover>
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
             <v-card-title>
-              <div class="headline light-blue--text text--darken-4">献血记录</div>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-fengxian</v-icon>献血记录</div>
             </v-card-title>
             <v-divider></v-divider>
-            <blooddonation></blooddonation>
+            <blooddonation :data="record.BloodDonate"></blooddonation>
           </v-card>
-          <others/>
-          <!-- <blooddonation/> -->
-          <!--    <v-layout row wrap>
-                        <v-flex xs12 md12 class="ma-4">
-                          <history></history>
-                        </v-flex>
-                      </v-layout>
-                      <div class="ml-4">
-                        <h4 id="l4">其他记录</h4>
-                      </div>
-                      <v-divider></v-divider>
-                      <v-layout row wrap>
-                        <v-flex xs12 md12 class="pa-4">
-                          <elserecord></elserecord>
-                        </v-flex>
-                      </v-layout> -->
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-zhenxian</v-icon>疫苗记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <vaccine :data="record.Record_Vaccine"></vaccine>
+          </v-card>
+          <v-card flat class="my-2 pb-3 " style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline light-blue--text text--darken-4">
+                <v-icon>iconfont-jibing_illness</v-icon>疾病记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <disease :data="[]" :length="1"></disease>
+          </v-card>
+          <!-- <others/> -->
         </v-container>
       </v-content>
     </main>
@@ -94,6 +97,8 @@ import Elserecord from './Elserecord.vue'
 import Risk from './Risk.vue'
 import Others from './Others.vue'
 import Sidebar from './Sidebar.vue'
+import Disease from './Disease.vue'
+import Vaccine from './Vaccine.vue'
 export default {
   components: {
     phytest: Phytest,
@@ -105,7 +110,9 @@ export default {
     risk: Risk,
     Others,
     Blooddonation,
-    sidebar: Sidebar
+    sidebar: Sidebar,
+    Disease,
+    Vaccine
   },
   data: () => ({
     dialog10: false,

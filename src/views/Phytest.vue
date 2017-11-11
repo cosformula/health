@@ -1,17 +1,17 @@
 <template>
   <v-card>
-      <v-card-title>
-        <div class="headline light-blue--text text--darken-4">历年体测记录</div>
-        <v-spacer></v-spacer>
-        <v-menu offset-y>
-          <v-btn color="primary" dark outline slot="activator">{{year}}年</v-btn>
-          <v-list>
-            <v-list-tile v-for="item in yearlist" @click="getPhytest(item)">
-              <v-list-tile-title>{{item}}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-      </v-card-title>
+    <v-card-title>
+      <div class="headline light-blue--text text--darken-4">历年体测记录</div>
+      <v-spacer></v-spacer>
+      <v-menu offset-y>
+        <v-btn color="primary" dark outline slot="activator">{{year}}年</v-btn>
+        <v-list>
+          <v-list-tile v-for="item in yearlist" @click="getPhytest(item)" :key="item">
+            <v-list-tile-title>{{item}}</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+    </v-card-title>
     <chart :options="option" auto-resize></chart>
   </v-card>
 </template>
@@ -23,7 +23,7 @@ export default {
   components: {
     chart: ECharts
   },
-  data () {
+  data() {
     return {
       year: '',
       yearlist: ['2013', '2014', '2015', '2016'],
@@ -68,10 +68,14 @@ export default {
             radius: 90,
             splitArea: {
               areaStyle: {
-                color: ['rgba(114, 172, 209, 0.0)',
-                  'rgba(114, 172, 209, 0.2)', 'rgba(114, 172, 209, 0.4)',
-                  'rgba(114, 172, 209, 0.6)', 'rgba(114, 172, 209, 0.8)',
-                  'rgba(114, 172, 209, 1)'],
+                color: [
+                  'rgba(114, 172, 209, 0.0)',
+                  'rgba(114, 172, 209, 0.2)',
+                  'rgba(114, 172, 209, 0.4)',
+                  'rgba(114, 172, 209, 0.6)',
+                  'rgba(114, 172, 209, 0.8)',
+                  'rgba(114, 172, 209, 1)'
+                ],
                 shadowColor: 'rgba(0, 0, 0, 0.3)',
                 shadowBlur: 10
               }
@@ -96,7 +100,7 @@ export default {
                 label: {
                   normal: {
                     show: true,
-                    formatter: function (params) {
+                    formatter: function(params) {
                       return params.value
                     }
                   }
@@ -108,11 +112,11 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     this.getPhytest('2015')
   },
   methods: {
-    getPhytest (aYear) {
+    getPhytest(aYear) {
       // var f = new FormData()
       // f.append('id', this.$user.cardID)
       // f.append('year', 2015)
@@ -126,8 +130,13 @@ export default {
       //   mix: '1分钟仰卧起坐'
       // }
       this.year = aYear
-      this.$http.post('/api/v1/getJsonphytest/', {year: this.year}, { maxRedirects: 0 })
-        .then((res) => {
+      this.$http
+        .post(
+          '/api/v1/getJsonphytest/',
+          { year: this.year },
+          { maxRedirects: 0 }
+        )
+        .then(res => {
           this.option.radar[0].indicator = res.data.indicator
           this.option.series[0].data[0].value = res.data.passline
           this.option.series[0].data[1].value = res.data.score
@@ -139,6 +148,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .echarts
-    width 100%
+.echarts
+  width 100%
 </style>

@@ -1,114 +1,82 @@
 <template>
-  <div >
-    <h3 style="text-align:center;"> </h3>
-    <md-layout md-align="center"
-               md-gutter="0">
-      <md-layout md-flex-large="75"
-                 md-flex-xlarge="75"
-                 md-flex-xsmall="100"
-                 md-flex-small="100"
-                 md-flex-medium="80">
-        <md-table style="width:100%;margin-left:auto;margin-right:auto;">
-          <md-table-header>
-            <md-table-head md-numeric
-                           class="table_header"
-                           style="text-align:center;">接种时间</md-table-head>
-          <md-table-head style="text-align:center;">接种地点</md-table-head>
-          <md-table-head style="text-align:center;">接种类型</md-table-head>
-          <md-table-head style="text-align:center;">接种次数</md-table-head>
-          <md-table-head style="text-align:center;">医生</md-table-head>
-          <md-table-head style="text-align:center;">疫苗来源</md-table-head>
-          </md-table-header>
-          <md-table-body v-for="(row, index) in info_list"
-                         :key="index"
-                         md-numeric>
-            <md-table-row style="text-align:center;">
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.RecordTime.$date}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.SchoolCampus}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Drugs.ViccineName}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Drugs.ViccineTime}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Doctor}}</md-table-cell>
-              <md-table-cell style="text-align:center;"
-                             md-numeric>{{row.Medical_laboratory}}</md-table-cell>
-            </md-table-row>
-          </md-table-body>
-        </md-table>
-      </md-layout>
-    </md-layout>
+  <div>
+    <v-alert v-if="data.length===0" icon="info" style="background-color:rgba(63, 69, 235, 0.3) !important;" value="true">
+      您目前没有献血记录
+    </v-alert>
+    <div v-else id="timeline" class="timeline-outer">
+      <ul class="timeline">
+        <li class="event" v-for="(item,index) in data.slice((page-1)*5,page*5)" :key="index">
+          <h3>{{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD")}}</h3>
+          <table>
+            <tr>
+              <th class="light-blue--text text--darken-4">接种时间
+              </th>
+              <td> {{new Date(item.RecordTime.sec*1000) | moment("YYYY-MM-DD HH:MM:SS")}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">接种地点
+              </th>
+              <td>{{item.SchoolCampus}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">接种类型
+              </th>
+              <td>{{item.Drugs.ViccineName}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">接种次数
+              </th>
+              <td>
+                {{item.Drugs.ViccineTime}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">医生
+              </th>
+              <td>
+                {{item.Doctor}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">疫苗来源
+              </th>
+              <td>
+                {{item.Medical_laboratory}}
+              </td>
+            </tr>
+            <tr>
+              <th class="light-blue--text text--darken-4">未接种理由
+              </th>
+              <td>
+                {{item.No_vaccine_reason}}
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <div class="text-xs-center pt-2" v-if="length!==1">
+        <v-pagination :length="length" v-model="page"></v-pagination>
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'hello',
-  data () {
-    return {
-      info_list: [{
-        '_id': {
-          '$oid': '53480f7bb218450eb050c164'
-        },
-        'Doctor': '寇丽茹',
-        'Drugs': {
-          'ID': 5,
-          'ViccineName': '麻风疫苗',
-          'ViccineTime': '第一次接种',
-          'Cost': -1,
-          'Number': '',
-          'Producer': ''
-        },
-        'ID': 5,
-        'InputUser': null,
-        'Medical_laboratory': '祁连社区卫生服务中心',
-        'No_vaccine_reason': '',
-        'Others': '',
-        'RecordTime': {
-          '$date': '2013-09-23T16:22:20.670Z'
-        },
-        'RecordType': '计划内',
-        'SchoolCampus': '宝山校区',
-        'Tag': '疫苗接种',
-        'UserName': '13720757',
-        'Vaccine_flag': '已接种',
-        'user': {
-          'BirthDate': null,
-          'Gender': '',
-          'College': '法学院',
-          'StudentType': '',
-          'SchoolData': null,
-          'FullName': '黄洁',
-          'IDNumber': null,
-          'ImgUrl': null,
-          'Race': '',
-          'Original': '',
-          'UserName': '13720757',
-          '_id': {
-            '$oid': '000000000000000000000000'
-          }
-        }
-      }]
+  props: {
+    data: {
+      type: Array,
+      default: () => []
     }
   },
-  created: function () {
-    this.getInfo()
+  data() {
+    return { page: 1 }
   },
-  activated: function () {
-    this.getInfo()
-  },
-  methods: {
-    getInfo () {
-      this.$http.get('/api/v1/vaccine.php')
-        .then((response) => {
-          console.log(response.data)
-          this.info_list = response.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+  computed: {
+    length: function() {
+      return parseInt(this.data.length / 5) + 1
     }
   }
 }
@@ -116,5 +84,145 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#content {
+  /* margin-top: 50px; */
+  text-align: center;
+}
 
+div.timeline-outer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0.8rem;
+  padding-right: 0.5rem;
+}
+
+/* h1.header {
+  font-size: 50px;
+  line-height: 70px;
+} */
+/* Timeline */
+table {
+  width: 100%;
+  color: grey;
+  font-size: 1.1rem;
+}
+/* th {
+  color:#e3f2fd;
+} */
+.timeline {
+  border-left: 8px solid #42a5f5;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: #333;
+  margin: 0;
+  letter-spacing: 0.5px;
+  position: relative;
+  line-height: 1.4em;
+  padding: 20px;
+  list-style: none;
+  text-align: left;
+  background-color: #fff;
+}
+
+.timeline h1,
+.timeline h2,
+.timeline h3 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+}
+
+.timeline .event {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline .event:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+.timeline .event:before,
+.timeline .event:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+/* 
+.timeline .event:before {
+  left: -177.5px;
+  color: #212121;
+  content: attr(data-date);
+  text-align: right;
+  font-weight: 100;
+  font-size: 16px;
+  min-width: 120px;
+} */
+
+.timeline .event:after {
+  box-shadow: 0 0 0 8px #42a5f5;
+  left: -30px;
+  background: #212121;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: '';
+  top: 15px;
+}
+/**/
+/*——————————————
+Responsive Stuff
+———————————————*/
+
+@media (max-width: 945px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+  section.lab h3.card-title {
+    padding: 5px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline .event:nth-child(1)::before,
+  .timeline .event:nth-child(3)::before,
+  .timeline .event:nth-child(5)::before {
+    top: 38px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+}
+/*——————————————
+others
+———————————————*/
+
+a.portfolio-link {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
 </style>
+

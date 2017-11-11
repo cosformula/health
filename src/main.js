@@ -9,6 +9,12 @@ import '../node_modules/vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
+const moment = require('moment')
+require('moment/locale/zh-cn')
+
+Vue.use(require('vue-moment'), {
+  moment
+})
 
 /* eslint-disable no-new */
 Vue.prototype.$user = {
