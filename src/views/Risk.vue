@@ -90,6 +90,7 @@ export default {
           value: 2
         }
       ],
+      search: '',
       form: {
         gender: 1,
         age: '',

@@ -1,55 +1,186 @@
 <template>
-  <div>
-    <table class="table table-striped" style="width:100%;">
-      <tr>
-        <th style="text-align:center;">献血地点</th>
-        <th style="text-align:center;">献血量/cc</th>
-        <th style="text-align:center;">全血/成分血</th>
-      </tr>
-      <tr style="text-align:center;" v-for="(row, index) in blood_list" :key="index" md-numeric>
-        <td style="text-align:center;" md-numeric>{{row.SchoolCampus}}</td>
-        <td style="text-align:center;" md-numeric>{{row.BloodDonation}}</td>
-        <td style="text-align:center;" md-numeric>{{row.BloodType}}</td>
-      </tr>
-    </table>
+  <div id="timeline" class="timeline-outer">
+    <ul class="timeline">
+      <li class="event">
+        <h3>2015-09-23</h3>
+        <table>
+          <tr>
+            <th class="light-blue--text text--darken-4">献血量
+            </th>
+            <td>100cc
+            </td>
+          </tr>
+          <tr>
+            <th class="light-blue--text text--darken-4">献血类型
+            </th>
+            <td>100cc
+            </td>
+          </tr>
+          <tr>
+            <th class="light-blue--text text--darken-4">献血时间
+            </th>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th class="light-blue--text text--darken-4">献血地点
+            </th>
+            <td>
+            </td>
+          </tr>
+        </table>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
 export default {
-  name: 'hello',
-  data() {
-    return {
-      blood_list: []
-    }
-  },
-  created: function() {
-    this.getInfo()
-  },
-  activated: function() {
-    this.getInfo()
-  },
-  methods: {
-    getInfo() {
-      this.$http
-        .get('/api/v1/blood-donate.php')
-        .then(response => {
-          console.log(response.data)
-          if (response.data !== 'not log in') {
-            this.blood_list = response.data
-            console.log('success get data')
-          } else {
-            console.log('not log in')
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
+  props: {
+    blood_list: Array
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#content {
+  /* margin-top: 50px; */
+  text-align: center;
+}
 
+div.timeline-outer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0.8rem;
+  padding-right: 0.5rem;
+}
+
+/* h1.header {
+  font-size: 50px;
+  line-height: 70px;
+} */
+/* Timeline */
+table {
+  width: 100%;
+  color: grey;
+  font-size: 1.1rem;
+}
+/* th {
+  color:#e3f2fd;
+} */
+.timeline {
+  border-left: 8px solid #42a5f5;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: #333;
+  margin: 0;
+  letter-spacing: 0.5px;
+  position: relative;
+  line-height: 1.4em;
+  padding: 20px;
+  list-style: none;
+  text-align: left;
+  background-color: #fff;
+}
+
+.timeline h1,
+.timeline h2,
+.timeline h3 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+}
+
+.timeline .event {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline .event:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+.timeline .event:before,
+.timeline .event:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+/* 
+.timeline .event:before {
+  left: -177.5px;
+  color: #212121;
+  content: attr(data-date);
+  text-align: right;
+  font-weight: 100;
+  font-size: 16px;
+  min-width: 120px;
+} */
+
+.timeline .event:after {
+  box-shadow: 0 0 0 8px #42a5f5;
+  left: -30px;
+  background: #212121;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: '';
+  top: 15px;
+}
+/**/
+/*——————————————
+Responsive Stuff
+———————————————*/
+
+@media (max-width: 945px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+  section.lab h3.card-title {
+    padding: 5px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline .event::before {
+    left: 0.5px;
+    top: 20px;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .timeline .event:nth-child(1)::before,
+  .timeline .event:nth-child(3)::before,
+  .timeline .event:nth-child(5)::before {
+    top: 38px;
+  }
+  .timeline h3 {
+    font-size: 16px;
+  }
+  .timeline p {
+    padding-top: 20px;
+  }
+}
+/*——————————————
+others
+———————————————*/
+
+a.portfolio-link {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
 </style>

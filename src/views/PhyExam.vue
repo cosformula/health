@@ -163,9 +163,9 @@
 </template>
 <script>
 export default {
-  name: 'hello',
   data() {
     return {
+      active: '',
       tabs: ['入学体检', '毕业体检'],
       exam: [
         { name: 'height', value: '' },

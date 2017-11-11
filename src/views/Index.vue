@@ -2,7 +2,7 @@
   <v-app>
     <v-navigation-drawer temporary v-model="drawer" enable-resize-watcher right app>
       <v-list two-line>
-        <v-list-tile style="border-bottom: 1px solid #ddd" @click="">
+        <v-list-tile style="border-bottom: 1px solid #ddd">
           <v-list-tile-avatar>
             <img src="http://139.224.135.121/Public/image/mikasa.jpg">
           </v-list-tile-avatar>
@@ -36,6 +36,7 @@
               </v-flex>
             </v-layout>
           </v-card>
+
           <v-card flat class="my-2 py-3 " style="background-color:rgba(0,0,0,0)" hover>
             <v-card-title>
               <div class="headline light-blue--text text--darken-4">体检记录</div>
@@ -43,31 +44,29 @@
             <v-divider></v-divider>
             <phyexam></phyexam>
           </v-card>
+                    <v-card flat class="my-2 py-3 " style="background-color:rgba(0,0,0,0)" hover>
+            <v-card-title>
+              <div class="headline light-blue--text text--darken-4">献血记录</div>
+            </v-card-title>
+            <v-divider></v-divider>
+            <blooddonation></blooddonation>
+          </v-card>
           <others/>
-
-          <!-- <v-card>
-                <v-card-title>
-                  <div class="headline">献血记录</div>
-                </v-card-title>
-                <v-divider></v-divider>
-                <v-card-text>
-                  <blooddonation></blooddonation>
-                </v-card-text>
-              </v-card>
-              <v-layout row wrap>
-                <v-flex xs12 md12 class="ma-4">
-                  <history></history>
-                </v-flex>
-              </v-layout>
-              <div class="ml-4">
-                <h4 id="l4">其他记录</h4>
-              </div>
-              <v-divider></v-divider>
-              <v-layout row wrap>
-                <v-flex xs12 md12 class="pa-4">
-                  <elserecord></elserecord>
-                </v-flex>
-              </v-layout> -->
+          <!-- <blooddonation/> -->
+          <!--    <v-layout row wrap>
+                        <v-flex xs12 md12 class="ma-4">
+                          <history></history>
+                        </v-flex>
+                      </v-layout>
+                      <div class="ml-4">
+                        <h4 id="l4">其他记录</h4>
+                      </div>
+                      <v-divider></v-divider>
+                      <v-layout row wrap>
+                        <v-flex xs12 md12 class="pa-4">
+                          <elserecord></elserecord>
+                        </v-flex>
+                      </v-layout> -->
         </v-container>
       </v-content>
     </main>

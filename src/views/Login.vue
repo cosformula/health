@@ -14,15 +14,6 @@
         </v-flex>
       </v-layout>
     </v-container>
-      <!-- <v-dialog v-model="dialog">
-        <v-card>
-          <v-card-text>{{alertmsg}}</v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" flat="flat" @click="close()">确认</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog> -->
   </div>
 </template>
 <script>
