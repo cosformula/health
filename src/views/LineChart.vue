@@ -22,6 +22,8 @@ export default {
           trigger: 'axis'
         },
         legend: {
+          bottom: 0,
+          type: 'scroll',
           data: ['BMI', '50米跑', '跳远', '肺活量', '', '坐位体前屈', (this.$user.gender === 1) ? '引体向上' : '仰卧起坐', (this.$user.gender === 1) ? '1000米跑' : '800米跑']
         },
         toolbox: {

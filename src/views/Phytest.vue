@@ -97,18 +97,6 @@ export default {
   },
   methods: {
     getPhytest () {
-      // var f = new FormData()
-      // f.append('id', this.$user.cardID)
-      // f.append('year', 2015)
-      // const translate = {
-      //   BMI: '体重指数',
-      //   fiftymeters: '50米跑',
-      //   lung: '肺活量',
-      //   sitandreach: '坐位体前屈',
-      //   longjump: '立定跳远',
-      //   longrun: '长跑',
-      //   mix: '1分钟仰卧起坐'
-      // }
       var params = new URLSearchParams()
       params.append('year', '2015')
       this.$http.post('/api/v1/getJsonphytest/', params, { maxRedirects: 0 })

@@ -7,21 +7,21 @@
         </v-tabs-item>
         <v-tabs-slider color="grey"></v-tabs-slider>
       </v-tabs-bar>
-      <v-tabs-items>
+      <v-tabs-items class="px-2">
         <v-tabs-content id="入学体检">
           <v-layout row wrap>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-shengao</v-icon>身高</v-card-title>
-                <v-card-text class="px-0 value">{{exam_list1[0].height}}</v-card-text>
+                <v-card-text class="px-0 value">{{exam_list1[0].height}}cm</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-tizhong</v-icon>体重</v-card-title>
-                <v-card-text class="px-0 value">{{exam_list1[0].weight}}</v-card-text>
+                <v-card-text class="px-0 value">{{exam_list1[0].weight}}kg</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
@@ -34,8 +34,8 @@
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
-                  <v-icon>iconfont-xieya</v-icon>血压 高/低</v-card-title>
-                <v-card-text class="px-0 value">{{exam_list1[0].high_blood}}/{{exam_list1[0].low_blood}}</v-card-text>
+                  <v-icon>iconfont-xieya</v-icon>血压(高/低)</v-card-title>
+                <v-card-text class="px-0 value">{{exam_list1[0].high_blood}}kpa/{{exam_list1[0].low_blood}}kpa</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
@@ -48,7 +48,7 @@
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
-                  <v-icon>iconfont-shili</v-icon>视力 左/右</v-card-title>
+                  <v-icon>iconfont-shili</v-icon>视力(左/右)</v-card-title>
                 <v-card-text class="px-0 value">{{exam_list1[0].eyesight_left}}/{{exam_list1[0].eyesight_right}}</v-card-text>
               </v-card>
             </v-flex>
@@ -363,11 +363,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.form1 {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
 .value {
   font-size: 2rem;
   color: gray;
