@@ -1,19 +1,31 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <div class="headline light-blue--text text--darken-4">历年体测记录</div>
-      <v-spacer></v-spacer>
-      <v-menu offset-y>
-        <v-btn color="primary" dark outline slot="activator">{{year}}年</v-btn>
-        <v-list>
-          <v-list-tile v-for="item in yearlist" @click="getPhytest(item)" :key="item">
-            <v-list-tile-title>{{item}}</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-    </v-card-title>
-    <chart :options="option" auto-resize></chart>
-  </v-card>
+  <div>
+    <v-card>
+      <v-card-title>
+        <div class="headline light-blue--text text--darken-4">历年体测记录</div>
+        <v-spacer></v-spacer>
+        <v-menu offset-y>
+          <v-btn color="primary" dark outline slot="activator">{{year}}年</v-btn>
+          <v-list>
+            <v-list-tile v-for="item in yearlist" @click="getPhytest(item)" :key="item">
+              <v-list-tile-title>{{item}}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-card-title>
+      <chart :options="option" auto-resize></chart>
+    </v-card>
+    <v-card class="mt-5">
+      <!-- <v-card-title>健康提醒</v-card-title> -->
+      <v-list dense>
+        <v-list-tile v-for="tip in tips" :key="tips">
+          <v-list-tile-content>
+            {{tip}}
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -25,6 +37,7 @@ export default {
   },
   data() {
     return {
+      tips: [],
       year: '',
       yearlist: ['2013', '2014', '2015', '2016'],
       option: {
@@ -141,6 +154,7 @@ export default {
           this.option.series[0].data[0].value = res.data.passline
           this.option.series[0].data[1].value = res.data.score
           bus.$emit('reportmsg', res.data.msg)
+          this.tips = res.data.msg
         })
     }
   }

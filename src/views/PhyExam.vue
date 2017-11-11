@@ -14,21 +14,21 @@
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-shengao</v-icon>身高</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.height}}cm</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.height?enterData.height+'cm':'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-tizhong</v-icon>体重</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.weight}}kg</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.weight?enterData.weight+'kg':'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-bmi</v-icon>BMI</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.BMI}}</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.BMI?enterData.BMI+'kg':'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
@@ -42,7 +42,7 @@
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-semang</v-icon>色盲</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.color_discrimination}}</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.color_discrimination?enterData.color_discrimination:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
@@ -56,28 +56,28 @@
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-tijian</v-icon>心脏听诊</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.cardiac_auscultation}}</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.cardiac_auscultation?enterData.cardiac_auscultation:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-xinshuai</v-icon>心率</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.heart_rate}}</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.heart_rate?enterData.heart_rate:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-iconfhl</v-icon>肺活量</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.lung}}</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.lung?enterData.lung:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-gandanpiyishen</v-icon>肝脾</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.liver_spleen}}</v-card-text>
+                <v-card-text class="px-0 value">{{enterData.liver_spleen?enterData.liver_spleen:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
           </v-layout>
@@ -88,27 +88,27 @@
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-shengao</v-icon>身高</v-card-title>
-                <v-card-text class="px-0 value">{{leaveData.height}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.height?leaveData.height+'cm':'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-tizhong</v-icon>体重</v-card-title>
-                <v-card-text class="px-0 value">{{leaveData.weight}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.weight?leaveData.weight+'kg':'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-bmi</v-icon>BMI</v-card-title>
-                <v-card-text class="px-0 value">{{leaveData.BMI}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.BMI?leaveData.BMI+'kg':'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
-                  <v-icon>iconfont-xieya</v-icon>血压 高/低</v-card-title>
+                  <v-icon>iconfont-xieya</v-icon>高/低血压/kpa</v-card-title>
                 <v-card-text class="px-0 value">{{leaveData.high_blood}}/{{leaveData.low_blood}}</v-card-text>
               </v-card>
             </v-flex>
@@ -116,13 +116,13 @@
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-semang</v-icon>色盲</v-card-title>
-                <v-card-text class="px-0 value">{{leaveData.color_discrimination}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.color_discrimination?leaveData.color_discrimination:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
-                  <v-icon>iconfont-shili</v-icon>视力 左/右</v-card-title>
+                  <v-icon>iconfont-shili</v-icon>视力(左/右)</v-card-title>
                 <v-card-text class="px-0 value">{{leaveData.eyesight_left}}/{{leaveData.eyesight_right}}</v-card-text>
               </v-card>
             </v-flex>
@@ -130,35 +130,34 @@
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-tijian</v-icon>心脏听诊</v-card-title>
-                <v-card-text class="px-0 value">{{leaveData.cardiac_auscultation}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.cardiac_auscultation?leaveData.cardiac_auscultation:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-xinshuai</v-icon>心率</v-card-title>
-                <v-card-text class="px-0 value">{{leaveData.heart_rate}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.heart_rate?leaveData.heart_rate:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-iconfhl</v-icon>肺活量</v-card-title>
-                <v-card-text class="px-0 value">{{leaveData.lung}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.lung?leaveData.lung:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs6 md4 lg3 style="padding:5px;margin:0;">
               <v-card flat hover ripple>
                 <v-card-title class="card_title">
                   <v-icon>iconfont-gandanpiyishen</v-icon>肝脾</v-card-title>
-                <v-card-text class="px-0 value">{{enterData.liver_spleen}}</v-card-text>
+                <v-card-text class="px-0 value">{{leaveData.liver_spleen?leaveData.liver_spleen:'无数据'}}</v-card-text>
               </v-card>
             </v-flex>
           </v-layout>
         </v-tabs-content>
       </v-tabs-items>
     </v-tabs>
-
   </v-container>
 </template>
 <script>
@@ -168,7 +167,7 @@ export default {
       active: '',
       tabs: ['入学体检', '毕业体检'],
       // exam: [
-      //   { name: 'height', value: '' },
+      //   { name: 'height', key: '' ,icon: ''},
       //   { name: 'weight', value: '' },
       //   { name: 'BMI', value: '' },
       //   { name: 'blood pressure_hign', value: '' },
