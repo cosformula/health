@@ -13,8 +13,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 Vue.prototype.$user = {
   cardID: '',
-  name: '',
-  gender: 2 // 1为男，2为女
+  name: ''
 }
 Vue.prototype.$http = axios
 new Vue({

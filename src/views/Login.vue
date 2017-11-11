@@ -50,16 +50,7 @@ export default {
           if (response.data.success === true) {
             this.alertmsg = '登陆成功'
             this.$user.cardID = this.card_id
-            this.$http
-              .get('/api/v1/phy-exam.php')
-              .then(response => {
-                this.loading = false
-                // this.$user.name = response.data[0].user.FullName
-              })
-              .catch(err => {
-                this.loading = false
-                console.log(err)
-              })
+            this.$user.name = response.data.name
             this.close()
           } else {
             // this.open()
