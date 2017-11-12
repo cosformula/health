@@ -103,7 +103,7 @@ export default {
     getData () {
       this.$http.post('/api/v1/getJsonphytestbyid/', { maxRedirects: 0 })
         .then((response) => {
-          this.btntxt = '我超过了多少人'
+          this.btntxt = '超过了多少人'
           this.flag = true
           this.option.yAxis.axisLabel.formatter = '{value}'
           for (var t = 0; t < this.option.series.length; t++) {
