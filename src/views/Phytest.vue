@@ -15,8 +15,8 @@
       </v-card-title>
       <chart :options="option" auto-resize></chart>
     </v-card>
-    <v-card class="mt-5">
-      <!-- <v-card-title>健康提醒</v-card-title> -->
+    <!-- <v-card class="mt-5">
+      
       <v-list dense>
         <v-list-tile v-for="tip in tips" :key="tips">
           <v-list-tile-content>
@@ -24,7 +24,7 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    </v-card>
+    </v-card> -->
   </div>
 </template>
 
@@ -150,7 +150,7 @@ export default {
           { maxRedirects: 0 }
         )
         .then(res => {
-          this.option.radar[0].indicator = res.data.indicator
+          //  this.option.radar[0].indicator = res.data.indicator
           this.option.series[0].data[0].value = res.data.passline
           this.option.series[0].data[1].value = res.data.score
           bus.$emit('reportmsg', res.data.msg)
