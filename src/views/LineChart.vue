@@ -101,7 +101,7 @@ export default {
   },
   methods: {
     getData () {
-      this.$http.post('/api/v1/getJsonphytestbyid/', { maxRedirects: 0 })
+      this.$http.post('/api/v1/getJsonphytestbyid.php/', { maxRedirects: 0 })
         .then((response) => {
           this.btntxt = '超过了多少人'
           this.flag = true

@@ -32,7 +32,7 @@ module.exports = {
           target: 'http://139.224.135.121',
           changeOrigin: true,
           pathRewrite: {
-              '^/api': '/api'
+              '^/api': '/api_for_proxy'
           }
       },
       '/phytest': {

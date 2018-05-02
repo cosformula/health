@@ -145,7 +145,7 @@ export default {
       this.year = aYear
       this.$http
         .post(
-          '/api/v1/getJsonphytest/',
+          '/api/v1/getJsonphytest.php/',
           { year: this.year },
           { maxRedirects: 0 }
         )
